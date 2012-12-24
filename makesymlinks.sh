@@ -8,7 +8,7 @@ echo -n "Backing up any existing dotfiles in ~ to ${backup}..."
 mkdir -p ${backup}
 
 for file in $files; do
-    if [ -f ~/${file} ]; then
+    if [[ -f ~/${file} && !(-L ~/${file}) ]]; then
         mv ~/${file} ${backup}/
     fi
 done
@@ -19,7 +19,9 @@ echo -n "Symlinking dotfiles from ${dotfiles} to ~..."
 mkdir -p ${dotfiles}
 
 for file in $files; do
-    ln -s ${dotfiles}/${file} ~/${file}
+    if [[ ! -L ~/${file} ]]; then
+        ln -s ${dotfiles}/${file} ~/${file}
+    fi
 done
 
 echo "done."
