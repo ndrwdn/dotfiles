@@ -252,6 +252,7 @@ elseif has("unix")
     set guifont=Inconsolata-g\ 9
     set guioptions+=a
     set softtabstop=4
+    syntax enable
     let $PATH = "/home/andrew/programs/bin:" . $PATH
 endif
 
