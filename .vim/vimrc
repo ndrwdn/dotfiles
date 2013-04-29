@@ -29,7 +29,8 @@ Bundle "sjbach/lusty"
 
 Bundle "scrooloose/nerdtree"
 
-Bundle "SirVer/ultisnips"
+" Unused as of 4/29/13
+"Bundle "SirVer/ultisnips"
 
 Bundle "mileszs/ack.vim"
 
@@ -70,6 +71,8 @@ Bundle "tpope/vim-foreplay"
 Bundle "guns/vim-clojure-static"
 
 Bundle "kien/rainbow_parentheses.vim"
+
+Bundle "kchmck/vim-coffee-script"
 
 filetype plugin indent on
 """"
@@ -228,7 +231,8 @@ set undolevels=250
 set wildmenu
 
 "Complete full match and then next partial match.
-set wildmode=full
+"set wildmode=full
+set wildmode=list:longest
 
 "A window can be this high.
 set winminheight=0
@@ -437,6 +441,13 @@ nmap <silent> <S-F7> :NERDTreeClose<CR>
 
 " Plugin - Gundo
 nmap <silent> <leader>u :GundoToggle<CR>
+
+" Plugin - FuzzyFinder
+nmap <silent> <leader>bb :FufBuffer<CR>
+nmap <silent> <leader>bf :FufFile<CR>
+
+" Plugin - CtrlP
+nmap <silent> <leader>p :CtrlPMixed<CR>
 
 
 
