@@ -46,6 +46,7 @@ alias hexdump="hexdump -C"
 alias g="gvim --remote-silent"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
 alias ack='ack --color --group --pager="less -R"'
+alias runSimpleHttpServer='python -m SimpleHTTPServer 8000'
 
 export PATH=~/Applications:~/programs/bin:/usr/local/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk.lambdas/Contents/Home/bin:"$PATH"
 #export MANPATH=~/programs/share/man:"$MANPATH"
