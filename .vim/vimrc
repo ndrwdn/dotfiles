@@ -66,13 +66,17 @@ Bundle "derekwyatt/vim-sbt"
 
 Bundle "martintreurnicht/vim-gradle"
 
-Bundle "tpope/vim-foreplay"
+Bundle "tpope/vim-fireplace"
 
 Bundle "guns/vim-clojure-static"
 
 Bundle "kien/rainbow_parentheses.vim"
 
 Bundle "kchmck/vim-coffee-script"
+
+Bundle "pangloss/vim-javascript"
+
+Bundle "HTML-AutoCloseTag"
 
 filetype plugin indent on
 """"
@@ -96,14 +100,14 @@ set expandtab
 set shiftround
 
 "Number of spaces an indent level is.
-set shiftwidth=4
+set shiftwidth=2
 
 "Use smart indenting
 "Not sure if I need this?
 set smartindent
 
 "A tab is this many spaces.
-set tabstop=4
+set tabstop=2
 
 
 
@@ -248,14 +252,14 @@ let g:loaded_matchparen = 1
 if has("macunix")
     set guifont=Menlo:h12
     set guioptions+=a
-    set softtabstop=4
+    set softtabstop=2
     syntax enable
     let $PATH = "/User/ThoughtWorks/Applications:" . $PATH
 elseif has("unix")
     set clipboard+=unnamed
     set guifont=Inconsolata-g\ 9
     set guioptions+=a
-    set softtabstop=4
+    set softtabstop=2
     syntax enable
     let $PATH = "/home/andrew/programs/bin:" . $PATH
 endif
@@ -306,15 +310,6 @@ if has("gui_running")
 else
     set background=dark
 endif
-
-
-
-""""
-" Filetype settings
-""""
-filetype on
-filetype indent on
-filetype plugin indent on
 
 
 
@@ -470,6 +465,15 @@ autocmd BufNewFile,BufReadPost *.clj RainbowParenthesesLoadSquare
 autocmd BufNewFile,BufReadPost *.clj RainbowParenthesesLoadBraces
 "autocmd Syntax *.clj RainbowParenthesesLoadSquare
 "autocmd Syntax *.clj RainbowParenthesesLoadBraces
+
+
+
+""""
+" HTML Indentation Settings
+""""
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 
 
