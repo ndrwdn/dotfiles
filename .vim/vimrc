@@ -441,7 +441,7 @@ nmap <silent> <leader>bb :FufBuffer<CR>
 nmap <silent> <leader>bf :FufFile<CR>
 
 " Plugin - CtrlP
-nmap <silent> <leader>p :CtrlPMixed<CR>
+nmap <silent> <leader>p :CtrlP<CR>
 
 
 
@@ -473,6 +473,14 @@ autocmd BufNewFile,BufReadPost *.clj RainbowParenthesesLoadBraces
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+
+
+""""
+" Ctrl-P Settings
+""""
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_mruf_relative = 1
 
 
 
