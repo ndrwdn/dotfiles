@@ -235,8 +235,7 @@ set undolevels=250
 set wildmenu
 
 "Complete full match and then next partial match.
-"set wildmode=full
-set wildmode=list:longest
+set wildmode=full
 
 "A window can be this high.
 set winminheight=0
