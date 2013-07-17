@@ -29,7 +29,7 @@ ZSH_THEME="juanghurtado"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git vi-mode)
+plugins=(autojump vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,6 +38,10 @@ unsetopt hist_verify
 unsetopt share_history
 zle -A .self-insert self-insert
 
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
 alias fm="vim -c 'VE .'"
 alias rscp="rsync -aPh --no-whole-file --inplace"
 alias rsmv="rscp --remove-source-files"
@@ -45,7 +49,7 @@ alias mc="EDITOR=/usr/bin/vim && mc -b"
 alias hexdump="hexdump -C"
 alias g="gvim --remote-silent"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
-alias ack='ack --color --group --pager="less -R"'
+#alias ack='ack --color --group --pager="less -R"'
 alias runSimpleHttpServer='python -m SimpleHTTPServer 8000'
 
 export PATH=~/Applications:~/programs/bin:/usr/local/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk.lambdas/Contents/Home/bin:"$PATH"
@@ -58,16 +62,16 @@ function curlj {
 }
 
 # get the name of the branch we are on
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
+#function git_prompt_info() {
+#  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+#  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+#  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+#}
 
 PROMPT='
-%{$GREEN_BOLD%}%n@%m%{$WHITE%}:%{$YELLOW%}%~%u$(git_prompt_ahead)%{$RESET_COLOR%}
+%{$GREEN_BOLD%}%n@%m%{$WHITE%}:%{$YELLOW%}%~%u%{$RESET_COLOR%}
 %{$BLUE%}>%{$RESET_COLOR%} '
-RPROMPT='$(vi_mode_prompt_info) %{$GREEN_BOLD%}$(current_branch)$(git_prompt_short_sha)$(git_prompt_status)%{$RESET_COLOR%}'
+RPROMPT='$(vi_mode_prompt_info) %{$GREEN_BOLD%}%{$RESET_COLOR%}'
 
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
