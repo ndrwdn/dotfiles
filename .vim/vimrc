@@ -78,6 +78,8 @@ Bundle "pangloss/vim-javascript"
 
 Bundle "HTML-AutoCloseTag"
 
+Bundle "rking/ag.vim"
+
 filetype plugin indent on
 """"
 " End Vundle setup
@@ -499,6 +501,20 @@ nmap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohl
 
 " Search the current file for the WORD under the cursor and display matches
 nmap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+
+
+
+""""
+" From Jaco
+""""
+" Set visual bell (basically no audio notifications)
+set vb
+
+" Open new windows on the bottom and right instead of the top and left
+set splitbelow
+set splitright
+
+
 
 """"
 " Syntastic
