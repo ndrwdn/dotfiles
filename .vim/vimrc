@@ -29,14 +29,9 @@ Bundle "sjbach/lusty"
 
 Bundle "scrooloose/nerdtree"
 
-" Unused as of 4/29/13
-"Bundle "SirVer/ultisnips"
-
 Bundle "mileszs/ack.vim"
 
 Bundle "belike81/vim-bufkill"
-
-"Bundle "VimClojure"
 
 Bundle "L9"
 
@@ -79,6 +74,10 @@ Bundle "pangloss/vim-javascript"
 Bundle "HTML-AutoCloseTag"
 
 Bundle "rking/ag.vim"
+
+Bundle "kovisoft/paredit"
+
+Bundle "bkad/CamelCaseMotion"
 
 filetype plugin indent on
 """"
@@ -490,7 +489,7 @@ let g:ctrlp_mruf_relative = 1
 " From Derek Wyatt
 """"
 set lazyredraw
-set timeoutlen=250
+set timeoutlen=500
 set showfulltag
 
 " Search the current file for what's currently in the search register and display matches
@@ -522,3 +521,11 @@ set splitright
 
 " Don't load HTML syntax checker.
 let loaded_html_syntax_checker = 1
+
+
+
+""""
+" Paredit
+""""
+let g:paredit_electric_return = 0
+let g:paredit_smartjump = 1
