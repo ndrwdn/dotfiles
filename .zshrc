@@ -9,7 +9,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory autocd extendedglob nomatch promptsubst
+setopt appendhistory autocd extendedglob nomatch promptsubst histignoredups histignorespace
 unsetopt notify
 
 bindkey -v
