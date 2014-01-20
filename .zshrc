@@ -17,6 +17,10 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 MODE_INDICATOR="%B%F{red}<%b%F{red}<<%f"
 function zle-keymap-select zle-line-init zle-line-finish {
   VI_MODE="${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
