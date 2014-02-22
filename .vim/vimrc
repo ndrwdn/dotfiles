@@ -79,6 +79,8 @@ Bundle "kovisoft/paredit"
 
 Bundle "bkad/CamelCaseMotion"
 
+Bundle "elzr/vim-json"
+
 filetype plugin indent on
 """"
 " End Vundle setup
@@ -529,3 +531,12 @@ let loaded_html_syntax_checker = 1
 """"
 let g:paredit_electric_return = 0
 let g:paredit_smartjump = 1
+
+
+
+""""
+" vim-json
+""""
+
+" Don't hide quotes
+let g:vim_json_syntax_conceal = 0
