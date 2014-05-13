@@ -12,7 +12,7 @@ let $vundle_dir=expand("<sfile>:h")."/bundle/vundle/"
 
 set rtp+=$vundle_dir
 
-call vundle#rc()
+call vundle#begin()
 
 " Let Vundle manage itself.
 Bundle "gmarik/vundle"
@@ -79,6 +79,7 @@ Bundle "bkad/CamelCaseMotion"
 
 Bundle "elzr/vim-json"
 
+call vundle#end()
 filetype plugin indent on
 """"
 " End Vundle setup
