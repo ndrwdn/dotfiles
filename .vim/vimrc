@@ -53,8 +53,6 @@ Bundle "rodjek/vim-puppet"
 
 Bundle "godlygeek/tabular"
 
-Bundle "scrooloose/syntastic"
-
 Bundle "derekwyatt/vim-scala"
 
 Bundle "derekwyatt/vim-sbt"
