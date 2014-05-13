@@ -21,21 +21,15 @@ Bundle "gmarik/vundle"
 """
 " My Bundles
 """
-Bundle "sjl/gundo.vim.git"
-
-Bundle "tpope/vim-fugitive"
-
 Bundle "sjbach/lusty"
 
 Bundle "scrooloose/nerdtree"
 
 Bundle "mileszs/ack.vim"
 
-Bundle "belike81/vim-bufkill"
+Bundle "mattdbridges/bufkill.vim"
 
 Bundle "L9"
-
-Bundle "FuzzyFinder"
 
 Bundle "edsono/vim-matchit"
 
@@ -47,25 +41,13 @@ Bundle "tpope/vim-surround"
 
 Bundle "tpope/vim-unimpaired"
 
-Bundle "altercation/vim-colors-solarized"
-
 Bundle "rodjek/vim-puppet"
-
-Bundle "godlygeek/tabular"
-
-Bundle "derekwyatt/vim-scala"
-
-Bundle "derekwyatt/vim-sbt"
-
-Bundle "martintreurnicht/vim-gradle"
 
 Bundle "tpope/vim-fireplace"
 
 Bundle "guns/vim-clojure-static"
 
 Bundle "kien/rainbow_parentheses.vim"
-
-Bundle "kchmck/vim-coffee-script"
 
 Bundle "pangloss/vim-javascript"
 
@@ -224,8 +206,7 @@ set showbreak=%
 set showcmd
 
 "My statusline. Probably need to tweak and document it all.
-"set statusline=%t\ %3(%m%)%r%y\ [%{&ff}]%=Line:\ %-10(%l/%L%)\ Col:\ %-4(%c%)\ Buf:\ %-2(%n%)\ %11([%b][0x%B]%)
-set statusline=%t\ %3(%m%)%r%y\ [%{&ff}]%{fugitive#statusline()}%=Line:\ %-10(%l/%L%)\ Col:\ %-4(%c%)\ Buf:\ %-2(%n%)\ %11([%b][0x%B]%)
+set statusline=%t\ %3(%m%)%r%y\ [%{&ff}]%=Line:\ %-10(%l/%L%)\ Col:\ %-4(%c%)\ Buf:\ %-2(%n%)\ %11([%b][0x%B]%)
 
 "My window title string. Probably need to tweak and document this.
 set titlestring=%t\ %M%(\ (%{expand(\"%:p:~:h\")})%)
@@ -434,13 +415,6 @@ nmap <silent> <F7> :NERDTreeToggle<CR>
 
 " Plugin - Close NERDTree
 nmap <silent> <S-F7> :NERDTreeClose<CR>
-
-" Plugin - Gundo
-nmap <silent> <leader>u :GundoToggle<CR>
-
-" Plugin - FuzzyFinder
-nmap <silent> <leader>bb :FufBuffer<CR>
-nmap <silent> <leader>bf :FufFile<CR>
 
 " Plugin - CtrlP
 nmap <silent> <leader>p :CtrlP<CR>
