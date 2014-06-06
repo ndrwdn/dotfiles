@@ -455,7 +455,7 @@ let g:html_indent_style1 = "inc"
 """"
 " Ctrl-P Settings
 """"
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'w'
 let g:ctrlp_mruf_relative = 1
 
 
