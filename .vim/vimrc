@@ -8,14 +8,14 @@ set nocompatible
 """"
 filetype off
 
-let $vundle_dir=expand("<sfile>:h")."/bundle/vundle/"
+let $vundle_dir="~/.vim/bundle/Vundle.vim"
 
 set rtp+=$vundle_dir
 
 call vundle#begin()
 
 " Let Vundle manage itself.
-Bundle "gmarik/vundle"
+Bundle "gmarik/Vundle.vim"
 
 
 """
