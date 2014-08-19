@@ -369,8 +369,20 @@ function! RestIt() range
 
   for line_number in range(a:firstline + 1, a:lastline)
     let l:line = getline(line_number)
+    if l:line == ''
+      let l:body_line_number = line_number + 1
+      break
+    endif
     let l:request .= " -H '" . line . "'"
   endfor
+
+  if exists("l:body_line_number")
+    let l:body = ""
+    for line_number in range(l:body_line_number, a:lastline)
+      let l:body .= getline(line_number)
+    endfor
+    let l:request .= " -d '" . l:body . "'"
+  endif
 
   let l:response = system(l:request)
   let l:text = [''] + split(l:response, '\r\n') + ['=======']
