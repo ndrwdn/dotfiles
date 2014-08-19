@@ -363,6 +363,20 @@ function! ToggleList()
     endif
 endfunction
 
+function! RestIt() range
+  let l:request_line = split(getline(a:firstline), ' ')
+  let l:request = "curl -s -i -X " . l:request_line[0] . " \"" .  l:request_line[1] . "\""
+
+  for line_number in range(a:firstline + 1, a:lastline)
+    let l:line = getline(line_number)
+    let l:request .= " -H '" . line . "'"
+  endfor
+
+  let l:response = system(l:request)
+  let l:text = [''] + split(l:response, '\r\n') + ['=======']
+  call append(a:lastline, l:text)
+endfunction
+
 
 
 """"
@@ -403,6 +417,12 @@ nmap <silent> <leader>l :call ToggleList()<CR>
 
 " Function - Toggle hex editing mode.
 nmap <silent> <leader>x :call ToggleHex()<CR>
+
+" Function to do http request
+vmap <silent> <leader>r :call RestIt()<CR>
+
+" Try to pretty-print JSON
+vmap <silent> <leader>j !python -mjson.tool<CR>
 
 " Plugin - Vundle, install current bundles.
 nmap <silent> <leader>vi :BundleInstall<CR>
