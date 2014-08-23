@@ -23,7 +23,7 @@ Bundle "gmarik/Vundle.vim"
 """
 Bundle "sjbach/lusty"
 
-Bundle "scrooloose/nerdtree"
+Bundle "tpope/vim-vinegar"
 
 Bundle "mileszs/ack.vim"
 
@@ -226,6 +226,13 @@ set winminheight=0
 "Don't highlight matching parens
 let g:loaded_matchparen = 1
 
+
+
+""""
+" netrw settings
+""""
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 
 """"
@@ -440,12 +447,6 @@ nmap <silent> <leader>vi :BundleInstall<CR>
 
 " Plugin - LustyBufferExplorer
 nmap <silent> <leader>a :LustyBufferExplorer<CR>
-
-" Plugin - Toggle NERDTree
-nmap <silent> <F7> :NERDTreeToggle<CR>
-
-" Plugin - Close NERDTree
-nmap <silent> <S-F7> :NERDTreeClose<CR>
 
 " Plugin - CtrlP
 nmap <silent> <leader>p :CtrlP<CR>
