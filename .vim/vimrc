@@ -449,7 +449,8 @@ nmap <silent> <leader>vi :BundleInstall<CR>
 nmap <silent> <leader>a :LustyBufferExplorer<CR>
 
 " Plugin - CtrlP
-nmap <silent> <leader>p :CtrlP<CR>
+nmap <silent> <leader>pf :CtrlP<CR>
+nmap <silent> <leader>pb :CtrlPBuffer<CR>
 
 
 
@@ -487,7 +488,8 @@ let g:html_indent_style1 = "inc"
 """"
 " Ctrl-P Settings
 """"
-let g:ctrlp_working_path_mode = 'w'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_mruf_relative = 1
 
 
