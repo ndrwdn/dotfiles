@@ -372,7 +372,7 @@ endfunction
 
 function! RestIt() range
   let l:request_line = split(getline(a:firstline), ' ')
-  let l:request = "curl -s -i -X " . l:request_line[0] . " \"" .  l:request_line[1] . "\""
+  let l:request = "curl -k -s -i -X " . l:request_line[0] . " \"" .  l:request_line[1] . "\""
 
   for line_number in range(a:firstline + 1, a:lastline)
     let l:line = getline(line_number)
