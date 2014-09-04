@@ -40,7 +40,12 @@ RPROMPT='${VI_MODE}'
 autoload -U colors; colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-alias ls="ls -G"
+if [[ $(uname -s) == "Darwin" ]]; then
+  alias ls="ls -G"
+else
+  alias ls="ls --color=always"
+fi
+
 alias l='ls -alh'
 
 function curlj {
