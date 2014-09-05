@@ -15,49 +15,49 @@ set rtp+=$vundle_dir
 call vundle#begin()
 
 " Let Vundle manage itself.
-Bundle "gmarik/Vundle.vim"
+Plugin 'gmarik/Vundle.vim'
 
 
 """
-" My Bundles
+" My Plugins
 """
-Bundle "tpope/vim-vinegar"
+Plugin 'tpope/vim-vinegar'
 
-Bundle "mileszs/ack.vim"
+Plugin 'mileszs/ack.vim'
 
-Bundle "mattdbridges/bufkill.vim"
+Plugin 'mattdbridges/bufkill.vim'
 
-Bundle "L9"
+Plugin 'L9'
 
-Bundle "edsono/vim-matchit"
+Plugin 'edsono/vim-matchit'
 
-Bundle "kien/ctrlp.vim"
+Plugin 'kien/ctrlp.vim'
 
-Bundle "tpope/vim-repeat"
+Plugin 'tpope/vim-repeat'
 
-Bundle "tpope/vim-surround"
+Plugin 'tpope/vim-surround'
 
-Bundle "tpope/vim-unimpaired"
+Plugin 'tpope/vim-unimpaired'
 
-Bundle "rodjek/vim-puppet"
+Plugin 'rodjek/vim-puppet'
 
-Bundle "tpope/vim-fireplace"
+Plugin 'tpope/vim-fireplace'
 
-Bundle "guns/vim-clojure-static"
+Plugin 'guns/vim-clojure-static'
 
-Bundle "kien/rainbow_parentheses.vim"
+Plugin 'kien/rainbow_parentheses.vim'
 
-Bundle "pangloss/vim-javascript"
+Plugin 'pangloss/vim-javascript'
 
-Bundle "HTML-AutoCloseTag"
+Plugin 'HTML-AutoCloseTag'
 
-Bundle "rking/ag.vim"
+Plugin 'rking/ag.vim'
 
-Bundle "kovisoft/paredit"
+Plugin 'kovisoft/paredit'
 
-Bundle "bkad/CamelCaseMotion"
+Plugin 'bkad/CamelCaseMotion'
 
-Bundle "elzr/vim-json"
+Plugin 'elzr/vim-json'
 
 call vundle#end()
 filetype plugin indent on
@@ -440,8 +440,8 @@ vmap <silent> <leader>r :call RestIt()<CR>
 " Try to pretty-print JSON
 vmap <silent> <leader>j !python -mjson.tool<CR>
 
-" Plugin - Vundle, install current bundles.
-nmap <silent> <leader>vi :BundleInstall<CR>
+" Plugin - Vundle, install current plugins.
+nmap <silent> <leader>vi :PluginClean!<CR>:PluginUpdate<CR>
 
 " Plugin - CtrlP
 nmap <silent> <leader>pf :CtrlP<CR>
