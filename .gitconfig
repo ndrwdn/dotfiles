@@ -16,6 +16,7 @@
 	lg = !"git lg1"
 	pr = "pull --rebase"
 	dc = diff --cached
+	cln = clean -fxdi
 [push]
 	default = simple
 [include]
