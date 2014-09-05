@@ -21,8 +21,6 @@ Bundle "gmarik/Vundle.vim"
 """
 " My Bundles
 """
-Bundle "sjbach/lusty"
-
 Bundle "tpope/vim-vinegar"
 
 Bundle "mileszs/ack.vim"
@@ -444,9 +442,6 @@ vmap <silent> <leader>j !python -mjson.tool<CR>
 
 " Plugin - Vundle, install current bundles.
 nmap <silent> <leader>vi :BundleInstall<CR>
-
-" Plugin - LustyBufferExplorer
-nmap <silent> <leader>a :LustyBufferExplorer<CR>
 
 " Plugin - CtrlP
 nmap <silent> <leader>pf :CtrlP<CR>
