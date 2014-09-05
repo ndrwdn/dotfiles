@@ -444,8 +444,8 @@ vmap <silent> <leader>j !python -mjson.tool<CR>
 nmap <silent> <leader>vi :PluginClean!<CR>:PluginUpdate<CR>
 
 " Plugin - CtrlP
-nmap <silent> <leader>pf :CtrlP<CR>
-nmap <silent> <leader>pb :CtrlPBuffer<CR>
+nmap <silent> <leader>f :CtrlP<CR>
+nmap <silent> <leader>a :CtrlPBuffer<CR>
 
 
 
