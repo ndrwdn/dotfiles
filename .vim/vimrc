@@ -409,8 +409,8 @@ autocmd BufWritePre * call LastModified()
 
 " Setup mapleader
 " Not sure if I need the g: or the local.
-let mapleader=","
-let maplocalleader=","
+let mapleader=" "
+let maplocalleader=" "
 
 " Set the path to this config file.
 let $vimrc=expand("<sfile>")
