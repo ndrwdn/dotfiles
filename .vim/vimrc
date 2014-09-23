@@ -439,6 +439,9 @@ vmap <silent> <leader>r :call RestIt()<CR>
 
 " Try to pretty-print JSON
 vmap <silent> <leader>j !python -mjson.tool<CR>
+"
+" Try to pretty-print xml
+vmap <silent> <leader>x !xmllint --format -<CR>
 
 " Plugin - Vundle, install current plugins.
 nmap <silent> <leader>vi :PluginClean!<CR>:PluginUpdate<CR>
