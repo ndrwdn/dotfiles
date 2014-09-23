@@ -25,10 +25,6 @@ Plugin 'tpope/vim-vinegar'
 
 Plugin 'mileszs/ack.vim'
 
-Plugin 'mattdbridges/bufkill.vim'
-
-Plugin 'L9'
-
 Plugin 'edsono/vim-matchit'
 
 Plugin 'kien/ctrlp.vim'
@@ -54,8 +50,6 @@ Plugin 'HTML-AutoCloseTag'
 Plugin 'rking/ag.vim'
 
 Plugin 'kovisoft/paredit'
-
-Plugin 'bkad/CamelCaseMotion'
 
 Plugin 'elzr/vim-json'
 
@@ -427,6 +421,8 @@ nmap <silent> <leader>p <C-w>p
 
 " Swap the current window with the previous window
 nmap <silent> <leader>s <C-w>x
+
+nmap <silent> <leader>d :bp<bar>bd #<CR>
 
 " Function - Toggle list/nolist
 nmap <silent> <leader>l :call ToggleList()<CR>
