@@ -424,7 +424,9 @@ nmap <silent> <leader>p <C-w>p
 " Swap the current window with the previous window
 nmap <silent> <leader>s <C-w>x
 
+" Mappings for deleting a buffer
 nmap <silent> <leader>d :bp<bar>bd #<CR>
+nmap <silent> <leader>D :bd %<CR>
 
 " Function - Toggle list/nolist
 nmap <silent> <leader>l :call ToggleList()<CR>
