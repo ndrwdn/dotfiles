@@ -487,6 +487,13 @@ let g:html_indent_style1 = "inc"
 
 
 """"
+" AsciiDoc Settings
+""""
+autocmd BufRead *.adoc set ft=asciidoc
+
+
+
+""""
 " Ctrl-P Settings
 """"
 let g:ctrlp_switch_buffer = 0
