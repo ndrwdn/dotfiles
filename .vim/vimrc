@@ -439,9 +439,15 @@ vmap <silent> <leader>r :call RestIt()<CR>
 
 " Try to pretty-print JSON
 vmap <silent> <leader>j !python -mjson.tool<CR>
-"
+
 " Try to pretty-print xml
 vmap <silent> <leader>x !xmllint --format -<CR>
+
+" Replace nulls (0x00) as newlines
+nmap <silent> <leader>nn :s/<C-V>000/\r/g<CR>
+
+" Convert Base64 encoded data to hexdump
+vmap <silent> <leader>64 <Esc>`>i<CR><Esc>`<i<CR><Esc><S-V>:!base64 -D <bar> hexdump -C<CR>
 
 " Plugin - Vundle, install current plugins.
 nmap <silent> <leader>vi :PluginClean!<CR>:PluginUpdate<CR>
