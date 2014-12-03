@@ -49,7 +49,7 @@ Plugin 'HTML-AutoCloseTag'
 
 Plugin 'rking/ag.vim'
 
-Plugin 'kovisoft/paredit'
+Plugin 'guns/vim-sexp'
 
 Plugin 'elzr/vim-json'
 
