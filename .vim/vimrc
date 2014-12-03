@@ -228,6 +228,9 @@ let g:loaded_matchparen = 1
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
+" Allow deleting netrw buffers
+autocmd FileType netrw setl bufhidden=wipe
+
 
 """"
 " OS X and Linux options
