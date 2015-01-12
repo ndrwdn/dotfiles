@@ -52,6 +52,9 @@ function curlj {
     curl -s "$@" | python -mjson.tool | less -X -F;
 }
 
+# make dir and cd into it
+mcd () { mkdir -p $1 && cd $1 }
+
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
