@@ -13,6 +13,11 @@ for file in $files; do
     fi
 done
 
+lein_profiles=${HOME}/.lein/profiles.clj
+if [[ -f ${lein_profiles} && !(-L ${lein_profiles}) ]]; then
+  mv ${lein_profiles} ${backup}/
+fi
+
 echo "done."
 
 echo -n "Symlinking dotfiles from ${dotfiles} to ~..."
@@ -23,5 +28,8 @@ for file in $files; do
         ln -s ${dotfiles}/${file} ~/${file}
     fi
 done
+
+mkdir -p ${HOME}/.lein
+ln -s ${dotfiles}/profiles.clj ${lein_profiles}
 
 echo "done."
