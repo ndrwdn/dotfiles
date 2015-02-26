@@ -20,6 +20,4 @@
                  clojure.core >
                  [clojure.repl doc pst]
                  [clojure.pprint pprint pp]
-                 [clojure.tools.namespace.repl refresh])]
-  :repl-options
-  {:nrepl-middleware [io.aviso.nrepl/pretty-middleware]}}}
+                 [clojure.tools.namespace.repl refresh])]}}
