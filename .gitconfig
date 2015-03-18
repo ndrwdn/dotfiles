@@ -19,6 +19,7 @@
 	cln = clean -fxdi
 	cb = fetch --prune
 	lg3 = log --graph
+	alias = !git config -l | grep alias
 [push]
 	default = simple
 [include]
