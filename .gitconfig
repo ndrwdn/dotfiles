@@ -17,7 +17,7 @@
 	pr = "pull --rebase"
 	dc = diff --cached
 	cln = clean -fxdi
-	cb = remote prune origin
+	cb = fetch --prune
 	lg3 = log --graph
 [push]
 	default = simple
