@@ -4,61 +4,51 @@ set nocompatible
 
 
 """"
-" Vundle setup
+" vim-plug setup
 """"
-filetype off
-
-let $vundle_dir="~/.vim/bundle/Vundle.vim"
-
-set rtp+=$vundle_dir
-
-call vundle#begin()
-
-" Let Vundle manage itself.
-Plugin 'gmarik/Vundle.vim'
-
+call plug#begin('~/.vim/plugged')
 
 """
 " My Plugins
 """
-Plugin 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
-Plugin 'edsono/vim-matchit'
+Plug 'edsono/vim-matchit'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
-Plugin 'rodjek/vim-puppet'
+Plug 'rodjek/vim-puppet'
 
-Plugin 'tpope/vim-fireplace'
+Plug 'tpope/vim-fireplace'
 
-Plugin 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-static'
 
-Plugin 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
-Plugin 'HTML-AutoCloseTag'
+Plug 'HTML-AutoCloseTag'
 
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
-Plugin 'guns/vim-sexp'
+Plug 'guns/vim-sexp'
 
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 """"
-" End Vundle setup
+" End vim-plug setup
 """"
 
 
@@ -452,8 +442,8 @@ nmap <silent> <leader>nn :s/<C-V>000/\r/g<CR>
 " Convert Base64 encoded data to hexdump
 vmap <silent> <leader>64 <Esc>`>i<CR><Esc>`<i<CR><Esc><S-V>:!base64 -D <bar> hexdump -C<CR>
 
-" Plugin - Vundle, install current plugins.
-nmap <silent> <leader>vi :PluginClean!<CR>:PluginUpdate<CR>
+" Plugin - vim-plug, install current plugins.
+nmap <silent> <leader>pi :PlugClean!<CR>:PlugUpdate<CR>
 
 " Plugin - CtrlP
 nmap <silent> <leader>f :CtrlP<CR>
