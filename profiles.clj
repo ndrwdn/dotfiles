@@ -1,11 +1,11 @@
 {:user
  {:plugins
-  [[speclj "3.1.0"]
-   [lein-ring "0.9.2"]
-   [lein-ancient "0.6.3"]
+  [[speclj "3.2.0"]
+   [lein-ring "0.9.3"]
+   [lein-ancient "0.6.5"]
    [cider/cider-nrepl "0.8.2"]]
   :dependencies [[spyscope "0.1.5"]
-                 [im.chit/vinyasa "0.3.3"]
+                 [im.chit/vinyasa "0.3.4"]
                  [org.clojure/tools.namespace "0.2.10"]
                  [im.chit/iroh "0.1.11"]
                  [io.aviso/pretty "0.1.17"]
