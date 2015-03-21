@@ -245,28 +245,6 @@ endif
 """"
 if has("win32")
     source $VIMRUNTIME/mswin.vim
-
-    let b:pythonPath = "C:\\Python27"
-    let b:rubyPath = "C:\\ruby192\\bin"
-    let b:gnuwin32Path = "C:\\Documents and Settings\\adean\\Programs\\GetGnuWin32\\gnuwin32\\bin"
-    let $PATH = b:pythonPath . ";" . b:rubyPath . ";" . b:gnuwin32Path . ";" . $PATH
-
-    set diffexpr=WinDiff()
-    function! WinDiff()
-        let diffp = "\"" . $VIMRUNTIME . "\\diff.exe\""
-        let opt = " -a --binary "
-        if &diffopt =~ "icase"
-            let opt = opt . "-i "
-        endif
-        if &diffopt =~ "iwhite"
-            let opt = opt . "-b "
-        endif
-        silent execute "!" . diffp . opt . v:fname_in . " " . v:fname_new . " > " . v:fname_out
-    endfunction
-
-    au BufRead */FILES/* set ro
-    au BufRead */DHTML/* set ro
-
     set grepprg=grep\ -n
     set guifont=Inconsolata:h12:cANSI
     set guioptions-=a
