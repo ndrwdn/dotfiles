@@ -257,11 +257,7 @@ endif
 """"
 " Colorscheme options
 """"
-if has("gui_running")
-    colorscheme jellybeans
-else
-    set background=dark
-endif
+colorscheme jellybeans
 
 
 
