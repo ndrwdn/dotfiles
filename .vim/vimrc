@@ -29,13 +29,15 @@ Plug 'guns/vim-clojure-static'
 
 Plug 'kien/rainbow_parentheses.vim'
 
+Plug 'guns/vim-sexp'
+
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
 Plug 'pangloss/vim-javascript'
 
 Plug 'HTML-AutoCloseTag'
 
 Plug 'rking/ag.vim'
-
-Plug 'guns/vim-sexp'
 
 Plug 'elzr/vim-json'
 
