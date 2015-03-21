@@ -23,8 +23,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'tpope/vim-unimpaired'
 
-Plug 'rodjek/vim-puppet'
-
 Plug 'tpope/vim-fireplace'
 
 Plug 'guns/vim-clojure-static'
