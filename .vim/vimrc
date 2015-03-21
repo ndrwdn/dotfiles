@@ -43,6 +43,8 @@ Plug 'elzr/vim-json'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 filetype plugin indent on
 """"
