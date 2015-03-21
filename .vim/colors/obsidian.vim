@@ -25,7 +25,7 @@ let colors_name="obsidian"
 " Base color
 " ----------
 hi Normal           guifg=#D4D2CF           guibg=#201F1F
-hi Normal           ctermfg=253             ctermbg=235
+hi Normal           ctermfg=253             ctermbg=0
 
 
 " Comment Group
@@ -225,7 +225,7 @@ hi SignColumn       guifg=#9fafaf           guibg=#181818           gui=none
 hi SignColumn       ctermfg=145             ctermbg=233             cterm=none
 " line numbers
 hi LineNr           guifg=#B4D3B1           guibg=#323232
-hi LineNr           ctermfg=102             ctermbg=237
+hi LineNr           ctermfg=102             ctermbg=0
 " match parenthesis, brackets
 hi MatchParen       guifg=#00ff00           guibg=NONE              gui=bold
 hi MatchParen       ctermfg=46              ctermbg=NONE            cterm=bold
@@ -279,7 +279,7 @@ hi Folded           guifg=#91d6f8           guibg=#363946           gui=none
 hi Folded           ctermfg=117             ctermbg=238             cterm=none
 " column on side used to indicated open and closed folds
 hi FoldColumn       guifg=#91d6f8           guibg=#363946           gui=none
-hi FoldColumn       ctermfg=117             ctermbg=238             cterm=none
+hi FoldColumn       ctermfg=117             ctermbg=0               cterm=none
 
 
 " Search
