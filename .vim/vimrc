@@ -27,6 +27,8 @@ Plug 'tpope/vim-fireplace'
 
 Plug 'guns/vim-clojure-static'
 
+Plug 'guns/vim-clojure-highlight'
+
 Plug 'kien/rainbow_parentheses.vim'
 
 Plug 'guns/vim-sexp'
