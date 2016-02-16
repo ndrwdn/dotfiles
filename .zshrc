@@ -48,6 +48,9 @@ fi
 
 alias l='ls -alh'
 
+alias gpr="git pull --rebase"
+alias gst="st"
+
 function curlj {
     curl -s "$@" | python -mjson.tool | less -X -F;
 }
