@@ -26,3 +26,11 @@
 (require 'whitespace)
 (setq whitespace-style '(trailing tabs tab-mark))
 (global-whitespace-mode 1)
+
+;; Handle tmux's xterm-keys
+(if (getenv "TMUX")
+    (progn
+      (define-key key-translation-map (kbd "M-[ A") (kbd "C-<up>"))
+      (define-key key-translation-map (kbd "M-[ B") (kbd "C-<down>"))
+      (define-key key-translation-map (kbd "M-[ C") (kbd "C-<right>"))
+      (define-key key-translation-map (kbd "M-[ D") (kbd "C-<left>"))))
