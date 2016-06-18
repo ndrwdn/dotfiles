@@ -34,3 +34,6 @@
       (define-key key-translation-map (kbd "M-[ B") (kbd "C-<down>"))
       (define-key key-translation-map (kbd "M-[ C") (kbd "C-<right>"))
       (define-key key-translation-map (kbd "M-[ D") (kbd "C-<left>"))))
+
+;; Change yes/no prompts to y/n
+(fset 'yes-or-no-p 'y-or-n-p)
