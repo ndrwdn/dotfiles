@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dotfiles=~/dotfiles
 backup=~/dotfiles/backup
