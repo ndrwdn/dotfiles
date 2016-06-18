@@ -2,4 +2,5 @@
 
 (load "general.el")
 (load "packages.el")
+(load "company.el")
 (load "clojure.el")

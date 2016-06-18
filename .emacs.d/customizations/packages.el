@@ -8,7 +8,10 @@
 (package-initialize)
 
 (defvar desired-packages
-  '(;; for Haskell
+  '(;; general
+    company
+
+    ;; for Haskell
     haskell-mode
 
     ;; for Clojure
