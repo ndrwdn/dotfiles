@@ -14,6 +14,9 @@
     ;; for Haskell
     haskell-mode
 
+    ;; for JSON
+    json-mode
+
     ;; for Clojure
     paredit
     clojure-mode
