@@ -10,6 +10,7 @@
 (defvar desired-packages
   '(;; general
     company
+    markdown-mode
 
     ;; for Haskell
     haskell-mode
