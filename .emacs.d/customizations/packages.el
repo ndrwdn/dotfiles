@@ -23,7 +23,10 @@
     clojure-mode
     clojure-mode-extra-font-locking
     cider
-    rainbow-delimiters))
+    rainbow-delimiters
+
+    ;; for Pro*C
+    mmm-mode))
 
 (dolist (p desired-packages)
   (when (not (package-installed-p p))
