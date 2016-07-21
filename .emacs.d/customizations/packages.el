@@ -26,7 +26,8 @@
     rainbow-delimiters
 
     ;; for Pro*C
-    mmm-mode))
+    mmm-mode
+    plsql))
 
 (dolist (p desired-packages)
   (when (not (package-installed-p p))
