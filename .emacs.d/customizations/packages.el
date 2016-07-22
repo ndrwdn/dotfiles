@@ -15,6 +15,7 @@
     projectile
     helm-projectile
     markdown-mode
+    csharp-mode
 
     ;; for Haskell
     haskell-mode
