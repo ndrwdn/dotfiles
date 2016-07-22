@@ -2,6 +2,7 @@
 
 (load "general.el")
 (load "packages.el")
+(load "my-helm-config.el")
 (load "md-mode-config.el")
 (load "json-config.el")
 (load "company.el")
