@@ -11,6 +11,7 @@
   '(;; general
     company
     helm
+    helm-ag
     markdown-mode
 
     ;; for Haskell
