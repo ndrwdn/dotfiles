@@ -12,6 +12,8 @@
     company
     helm
     helm-ag
+    projectile
+    helm-projectile
     markdown-mode
 
     ;; for Haskell
