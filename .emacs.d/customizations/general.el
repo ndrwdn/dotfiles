@@ -23,9 +23,9 @@
 (setq tab-stop-list (number-sequence 2 120 2))
 
 ;; Show trailing whitespace and tabs
-(require 'whitespace)
-(setq whitespace-style '(trailing tabs tab-mark))
-(global-whitespace-mode 1)
+;; (require 'whitespace)
+;; (setq whitespace-style '(trailing tabs tab-mark))
+;; (global-whitespace-mode 1)
 
 ;; Handle tmux's xterm-keys
 (if (getenv "TMUX")
