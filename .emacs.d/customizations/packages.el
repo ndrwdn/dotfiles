@@ -15,7 +15,7 @@
     projectile
     helm-projectile
     markdown-mode
-    csharp-mode
+    magit
 
     ;; for Haskell
     haskell-mode
@@ -28,11 +28,7 @@
     clojure-mode
     clojure-mode-extra-font-locking
     cider
-    rainbow-delimiters
-
-    ;; for Pro*C
-    mmm-mode
-    plsql))
+    rainbow-delimiters))
 
 (dolist (p desired-packages)
   (when (not (package-installed-p p))

@@ -8,4 +8,4 @@
 (load "json-config.el")
 (load "company.el")
 (load "clojure.el")
-(load "pro_c.el")
+(load "magit-config.el")
