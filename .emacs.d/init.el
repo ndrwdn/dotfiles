@@ -8,6 +8,6 @@
 (load "projectile-config.el")
 (load "md-mode-config.el")
 (load "json-config.el")
-(load "company.el")
+(load "company-config.el")
 (load "clojure.el")
 (load "magit-config.el")
