@@ -5,7 +5,6 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 (setq package-enable-at-startup nil)
-(package-initialize)
 
 (defvar desired-packages
   '(;; general

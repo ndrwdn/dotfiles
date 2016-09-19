@@ -1,3 +1,5 @@
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 (load "general.el")
