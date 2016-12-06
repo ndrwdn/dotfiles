@@ -49,6 +49,10 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'travitch/hasksyn'
 
+Plug 'rust-lang/rust.vim'
+
+Plug 'cespare/vim-toml'
+
 call plug#end()
 filetype plugin indent on
 """"
