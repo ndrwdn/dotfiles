@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 """
 Plug 'tpope/vim-vinegar'
 
-Plug 'edsono/vim-matchit'
+Plug 'tmhedberg/matchit'
 
 Plug 'kien/ctrlp.vim'
 
