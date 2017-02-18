@@ -20,6 +20,8 @@
 	cb = fetch --prune
   lg3 = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar [%C(cyan)%an%C(auto)] %s'
 	alias = !git config -l | grep alias
+  from = !git fetch origin && git rebase origin/master
+  fr = !git fetch origin && git rebase
 [push]
 	default = simple
 [include]
