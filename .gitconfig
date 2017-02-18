@@ -18,7 +18,7 @@
 	dc = diff --cached
 	cln = clean -fxdi
 	cb = fetch --prune
-	lg3 = log --graph
+  lg3 = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar [%C(cyan)%an%C(auto)] %s'
 	alias = !git config -l | grep alias
 [push]
 	default = simple
