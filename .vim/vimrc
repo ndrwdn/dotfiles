@@ -51,6 +51,8 @@ Plug 'travitch/hasksyn'
 
 Plug 'rust-lang/rust.vim'
 
+Plug 'racer-rust/vim-racer'
+
 Plug 'cespare/vim-toml'
 
 Plug 'mustache/vim-mustache-handlebars'
