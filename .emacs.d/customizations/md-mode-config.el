@@ -7,4 +7,4 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-(setq markdown-command "multimarkdown")
+(setq markdown-command "pandoc -f markdown -t html5")
