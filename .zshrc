@@ -40,6 +40,11 @@ RPROMPT='${VI_MODE}'
 autoload -U colors; colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
+bindkey "\eOC" forward-word
+bindkey "^ " autosuggest-execute
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 if [[ $(uname -s) == "Darwin" ]]; then
   alias ls="ls -G"
 else

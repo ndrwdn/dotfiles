@@ -2,7 +2,7 @@
 
 dotfiles=~/dotfiles
 backup=~/dotfiles/backup
-files=".tmux.conf .htoprc .gitconfig .vimrc .vim .zshrc .emacs.d"
+files=".tmux.conf .htoprc .gitconfig .vimrc .vim .zsh .zshrc .emacs.d"
 
 echo -n "Backing up any existing dotfiles in ~ to ${backup}..."
 mkdir -p ${backup}
