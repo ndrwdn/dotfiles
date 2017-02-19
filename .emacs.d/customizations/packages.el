@@ -22,6 +22,12 @@
     ;; for JSON
     json-mode
 
+    ;; Golang
+    go-mode
+    go-guru
+    go-autocomplete
+    exec-path-from-shell
+
     ;; for Clojure
     paredit
     clojure-mode
