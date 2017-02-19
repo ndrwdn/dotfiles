@@ -2,5 +2,7 @@ elpa/
 auto-save-list/
 
 cider-history
+ac-comphist.dat
 
 projectile-bookmarks.eld
+projectile.cache
