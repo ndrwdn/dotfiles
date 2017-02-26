@@ -18,7 +18,7 @@
 	dc = diff --cached
 	cln = clean -fxdi
 	cb = fetch --prune
-  lg3 = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar [%C(cyan)%an%C(auto)] %s'
+  lg3 = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar [%C(cyan)%an %C("#9fe3f2")<%ae>%C(auto)] %s'
 	alias = !git config -l | grep alias
   from = !git fetch origin && git rebase origin/master
   fr = !git fetch origin && git rebase
