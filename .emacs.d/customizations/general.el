@@ -41,3 +41,6 @@
 
 ;; Change yes/no prompts to y/n
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; Load adoc-mode
+(autoload 'adoc-mode "adoc-mode" nil t)

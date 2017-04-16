@@ -13,6 +13,7 @@
     helm-ag
     projectile
     helm-projectile
+    adoc-mode
     markdown-mode
     magit
 
