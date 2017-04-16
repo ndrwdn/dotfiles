@@ -28,6 +28,9 @@
 ;; (setq whitespace-style '(trailing tabs tab-mark))
 ;; (global-whitespace-mode 1)
 
+;; Remove trailing whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Handle tmux's xterm-keys
 (if (getenv "TMUX")
     (progn
