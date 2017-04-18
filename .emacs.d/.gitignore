@@ -1,8 +1,10 @@
 elpa/
 auto-save-list/
+network-security.data
 
 cider-history
 ac-comphist.dat
 
 projectile-bookmarks.eld
 projectile.cache
+recentf
