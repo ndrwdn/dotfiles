@@ -29,6 +29,9 @@
     go-autocomplete
     exec-path-from-shell
 
+    ;; for Elixir
+    elixir-mode
+
     ;; for Clojure
     paredit
     clojure-mode
