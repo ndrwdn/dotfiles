@@ -16,6 +16,7 @@
     adoc-mode
     markdown-mode
     magit
+    restclient
 
     ;; for Haskell
     haskell-mode
