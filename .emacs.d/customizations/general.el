@@ -16,6 +16,8 @@
 ;; Set theme
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
 (add-to-list 'load-path (concat user-emacs-directory "themes"))
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "emacs-color-theme-solarized"))
+(add-to-list 'load-path (concat user-emacs-directory "emacs-color-theme-solarized"))
 (load-theme 'ujelly t)
 
 ;; Turn off tabs, make tab-stop's be in increments of 2
