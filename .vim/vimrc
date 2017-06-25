@@ -59,6 +59,8 @@ Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'elixir-lang/vim-elixir'
 
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
 filetype plugin indent on
 """"
@@ -273,7 +275,8 @@ endif
 """"
 " Colorscheme options
 """"
-colorscheme jellybeans
+set background=light
+colorscheme solarized
 
 
 
