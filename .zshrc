@@ -63,6 +63,8 @@ function curlj {
 # make dir and cd into it
 mcd () { mkdir -p $1 && cd $1 }
 
+export PAGER="~/.vim/plugged/vimpager/vimpager"
+
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
