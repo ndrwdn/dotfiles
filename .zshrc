@@ -53,6 +53,7 @@ fi
 
 alias l='ls -alh'
 alias clean='sed -E "s,$(printf "\x1b")\[[0-9;]*[a-zA-Z],,g"'
+alias vless='~/.vim/plugged/vimpager/vimpager'
 
 alias gpr="git pull --rebase"
 alias gst="st"
@@ -63,8 +64,6 @@ function curlj {
 
 # make dir and cd into it
 mcd () { mkdir -p $1 && cd $1 }
-
-export PAGER="~/.vim/plugged/vimpager/vimpager"
 
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
