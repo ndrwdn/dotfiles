@@ -560,3 +560,11 @@ let g:paredit_smartjump = 1
 
 " Don't hide quotes
 let g:vim_json_syntax_conceal = 0
+
+
+
+""""
+" vimpager
+""""
+let g:less = {}
+let g:less.enabled = 0
