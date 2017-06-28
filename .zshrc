@@ -52,6 +52,7 @@ else
 fi
 
 alias l='ls -alh'
+alias clean='sed -E "s,$(printf "\x1b")\[[0-9;]*[a-zA-Z],,g"'
 
 alias gpr="git pull --rebase"
 alias gst="st"
