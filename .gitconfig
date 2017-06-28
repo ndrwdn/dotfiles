@@ -25,6 +25,7 @@
   sv = "!f(){ cb=$(git rev-parse --abbrev-ref HEAD); git checkout -b $1; git add -A .; git commit -m $1; git checkout $cb; };f"
   ap = "!f(){ git merge -m $1 $1 && git branch -d $1 && git reset head~;  };f"
   apf = "!f(){ git merge -X theirs -m $1 $1 && git branch -d $1 && git reset head~;  };f"
+  find = log --source --all -p -S
 #git remote add -f zsh-users_zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
 #git subtree add --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
 [push]
