@@ -1,25 +1,25 @@
 [core]
-	autocrlf = input
-	editor = vim
+  autocrlf = input
+  editor = vim
 [user]
-	name = Andrew Dean
-	email = ndrwdn@gmail.com
+  name = Andrew Dean
+  email = ndrwdn@gmail.com
 [color]
-	diff = auto
+  diff = auto
 [alias]
-	co = checkout
-	st = status
-	cls = diff-tree --no-commit-id --name-only -r
-	cma = commit --amend --no-edit
-	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-	lg = !git lg3
-	pr = "pull --rebase"
-	dc = diff --cached
-	cln = clean -fxdi
-	cb = fetch --prune
+  co = checkout
+  st = status
+  cls = diff-tree --no-commit-id --name-only -r
+  cma = commit --amend --no-edit
+  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  lg = !git lg3
+  pr = "pull --rebase"
+  dc = diff --cached
+  cln = clean -fxdi
+  cb = fetch --prune
   lg3 = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar [%C(cyan)%an %C("#9fe3f2")<%ae>%C(auto)] %s'
-	alias = !git config -l | grep alias
+  alias = !git config -l | grep alias
   from = !git fetch origin && git rebase origin/master
   fr = !git fetch origin && git rebase
   sv = "!f(){ cb=$(git rev-parse --abbrev-ref HEAD); git checkout -b $1; git add -A .; git commit -m $1; git checkout $cb; };f"
@@ -29,6 +29,6 @@
 #git remote add -f zsh-users_zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
 #git subtree add --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
 [push]
-	default = simple
+  default = simple
 [include]
-	path = .gitconfig.local
+  path = .gitconfig.local
