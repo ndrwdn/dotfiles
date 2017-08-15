@@ -58,6 +58,10 @@ alias vless='~/.vim/plugged/vimpager/vimpager'
 alias gpr="git pull --rebase"
 alias gst="st"
 
+function fic() {
+  rg $(git st -s | awk '{print $2}' | sed 's,^, -g ,' | tr -d '\n') $@
+}
+
 function curlj {
     curl -s "$@" | python -mjson.tool | less -X -F;
 }
