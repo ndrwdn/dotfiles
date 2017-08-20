@@ -278,7 +278,11 @@ endif
 " Colorscheme options
 """"
 set background=light
-colorscheme solarized
+try
+  colorscheme solarized
+catch
+  " do nothing
+endtry
 
 
 
