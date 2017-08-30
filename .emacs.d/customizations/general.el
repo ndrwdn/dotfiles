@@ -1,5 +1,6 @@
-;; Disable the menubar
+;; Disable the menubar or toolbar
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; Don't autosave or backup
 (setq auto-save-default nil)
