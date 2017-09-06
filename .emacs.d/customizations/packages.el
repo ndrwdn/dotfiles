@@ -35,6 +35,7 @@
 
     ;; for Clojure
     paredit
+    aggressive-indent
     clojure-mode
     clojure-mode-extra-font-locking
     cider
