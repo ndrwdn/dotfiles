@@ -32,9 +32,9 @@
 (setq-default tab-width 2)
 
 ;; Show trailing whitespace and tabs
-;; (require 'whitespace)
-;; (setq whitespace-style '(trailing tabs tab-mark))
-;; (global-whitespace-mode 1)
+(require 'whitespace)
+(setq whitespace-style '(face trailing tabs tab-mark))
+(global-whitespace-mode 1)
 
 ;; Remove trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
