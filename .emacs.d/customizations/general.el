@@ -29,7 +29,7 @@
 ;; Turn off tabs, make tab-stop's be in increments of 2
 (setq-default indent-tabs-mode nil)
 (setq tab-stop-list (number-sequence 2 120 2))
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 
 ;; Show trailing whitespace and tabs
 ;; (require 'whitespace)
