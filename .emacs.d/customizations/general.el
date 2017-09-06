@@ -7,8 +7,11 @@
 (setq backup-inhibited t)
 
 ;; Show line numbers
-(global-linum-mode)
-(setq linum-format "%4d ")
+(global-linum-mode 1)
+(defun linum-format-func (line)
+  (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+     (propertize (format (format "%%%dd " w) line) 'face 'linum)))
+(setq linum-format 'linum-format-func)
 
 ;; Go straight to scratch buffer on startup, without a message
 (setq inhibit-startup-message t)
