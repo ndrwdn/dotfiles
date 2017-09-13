@@ -2,7 +2,7 @@
 
 dotfiles=~/dotfiles
 backup=~/dotfiles/backup
-files=".tmux.conf .htoprc .gitconfig .vimrc .vim .zsh .zshrc .emacs.d"
+files=".tmux.conf .gitconfig .vimrc .vim .zsh .zshrc .emacs.d"
 
 echo -n "Backing up any existing dotfiles in ~ to ${backup}..."
 mkdir -p ${backup}
@@ -31,5 +31,8 @@ done
 
 mkdir -p ${HOME}/.lein
 ln -s ${dotfiles}/profiles.clj ${lein_profiles}
+
+mkdir -p ${HOME}/.config/htop
+ln -s ${dotfiles}/htoprc ${HOME}/.config/htop/htoprc
 
 echo "done."
