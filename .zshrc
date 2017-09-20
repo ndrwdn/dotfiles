@@ -32,9 +32,7 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-PROMPT='
-%B%F{green}%n@%m%b%F{white}:%B%F{yellow}%~%u%b%f
-%F{blue}>%f '
+PROMPT='%F{green}%n@%m%F{blue}:%F{yellow}$(pwd | sed -E "s,${HOME},~,;s,(/[^/])[^/]+,\1,g;s,/[^/]+$,,")$(pwd | sed -E "s,${HOME},,;s,[^~]*(/.*),\1,;s,^/$,,")%F{blue}>%f '
 RPROMPT='${VI_MODE}'
 
 autoload -U colors; colors
