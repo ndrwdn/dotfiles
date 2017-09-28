@@ -4,7 +4,7 @@
 
 (load "packages.el")
 (load "general.el")
-(load "my-helm-config.el")
+(load "my-ivy-config.el")
 (load "projectile-config.el")
 (load "md-mode-config.el")
 (load "json-config.el")

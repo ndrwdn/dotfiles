@@ -8,11 +8,10 @@
 
 (defvar desired-packages
   '(;; general
+    counsel
+    counsel-projectile
     company
-    helm
-    helm-ag
     projectile
-    helm-projectile
     adoc-mode
     markdown-mode
     magit
