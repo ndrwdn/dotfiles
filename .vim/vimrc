@@ -63,6 +63,8 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'rkitover/vimpager'
 
+Plug 'elubow/cql-vim'
+
 call plug#end()
 filetype plugin indent on
 """"

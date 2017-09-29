@@ -16,6 +16,7 @@
     markdown-mode
     magit
     restclient
+    cql-mode
 
     ;; for Haskell
     haskell-mode
