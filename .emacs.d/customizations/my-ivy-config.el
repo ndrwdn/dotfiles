@@ -18,3 +18,4 @@
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
 (global-set-key (kbd "C-c r") 'counsel-rg)
 (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+(setq magit-completing-read-function 'ivy-completing-read)
