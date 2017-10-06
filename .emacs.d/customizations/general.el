@@ -6,6 +6,10 @@
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 
+;; When autosaving is manually enabled, do it in the same file, every 5 seconds
+(setq auto-save-visited-file-name t)
+(setq auto-save-timeout 5)
+
 ;; Show line numbers
 (global-linum-mode 1)
 (defun linum-format-func (line)
@@ -61,3 +65,5 @@
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+(persp-mode)

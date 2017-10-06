@@ -12,11 +12,13 @@
     counsel-projectile
     company
     projectile
+    perspective
     adoc-mode
     markdown-mode
     magit
     restclient
     cql-mode
+    yaml-mode
 
     ;; for Haskell
     haskell-mode
