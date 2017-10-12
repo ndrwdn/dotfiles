@@ -25,6 +25,8 @@
   find = log --source --all -p -S
 #git remote add -f zsh-users_zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
 #git subtree add --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
+#git fetch zsh-users_zsh-autosuggestions
+#git subtree pull --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
 [push]
   default = simple
 [include]
