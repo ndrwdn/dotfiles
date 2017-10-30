@@ -19,6 +19,8 @@
     restclient
     cql-mode
     yaml-mode
+    ob-http
+    xclip
 
     ;; for Haskell
     haskell-mode

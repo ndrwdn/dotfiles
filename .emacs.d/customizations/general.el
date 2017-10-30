@@ -67,3 +67,5 @@
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 (persp-mode)
+
+(xclip-mode 1)
