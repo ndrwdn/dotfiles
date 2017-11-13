@@ -15,7 +15,9 @@ Plug 'tpope/vim-vinegar'
 
 Plug 'tmhedberg/matchit'
 
-Plug 'kien/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+
+Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-repeat'
 
@@ -39,7 +41,7 @@ Plug 'pangloss/vim-javascript'
 
 Plug 'HTML-AutoCloseTag'
 
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 
 Plug 'elzr/vim-json'
 
@@ -64,6 +66,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'rkitover/vimpager'
 
 Plug 'elubow/cql-vim'
+
+Plug 'kopischke/vim-fetch'
 
 call plug#end()
 filetype plugin indent on
@@ -444,9 +448,10 @@ vmap <silent> <leader>64 <Esc>`>i<CR><Esc>`<i<CR><Esc><S-V>:!base64 -D <bar> hex
 " Plugin - vim-plug, install current plugins.
 nmap <silent> <leader>pi :PlugClean!<CR>:PlugUpdate<CR>
 
-" Plugin - CtrlP
-nmap <silent> <leader>f :CtrlP<CR>
-nmap <silent> <leader>a :CtrlPBuffer<CR>
+" Plugin FZF
+nmap <silent> <leader>f :Files<CR>
+nmap <silent> <leader>a :Buffers<CR>
+nmap <silent> <leader>t :Tags<CR>
 
 " Plugin - Fugitive
 nmap <silent> <leader>gst :Gstatus<CR>
@@ -519,6 +524,29 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_show_hidden = 1
+
+
+
+""""
+" fzf settings
+""""
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
+
+
+
+""""
+" ripggrep settings
+""""
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  let g:ackprg = 'rg --vimgrep --no-heading'
+endif
 
 
 
