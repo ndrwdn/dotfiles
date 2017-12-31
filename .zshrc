@@ -88,3 +88,8 @@ sf() {
   files=`eval $rg_command $search | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}'`
   [[ -n "$files" ]] && ${EDITOR:-vim} $files
 }
+
+ff() {
+  [[ ! $# -eq 2 ]] && echo -e "Wrong number of arguments.\n" && echo "Usage: ff <command-for-selected-file> <filename-glob>" && return
+  $1 $(rg --files -g $2 | fzf)
+}
