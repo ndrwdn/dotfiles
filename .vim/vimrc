@@ -39,7 +39,7 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 Plug 'pangloss/vim-javascript'
 
-Plug 'HTML-AutoCloseTag'
+Plug 'vim-scripts/HTML-AutoCloseTag'
 
 Plug 'mileszs/ack.vim'
 
