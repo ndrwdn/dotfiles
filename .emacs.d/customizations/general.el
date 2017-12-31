@@ -69,3 +69,8 @@
 (persp-mode)
 
 (xclip-mode 1)
+
+;; timestamp for, i.e., filenames
+(defun insert-file-time-stamp ()
+  (interactive)
+  (insert (format-time-string "%Y%m%d%H%M%S" (current-time))))
