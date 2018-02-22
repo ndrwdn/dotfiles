@@ -3,6 +3,8 @@ zstyle '*' single-ignored show
 zstyle ':completion:*' list-colors ''
 zstyle :compinstall filename '/home/vagrant/.zshrc'
 
+fpath+=~/.zfunc
+
 autoload -Uz compinit
 compinit
 
