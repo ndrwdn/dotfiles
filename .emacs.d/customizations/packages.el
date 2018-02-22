@@ -21,6 +21,8 @@
     yaml-mode
     ob-http
     xclip
+    flycheck
+    neotree
 
     ;; for Haskell
     haskell-mode
@@ -43,7 +45,14 @@
     clojure-mode
     clojure-mode-extra-font-locking
     cider
-    rainbow-delimiters))
+    rainbow-delimiters
+
+    ;; for Rust
+    company-racer
+    racer
+    flycheck-rust
+    rust-mode
+    ))
 
 (dolist (p desired-packages)
   (when (not (package-installed-p p))
