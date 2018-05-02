@@ -4,6 +4,7 @@
 [user]
   name = Andrew Dean
   email = ndrwdn@gmail.com
+  signingkey = 22EF34EDF6EC7C72
 [color]
   diff = auto
 [alias]
