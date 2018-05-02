@@ -24,6 +24,11 @@
     flycheck
     neotree
 
+    ;; Because vim
+    evil
+    undo-tree
+    goto-chg
+
     ;; for Haskell
     haskell-mode
 

@@ -14,6 +14,7 @@
 (load "magit-config.el")
 (load "golang-config.el")
 (load "rust-config.el")
+(load "evil-config.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
