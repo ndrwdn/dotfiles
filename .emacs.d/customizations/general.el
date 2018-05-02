@@ -5,6 +5,7 @@
 ;; Don't autosave or backup
 (setq auto-save-default nil)
 (setq backup-inhibited t)
+(setq create-lockfiles nil)
 
 ;; When autosaving is manually enabled, do it in the same file, every 5 seconds
 (setq auto-save-visited-file-name t)
