@@ -75,3 +75,7 @@
 (defun insert-file-time-stamp ()
   (interactive)
   (insert (format-time-string "%Y%m%d%H%M%S" (current-time))))
+
+
+;; key-shortcut for neotree
+(global-set-key (kbd "C-c M-t") 'neotree)
