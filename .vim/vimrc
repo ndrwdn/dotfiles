@@ -69,6 +69,8 @@ Plug 'elubow/cql-vim'
 
 Plug 'kopischke/vim-fetch'
 
+Plug 'fatih/vim-go'
+
 call plug#end()
 filetype plugin indent on
 """"
@@ -602,3 +604,10 @@ let g:vim_json_syntax_conceal = 0
 """"
 let g:less = {}
 let g:less.enabled = 0
+
+
+
+""""
+" Golang
+""""
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab nolist preserveindent copyindent
