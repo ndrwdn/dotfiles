@@ -62,7 +62,7 @@ alias gst="st"
 export EDITOR=vim
 
 function fic() {
-  rg $(git st -s | awk '{print $2}' | sed 's,^, -g ,' | tr -d '\n') $@
+  rg $(git st -s | awk '{print $2}' | xargs -I '{}' echo -n " -g {}") $@
 }
 
 function curlj {
