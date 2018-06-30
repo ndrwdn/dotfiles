@@ -71,6 +71,16 @@ Plug 'kopischke/vim-fetch'
 
 Plug 'fatih/vim-go'
 
+Plug 'dahu/vimple'
+
+Plug 'dahu/Asif'
+
+Plug 'Raimondi/VimRegStyle'
+
+Plug 'vim-scripts/SyntaxRange'
+
+Plug 'dahu/vim-asciidoc'
+
 call plug#end()
 filetype plugin indent on
 """"
