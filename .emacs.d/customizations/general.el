@@ -67,7 +67,7 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
-(persp-mode)
+;;(persp-mode)
 
 (xclip-mode 1)
 
