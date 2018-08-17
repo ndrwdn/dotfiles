@@ -1,2 +1,2 @@
 (projectile-global-mode)
-(counsel-projectile-mode)
+;;(counsel-projectile-mode)
