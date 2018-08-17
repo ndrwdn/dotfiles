@@ -22,6 +22,7 @@
     ob-http
     xclip
     flycheck
+    flycheck-inline
     neotree
 
     ;; Because vim
