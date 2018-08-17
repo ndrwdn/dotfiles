@@ -525,7 +525,17 @@ let g:html_indent_style1 = "inc"
 """"
 " AsciiDoc Settings
 """"
+function! AsciiDocLastModified()
+  if &modified
+    let save_cursor = getpos(".")
+    keepjumps exe '3s/\(^[^,]*,\) .*/\1 ' . strftime('%Y-%m-%d') . '/'
+    call histdel('search', -1)
+    call setpos('.', save_cursor)
+  endif
+endfun
+
 autocmd BufRead *.adoc set ft=asciidoc
+autocmd BufWritePre *.adoc call AsciiDocLastModified()
 
 
 
