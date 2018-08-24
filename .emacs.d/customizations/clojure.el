@@ -42,4 +42,5 @@
 
 (eval-after-load 'cider
   '(progn
-     (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)))
+     (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
+     (setq cider-boot-parameters "cider.tasks/nrepl-server -b :: wait")))
