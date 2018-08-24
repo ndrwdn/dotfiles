@@ -19,3 +19,6 @@
 (global-set-key (kbd "C-c r") 'counsel-rg)
 (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 (setq magit-completing-read-function 'ivy-completing-read)
+
+(counsel-projectile-mode)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
