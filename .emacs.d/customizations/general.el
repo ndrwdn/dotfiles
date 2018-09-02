@@ -79,3 +79,7 @@
 
 ;; key-shortcut for neotree
 (global-set-key (kbd "C-c M-t") 'neotree)
+
+;; better parn stuff
+(electric-pair-mode 1)
+(show-paren-mode 1)
