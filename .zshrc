@@ -58,53 +58,11 @@ alias vless='~/.vim/plugged/vimpager/vimpager'
 
 alias gpr="git pull --rebase"
 alias gst="st"
+alias gob="git checkout \$(git branch --format '%(refname:short)' --sort '-committerdate' | sk)"
+alias gorb="git checkout \$(git reflog | rg 'checkout: moving from' | gsed 's/.*moving from \([^ ]\+\).*/\1/' | gcat -n | gsort -uk2 | gsort -nk1 | cut -f2- | ghead | sk)"
 
 export EDITOR=vim
-
-function fic() {
-  rg $(git st -s | awk '{print $2}' | xargs -I '{}' echo -n " -g {}") $@
-}
-
-function curlj {
-    curl -s "$@" | python -mjson.tool | less -X -F;
-}
-
-# make dir and cd into it
-mcd () { mkdir -p $1 && cd $1 }
 
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg -g "" --files'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
-sf() {
-  if [ "$#" -lt 1 ]; then echo "Supply string to search for!"; return 1; fi
-  local file=$(rg \
-    --column \
-    --line-number \
-    --no-heading \
-    --fixed-strings \
-    --ignore-case \
-    --no-ignore \
-    --hidden \
-    --follow \
-    --color=always \
-    "${1}" |
-    fzf \
-    --ansi \
-    --multi \
-    --reverse |
-    awk \
-    -F ':' \
-    '{print $1":"$2":"$3}')
-  [[ -n "${file}" ]] && ${EDITOR:-vim} "${file}"
-}
-
-ff() {
-  [[ ! $# -eq 2 ]] && echo -e "Wrong number of arguments.\n" && echo "Usage: ff <command-for-selected-file> <filename-glob>" && return
-  $1 $(rg --files -g $2 | fzf)
-}
