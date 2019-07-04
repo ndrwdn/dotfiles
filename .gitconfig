@@ -25,6 +25,7 @@
   ap = "!f(){ git merge -m $1 $1 && git branch -d $1 && git reset head~;  };f"
   apf = "!f(){ git merge -X theirs -m $1 $1 && git branch -d $1 && git reset head~;  };f"
   find = log --source --all -p -S
+  br = branch --format '%(committerdate:iso8601-local)|%(refname:short)' --sort 'committerdate'
 #git remote add -f zsh-users_zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
 #git subtree add --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
 #git fetch zsh-users_zsh-autosuggestions
