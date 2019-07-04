@@ -5,7 +5,7 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-*") 'pop-tag-mark))
+  (local-set-key (kbd "M-,") 'pop-tag-mark))
 
 (defun auto-complete-for-go ()
   (auto-complete-mode 1))
