@@ -172,7 +172,7 @@ set diffopt=filler,vertical
 set fillchars=""
 
 "Always show a 2-char wide fold column
-set foldcolumn=2
+"set foldcolumn=2
 
 "Set the default foldlevel.
 set foldlevel=10
@@ -184,6 +184,7 @@ set foldlevel=10
 "Remove menubar and toolbar from GUI.
 set guioptions-=m
 set guioptions-=T
+set guioptions-=r
 
 "Allow hiding of changed buffers.
 set hidden
@@ -215,9 +216,6 @@ set printoptions=number:y,paper:letter,syntax:y
 
 "Show this number of lines above/below cursor.
 set scrolloff=3
-
-"Allow past line but not inclusive (not sure what this means).
-set selection=exclusive
 
 "Put this at the beginning of wrapped lines.
 set showbreak=%
@@ -261,6 +259,7 @@ autocmd FileType netrw setl bufhidden=wipe
 """"
 " OS X and Linux options
 """"
+set shortmess=I
 if has("macunix")
     set guifont=Menlo:h12
     set guioptions+=a
@@ -631,3 +630,10 @@ let g:less.enabled = 0
 " Golang
 """"
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab nolist preserveindent copyindent
+
+
+
+""""
+" yaml
+""""
+autocmd BufNewFile,BufRead *.yaml,*.yml setlocal indentkeys-=0#
