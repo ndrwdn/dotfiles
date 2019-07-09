@@ -203,6 +203,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 "Don't hide the mouse pointer when typing.
 set nomousehide
+set mouse=a
 
 "Show line number column.
 set number
