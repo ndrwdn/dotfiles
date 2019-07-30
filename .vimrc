@@ -69,3 +69,6 @@ set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
+
+" Fix indentation for yaml files when commenting out a section
+autocmd BufNewFile,BufRead *.yaml,*.yml setlocal indentkeys-=0#
