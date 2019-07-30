@@ -295,7 +295,7 @@ endif
 """"
 " Colorscheme options
 """"
-set background=light
+set background=dark
 try
   colorscheme solarized
 catch
