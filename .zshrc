@@ -42,7 +42,7 @@ autoload -U colors; colors
 bindkey "\eOC" forward-word
 bindkey "^ " autosuggest-execute
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=7'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bg=0'
 
 if [[ $(uname -s) == "Darwin" ]]; then
   export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
@@ -60,6 +60,8 @@ alias gpr="git pull --rebase"
 alias gst="st"
 alias gob="git checkout \$(git branch --format '%(refname:short)' --sort '-committerdate' | sk)"
 alias gorb="git checkout \$(git reflog | rg 'checkout: moving from' | gsed 's/.*moving from \([^ ]\+\).*/\1/' | gcat -n | gsort -uk2 | gsort -nk1 | cut -f2- | ghead | sk)"
+
+alias tsfmt="ts '%FT%.T%z'"
 
 export EDITOR=vim
 
