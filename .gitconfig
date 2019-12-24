@@ -28,10 +28,8 @@
   apf = "!f(){ git merge -X theirs -m $1 $1 && git branch -d $1 && git reset head~;  };f"
   find = log --source --all -p -S
   br = branch --format '%(committerdate:iso8601-local)|%(refname:short)' --sort 'committerdate'
-#git remote add -f zsh-users_zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
-#git subtree add --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
-#git fetch zsh-users_zsh-autosuggestions
-#git subtree pull --prefix .zsh/zsh-autosuggestions zsh-users_zsh-autosuggestions master --squash
+  sa = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git remote add -f $clean_name $1; git subtree add --prefix $2 $clean_name master --squash; };f"
+  su = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git fetch $clean_name master; git subtree pull --prefix $2 $clean_name master --squash; };f"
 [push]
   default = simple
 [include]
