@@ -1,17 +1,4 @@
-" Plugins and plugin-specific config
-"""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
-
-Plug 'altercation/vim-colors-solarized'
-
-call plug#end()
-
-" Plugin config that must be specified after Plugged has finished
-set background=dark
-colorscheme solarized
-
-
-" Non-plugin-base settings below here
+" General settings
 """""""""""""""""""""""""""""""""""""
 " Don't use swapfiles
 set noswapfile
@@ -62,6 +49,12 @@ set showcmd
 set nomousehide
 set mouse=a
 
+" Allow for hidden buffers
+set hidden
+
+" Faster display
+set timeoutlen=500
+
 " Indentation settings
 set expandtab
 set shiftround
@@ -72,3 +65,58 @@ set tabstop=2
 
 " Fix indentation for yaml files when commenting out a section
 autocmd BufNewFile,BufRead *.yaml,*.yml setlocal indentkeys-=0#
+
+
+" Keybindings
+"""""""""""""""""""""""""""""""""""""
+" Space is our leader, must be set ahead of keybindings using it
+let mapleader=" "
+let maplocalleader=" "
+
+" Make Shift-Tab unindent in insert mode
+inoremap <S-Tab> <C-d>
+
+
+" Plugins and plugin-specific config
+"""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['rust'] }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+
+Plug 'junegunn/fzf' " Using this with symlinks to skim
+
+Plug 'rkitover/vimpager'
+
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
+
+"Plug 'ludovicchabant/vim-gutentags'
+
+call plug#end()
+
+" Plugin config that must be specified after Plugged has finished
+
+" Solarized colorscheme
+set background=dark
+colorscheme solarized
+
+" Language server config
+let g:LanguageClient_serverCommands = {
+  \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ }
+
+augroup LanguageClient_config
+  autocmd!
+  autocmd User LanguageClientStarted nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
+  autocmd User LanguageClientStarted nmap <leader>r :call LanguageClient#textDocument_rename()<CR>
+  autocmd User LanguageClientStarted nmap <leader>h :call LanguageClient#textDocument_hover()<CR>
+augroup END
+
+" Ranger config
+let g:ranger_replace_netrw = 1
