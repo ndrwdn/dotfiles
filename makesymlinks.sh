@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 dotfiles=~/dotfiles
 files=".tmux .tmux.conf .gitconfig .vimrc .vim .zsh .zshrc .zfunc .emacs.d"
