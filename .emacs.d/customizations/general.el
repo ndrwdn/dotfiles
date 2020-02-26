@@ -27,9 +27,9 @@
 (add-to-list 'load-path (concat user-emacs-directory "themes"))
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "emacs-color-theme-solarized"))
 (add-to-list 'load-path (concat user-emacs-directory "emacs-color-theme-solarized"))
-(load-theme 'solarized t)
 (set-frame-parameter nil 'background-mode 'dark)
 (set-terminal-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
 
 ;; Turn off tabs, make tab-stop's be in increments of 2
 (setq-default indent-tabs-mode nil)
