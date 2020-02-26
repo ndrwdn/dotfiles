@@ -73,6 +73,10 @@ alias gorb="git checkout \$(git reflog | rg 'checkout: moving from' | gsed 's/.*
 
 alias tsfmt="ts '%FT%.T%z'"
 
+function grt() {
+  cd $(git rev-parse --show-toplevel)
+}
+
 export EDITOR=vim
 
 if [ -e ~/.zshrc.local ]; then
