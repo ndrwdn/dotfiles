@@ -1,21 +1,20 @@
 #!/usr/bin/env sh
 
-dotfiles=~/dotfiles
+dotfiles=${HOME}/dotfiles
 files=".tmux.conf .gitconfig .vimrc .vim .zsh .zshrc .zfunc .emacs.d"
 
-echo -n "Symlinking dotfiles from ${dotfiles} to ~..."
+echo "Symlinking dotfiles from ${dotfiles} to ${HOME}..."
 mkdir -p ${dotfiles}
 
 for file in $files; do
-    if [[ ! -L ~/${file} ]]; then
+    if [ ! -e ${HOME}/${file} ]; then
         ln -s ${dotfiles}/${file} ~/${file}
     fi
 done
 
-mkdir -p ${HOME}/.lein
-ln -s ${dotfiles}/profiles.clj ${lein_profiles}
-
 mkdir -p ${HOME}/.config/htop
-ln -s ${dotfiles}/htoprc ${HOME}/.config/htop/htoprc
+if [ ! -e ${HOME}/.config/htop/htoprc ]; then
+  ln -s ${dotfiles}/htoprc ${HOME}/.config/htop/htoprc
+fi
 
-echo "done."
+echo "Done"
