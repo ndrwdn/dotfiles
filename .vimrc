@@ -90,8 +90,6 @@ Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 "Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['rust'] }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
-
 Plug 'junegunn/fzf' " Using this with symlinks to skim
 
 Plug 'rkitover/vimpager'
