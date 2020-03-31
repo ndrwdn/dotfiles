@@ -105,7 +105,7 @@ call plug#end()
 
 " Solarized colorscheme
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 
 " Language server config
 let g:LanguageClient_serverCommands = {
