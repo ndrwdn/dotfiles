@@ -99,6 +99,10 @@ Plug 'francoiscabrol/ranger.vim'
 
 "Plug 'ludovicchabant/vim-gutentags'
 
+Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/utl.vim'
+Plug 'jceb/vim-orgmode'
+
 call plug#end()
 
 " Plugin config that must be specified after Plugged has finished
@@ -121,3 +125,6 @@ augroup END
 
 " Ranger config
 let g:ranger_replace_netrw = 1
+
+" For OrgMode files
+autocmd FileType org setlocal foldlevel=99
