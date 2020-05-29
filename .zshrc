@@ -70,6 +70,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOME}/.cabal/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gawk/libexec/gnubin:/usr/local/opt/util-linux/bin:/usr/local/opt/util-linux/sbin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/Cellar/grep/3.4/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/gettext/bin:/usr/local/sbin:${PATH}"
 
   alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
+  alias emacs="emacs -nw"
 
   function show-brew-packages() {
     sed -n '/Deleted Formulae/q;p' | sed -n '/Renamed Formulae/q;p' | sed -n '/Updated Casks/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json | jq -r '.[] | .name + "*" + .desc + "*" + .homepage' | sort | column -ts\* | sed -e '1i\\' -e '$a\\'
