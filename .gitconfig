@@ -32,8 +32,6 @@
   su = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git fetch $clean_name master; git subtree pull --prefix $2 $clean_name master --squash; };f"
 [push]
   default = simple
-[include]
-  path = .gitconfig.local
 [diff "blackbox"]
   textconv = gpg --use-agent -q --batch --decrypt
 [diff "pdf"]
