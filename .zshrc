@@ -121,6 +121,10 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     echo "Done"
   }
 
+  for f in /usr/local/Cellar/sk/*/share/zsh/site-functions/*.zsh; do
+    source "${f}"
+  done
+
   # Don't use homebrew GA
   export HOMEBREW_NO_ANALYTICS=1
 fi
