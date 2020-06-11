@@ -60,6 +60,8 @@ alias gorb="git checkout \$(git reflog | rg 'checkout: moving from' | sed 's/.*m
 
 alias tsfmt="ts '%FT%.T%z'"
 
+alias make_backup="rsync -ah --info=progress2 --no-whole-file --inplace"
+
 function grt() {
   cd $(git rev-parse --show-toplevel)
 }
