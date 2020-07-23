@@ -66,9 +66,6 @@ set tabstop=2
 " Allow backspacing over anything
 set backspace=indent,eol,start
 
-" Fix indentation for yaml files when commenting out a section
-autocmd BufNewFile,BufRead *.yaml,*.yml setlocal indentkeys-=0#
-
 
 " Keybindings
 """""""""""""""""""""""""""""""""""""
@@ -128,3 +125,6 @@ let g:ranger_replace_netrw = 1
 
 " For OrgMode files
 autocmd FileType org setlocal foldlevel=99
+
+" Fix indentation for yaml files when commenting out a section
+autocmd FileType yaml setlocal expandtab indentkeys-=0#
