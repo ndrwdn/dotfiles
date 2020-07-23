@@ -100,6 +100,15 @@ Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 Plug 'jceb/vim-orgmode'
 
+" For Lisps
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'frazrepo/vim-rainbow'
+
+Plug 'wlangstroth/vim-racket'
+
 call plug#end()
 
 " Plugin config that must be specified after Plugged has finished
@@ -122,6 +131,9 @@ augroup END
 
 " Ranger config
 let g:ranger_replace_netrw = 1
+
+" Rainbow config
+let g:rainbow_active = 1
 
 " For OrgMode files
 autocmd FileType org setlocal foldlevel=99
