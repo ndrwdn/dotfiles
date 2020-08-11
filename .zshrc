@@ -56,7 +56,7 @@ alias vless='~/.vim/plugged/vimpager/vimpager'
 alias gpr="git pull --rebase"
 alias gst="st"
 alias gob="git checkout \$(git branch --format '%(refname:short)' --sort '-committerdate' | sk)"
-alias gorb="git checkout \$(git reflog | rg 'checkout: moving from' | sed 's/.*moving from \([^ ]\+\).*/\1/' | cat -n | sort -uk2 | sort -nk1 | cut -f2- | head | sk)"
+alias gorb='git checkout $(git reflog | rg " checkout: moving from" | awk "{print \$NF}" | rg -f<(git branch --format="%(refname:short)") | rg -v $(git branch --show-current) | cat -n | sort -uk2 | sort -nk1 | head | awk "{print \$NF}" | sk)'
 
 alias tsfmt="ts '%FT%.T%z'"
 
