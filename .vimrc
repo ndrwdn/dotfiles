@@ -145,6 +145,7 @@ autocmd FileType org setlocal foldlevel=99
 autocmd FileType yaml setlocal expandtab indentkeys-=0#
 
 " Slime config
+" Open Slime with C-c, v, start repl program in terminal
 let g:slime_target = "vimterminal"
-let g:slime_vimterminal_cmd = "racket"
+let g:slime_vimterminal_cmd = "/usr/bin/env zsh"
 let g:slime_vimterminal_config = {"vertical": 1, "term_finish": "close"}
