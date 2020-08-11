@@ -110,6 +110,8 @@ Plug 'jpalardy/vim-slime'
 
 Plug 'wlangstroth/vim-racket'
 
+Plug 'vmchale/dhall-vim'
+
 call plug#end()
 
 " Plugin config that must be specified after Plugged has finished
