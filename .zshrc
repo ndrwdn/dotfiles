@@ -75,7 +75,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   alias emacs="emacs -nw"
 
   function show-brew-packages() {
-    sed -n '/Deleted Formulae/q;p' | sed -n '/Renamed Formulae/q;p' | sed -n '/Updated Casks/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json | jq -r '.[] | .name + "\u0001" + .desc + "\u0001" + .homepage' | sort | column -ts$(printf '\x01') | sed -e '1i\\' -e '$a\\'
+    sed -n '/Deleted Formulae/q;p' | sed -n '/Renamed Formulae/q;p' | sed -n '/New Casks/q;p' | sed -n '/Updated Casks/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json | jq -r '.[] | .name + "\u0001" + .desc + "\u0001" + .homepage' | sort | column -ts$(printf '\x01') | sed -e '1i\\' -e '$a\\'
   }
   
   function update() {
