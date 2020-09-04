@@ -101,7 +101,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
       echo "No outdated packages found"
     fi
     echo "Finding outdated casks..."
-    outdated=$(brew cask outdated)
+    outdated=$(brew outdated --cask)
     if [[ $(echo ${outdated} | sed '/^$/d' | wc -l) -gt 0 ]]; then
       echo -e "\n${outdated}"
       read 'do_update?Update cask packages (y/n)? '
