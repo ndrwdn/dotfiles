@@ -123,6 +123,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     echo "Done"
   }
 
+  export SKIM_DEFAULT_OPTIONS="--preview='echo {} | sed -E -e \'s/^\s*[0-9]+\s\s//\'' --preview-window=down:5:wrap --bind 'ctrl-v:toggle-preview'"
   for f in /usr/local/Cellar/sk/*/share/zsh/site-functions/*.zsh; do
     source "${f}"
   done
