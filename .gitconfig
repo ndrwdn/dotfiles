@@ -1,6 +1,8 @@
 [core]
   autocrlf = input
   editor = vim
+[init]
+  defaultBranch = main
 [user]
   name = Andrew Dean
   email = ndrwdn@gmail.com
