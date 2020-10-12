@@ -160,6 +160,11 @@ if command_exists broot; then
   }
 fi
 
+if command_exists bat; then
+  export BAT_THEME="Solarized (dark)"
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 if [ -e ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
