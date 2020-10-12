@@ -17,4 +17,6 @@ if [ ! -e ${HOME}/.config/htop/htoprc ]; then
   ln -s ${dotfiles}/htoprc ${HOME}/.config/htop/htoprc
 fi
 
+ln -s ${dotfiles}/broot ${HOME}/.config/broot
+
 echo "Done"

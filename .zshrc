@@ -66,6 +66,10 @@ function grt() {
   cd $(git rev-parse --show-toplevel)
 }
 
+function command_exists() {
+  command -v "${1}" >/dev/null 2>&1
+}
+
 export EDITOR=vim
 
 if [[ "$(uname -s)" == "Darwin" ]] then
@@ -131,6 +135,29 @@ if [[ "$(uname -s)" == "Darwin" ]] then
 
   # Don't use homebrew GA
   export HOMEBREW_NO_ANALYTICS=1
+fi
+
+
+if command_exists broot; then
+  function br() {
+      f=$(mktemp)
+      (
+          set +e
+          broot --outcmd "$f" "$@"
+          code=$?
+          if [ "$code" != 0 ]; then
+              rm -f "$f"
+              exit "$code"
+          fi
+      )
+      code=$?
+      if [ "$code" != 0 ]; then
+          return "$code"
+      fi
+      d=$(<"$f")
+      rm -f "$f"
+      eval "$d"
+  }
 fi
 
 if [ -e ~/.zshrc.local ]; then
