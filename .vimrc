@@ -66,6 +66,12 @@ set tabstop=2
 " Allow backspacing over anything
 set backspace=indent,eol,start
 
+" netrw config
+let g:netrw_banner=0
+let g:netrw_keepdir=0
+let g:netrw_liststyle=0
+let g:netrw_browse_split=2
+let g:netrw_preview=1
 
 " Keybindings
 """""""""""""""""""""""""""""""""""""
@@ -90,9 +96,6 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'junegunn/fzf' " Using this with symlinks to skim
 
 Plug 'rkitover/vimpager'
-
-Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
 
 "Plug 'ludovicchabant/vim-gutentags'
 
@@ -131,9 +134,6 @@ augroup LanguageClient_config
   autocmd User LanguageClientStarted nmap <leader>r :call LanguageClient#textDocument_rename()<CR>
   autocmd User LanguageClientStarted nmap <leader>h :call LanguageClient#textDocument_hover()<CR>
 augroup END
-
-" Ranger config
-let g:ranger_replace_netrw = 1
 
 " Rainbow config
 let g:rainbow_active = 1
