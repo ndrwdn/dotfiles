@@ -38,3 +38,5 @@
   textconv = gpg --use-agent -q --batch --decrypt
 [diff "pdf"]
   textconv = pdfinfo
+[url "git@github.com:"]
+	insteadOf = https://github.com/
