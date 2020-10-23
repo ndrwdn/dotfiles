@@ -165,10 +165,6 @@ if command_exists bat; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
-if [ -e ~/.zshrc.local ]; then
-    source ~/.zshrc.local
-fi
-
 TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
 _finished_at_precmd() {
   echo -e "\e[2mFinished at $(date -Is)\e[0m"
