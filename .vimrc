@@ -116,6 +116,7 @@ Plug 'wlangstroth/vim-racket'
 Plug 'vmchale/dhall-vim'
 
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
