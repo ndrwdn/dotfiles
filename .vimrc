@@ -38,6 +38,9 @@ set shortmess+=I
 " Use syntax highlighting
 syntax enable
 
+" Use indentation from plugins
+filetype plugin indent on
+
 " Statusline and window title
 set statusline=%t\ %3(%m%)%4(%r%)%y\ [%{&ff}]%=Line:\ %-10(%l/%L%)\ Col:\ %-4(%c%)\ Buf:\ %-2(%n%)\ %11([%3b][0x%02B]%)
 set titlestring=%t\ %m%(\ (%{expand(\"%:p:~:h\")})%)
@@ -94,6 +97,7 @@ Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 Plug 'junegunn/fzf' " Using this with symlinks to skim
+Plug 'junegunn/fzf.vim' " Using this with symlinks to skim
 
 Plug 'rkitover/vimpager'
 
@@ -110,6 +114,11 @@ Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'frazrepo/vim-rainbow'
 Plug 'jpalardy/vim-slime'
+
+"For Clojure
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
+Plug 'tpope/vim-fireplace'
 
 Plug 'wlangstroth/vim-racket'
 
