@@ -66,6 +66,9 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
+" Formatting for set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
 " Allow backspacing over anything
 set backspace=indent,eol,start
 
