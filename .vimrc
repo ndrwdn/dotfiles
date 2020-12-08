@@ -98,8 +98,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
-Plug 'junegunn/fzf' " Using this with symlinks to skim
-Plug 'junegunn/fzf.vim' " Using this with symlinks to skim
+Plug 'lotabout/skim'
+Plug 'lotabout/skim.vim'
 
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
