@@ -93,15 +93,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['rust'] }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 Plug 'junegunn/fzf' " Using this with symlinks to skim
 Plug 'junegunn/fzf.vim' " Using this with symlinks to skim
-
-Plug 'rkitover/vimpager'
-
-"Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
