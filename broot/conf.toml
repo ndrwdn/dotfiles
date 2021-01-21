@@ -244,4 +244,4 @@ help_table_border = "none none"                                                 
 
 ##################
 # Other
-capture_mouse = false
+#capture_mouse = false
