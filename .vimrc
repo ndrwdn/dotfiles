@@ -48,6 +48,10 @@ set titlestring=%t\ %m%(\ (%{expand(\"%:p:~:h\")})%)
 " Show partially complete commands (useful for Normal mode).
 set showcmd
 
+" Command-line auto-completion
+set wildmenu
+set wildmode=list:longest,full
+
 " Mouse settings
 set nomousehide
 set mouse=a
