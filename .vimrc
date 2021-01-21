@@ -115,7 +115,7 @@ Plug 'tpope/vim-surround'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'frazrepo/vim-rainbow'
-Plug 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime', { 'branch': 'main' }
 
 "For Clojure
 Plug 'guns/vim-clojure-static'
