@@ -169,6 +169,18 @@ if command_exists git; then
   alias diff="git diff --stat=120 --patch --no-index"
 fi
 
+if command_exists entr; then
+  rdev() {
+    (
+      interrupted=0
+      trap 'interrupted=1' INT
+      while [[ ${interrupted} -eq 0 ]]; do
+        fd '.*\.rs' | entr -d -n -s 'cargo fmt --all -v; rusty-tags vi'
+      done
+    )
+  }
+fi
+
 TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
 _finished_at_precmd() {
   echo -e "\e[2mFinished at $(date -Is)\e[0m"
