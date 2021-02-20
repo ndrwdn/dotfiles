@@ -166,7 +166,7 @@ if command_exists bat; then
 fi
 
 if command_exists git; then
-  alias diff="git diff --stat --patch --no-index"
+  alias diff="git diff --stat=120 --patch --no-index"
 fi
 
 TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
