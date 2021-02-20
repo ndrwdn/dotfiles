@@ -50,7 +50,7 @@ alias ls="ls --color=auto"
 
 
 alias l='ls -alh'
-alias clean='sed -E "s,$(printf "\x1b")\[[0-9;]*[a-zA-Z],,g"'
+alias clean='sed -E -e "s/$(printf "\x1b")\[[0-9;]*[a-zA-Z]//g"'
 alias vv='vim -R --not-a-term -'
 
 alias gpr="git pull --rebase"
