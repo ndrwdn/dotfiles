@@ -151,6 +151,9 @@ augroup LanguageClient_config
   autocmd User LanguageClientStarted nmap <leader>h :call LanguageClient#textDocument_hover()<CR>
 augroup END
 
+" Tags config for rust
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+
 " Rainbow config
 let g:rainbow_active = 1
 
