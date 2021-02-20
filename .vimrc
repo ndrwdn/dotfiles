@@ -102,6 +102,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
+Plug 'preservim/tagbar'
+
 Plug 'lotabout/skim'
 Plug 'lotabout/skim.vim'
 
