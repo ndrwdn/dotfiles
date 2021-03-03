@@ -55,8 +55,7 @@
 ;; Setup/install for use-package
 (eval-and-compile
   (require 'package)
-  (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
-                           ("marmalade" . "https://marmalade-repo.org/packages/")
+  (setq package-archives '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
                            ("melpa" . "https://melpa.org/packages/")))
   (package-initialize)
   (unless (package-installed-p 'use-package)
