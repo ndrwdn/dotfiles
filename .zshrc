@@ -62,6 +62,12 @@ alias tsfmt="ts '%FT%.T%z'"
 
 alias make_backup="rsync -ah --info=progress2 --no-whole-file --inplace"
 
+function update-dotfiles() {
+  pushd ~/dotfiles
+  git pull --rebase
+  popd
+}
+
 function grt() {
   cd $(git rev-parse --show-toplevel)
 }
