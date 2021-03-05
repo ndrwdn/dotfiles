@@ -133,6 +133,12 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     source "${f}"
   done
 
+  alias osx-check-updates='softwareupdate --all --list'
+  function osx-install-update() {
+    typeset -r update_name="${1}"
+    sudo softwareupdate --install --restart "${update_name}"
+  }
+
   # Don't use homebrew GA
   export HOMEBREW_NO_ANALYTICS=1
 fi
