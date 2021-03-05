@@ -181,6 +181,10 @@ if command_exists entr; then
   }
 fi
 
+if command_exists emacs; then
+  alias update-emacs="emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'"
+fi
+
 TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
 _finished_at_precmd() {
   echo -e "\e[2mFinished at $(date -Is)\e[0m"
