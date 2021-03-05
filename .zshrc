@@ -181,6 +181,10 @@ if command_exists entr; then
   }
 fi
 
+if command_exists vim; then
+  alias update-vim='vim +PlugUpdate +qall'
+fi
+
 if command_exists emacs; then
   alias update-emacs="emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'"
 fi
