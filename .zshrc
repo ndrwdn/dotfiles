@@ -139,7 +139,10 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     source "${f}"
   done
 
-  alias osx-check-updates='softwareupdate --all --list'
+  function osx-check-updates() {
+    softwareupdate --all --list
+  }
+
   function osx-install-update() {
     typeset -r update_name="${1}"
     sudo softwareupdate --install --restart "${update_name}"
@@ -198,11 +201,15 @@ if command_exists entr; then
 fi
 
 if command_exists vim; then
-  alias update-vim='vim +PlugUpdate +qall'
+  update-vim() {
+    vim +PlugUpdate +qall
+  }
 fi
 
 if command_exists emacs; then
-  alias update-emacs="emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'"
+  update-emacs() {
+    emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'
+  }
 fi
 
 TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
