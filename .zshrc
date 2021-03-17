@@ -86,11 +86,10 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   alias ffp="/Applications/Firefox.app/Contents/MacOS/firefox --private-window"
 
   function show-brew-packages() {
-    sed -n '/Deleted Formulae/q;p' | sed -n '/Renamed Formulae/q;p' | sed -n '/New Casks/q;p' | sed -n '/Updated Casks/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json | jq -r '.[] | .name + "\u0001" + .desc + "\u0001" + .homepage' | sort | column -ts$(printf '\x01') | sed -e '1i\\' -e '$a\\'
+    sed -n '/Deleted Formulae/q;p' | sed -n '/Renamed Formulae/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json=v2 | jq -r '[(.formulae[] | {name, desc, homepage}), (.casks[] | {name: .name[0], desc, homepage})] | .[] | .name + "\u0001" + .desc + "\u0001" + .homepage' | sort | column -ts$(printf '\x01') | sed -e '1i\\' -e '$a\\'
   }
   
   function update() {
-    cleanup_needed='n'
     echo "Updating brew package list..."
     echo
     brew update | tee /dev/tty | show-brew-packages
@@ -103,33 +102,15 @@ if [[ "$(uname -s)" == "Darwin" ]] then
       read 'do_update?Update packages (y/n)? '
       if [[ "${do_update}" == "y" ]]; then
         echo "Updating packages..."
-        cleanup_needed='y'
         brew upgrade
+        sleep 0.2s
+        echo "Cleaning up..."
+        brew cleanup
       else
         echo "Not updating packages"
       fi
     else
       echo "No outdated packages found"
-    fi
-    echo "Finding outdated casks..."
-    outdated=$(brew outdated --cask)
-    if [[ $(echo ${outdated} | sed '/^$/d' | wc -l) -gt 0 ]]; then
-      echo -e "\n${outdated}"
-      read 'do_update?Update cask packages (y/n)? '
-      if [[ "${do_update}" == "y" ]]; then
-        echo "Updating casks..."
-        cleanup_needed='y'
-        brew cask reinstall $(echo ${outdated} | awk '{print $1}')
-      else
-        echo "Not updating casks"
-      fi
-    else
-      echo "No outdated casks found"
-    fi
-    if [[ "${cleanup_needed}" == 'y' ]]; then
-      sleep 0.2s
-      echo "Cleaning up..."
-      brew cleanup
     fi
     echo "Done"
   }
