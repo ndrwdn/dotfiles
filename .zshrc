@@ -86,7 +86,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   alias ffp="/Applications/Firefox.app/Contents/MacOS/firefox --private-window"
 
   function show-brew-packages() {
-    sed -n '/Deleted Formulae/q;p' | sed -n '/Renamed Formulae/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json=v2 | jq -r '[(.formulae[] | {name, desc, homepage}), (.casks[] | {name: .name[0], desc, homepage})] | .[] | .name + "\u0001" + .desc + "\u0001" + .homepage' | sort | column -ts$(printf '\x01') | sed -e '1i\\' -e '$a\\'
+  sed -E -n '/(Renamed|Deleted) (Formulae|Casks)/q;p' | rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' | tr '\n' ' ' | sed -e 's/✔//g' -e 's/ \{1,\}/ /g' | ifne xargs brew info --json=v2 | jq -r '[(.formulae[] | {name, desc, homepage}), (.casks[] | {name: .token, desc: (.desc // " "), homepage})] | .[] | .name + "\u0001" + .desc + "\u0001" + .homepage' | sort | column -ts$(printf '\x01') | sed -e '1i\\' -e '$a\\'
   }
   
   function update() {
