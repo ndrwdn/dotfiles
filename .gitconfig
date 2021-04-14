@@ -40,3 +40,7 @@
   textconv = pdfinfo
 #[url "git@github.com:"]
 #	insteadOf = https://github.com/
+[merge]
+	conflictstyle = diff3
+[diff]
+	algorithm = patience
