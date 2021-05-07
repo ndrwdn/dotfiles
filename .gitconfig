@@ -23,6 +23,7 @@
   lg2 = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%cI [%C(cyan)%an %C("#9fe3f2")<%ae>%C(reset)%C(auto)] %s'
   lg3 = log --graph --pretty=format:'%C(auto)%h %C(auto)%aI (%cI) [%C(cyan)%an %C("#9fe3f2")<%ae>%C(reset)%C(auto)] %s%C(auto)%d'
   alias = !git config -l | grep alias
+  ff = !git fetch origin && git merge --ff-only
   from = !git fetch origin && git rebase origin/master
   fr = !git fetch origin && git rebase
   sv = "!f(){ cb=$(git rev-parse --abbrev-ref HEAD); git checkout -b $1; git add -A .; git commit -m $1; git checkout $cb; };f"
