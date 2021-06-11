@@ -13,6 +13,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd extendedglob nomatch promptsubst histignoredups histignorespace
 unsetopt notify
+autoload zmv
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
