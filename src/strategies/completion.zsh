@@ -45,8 +45,6 @@ _zsh_autosuggest_capture_completion_widget() {
 zle -N autosuggest-capture-completion _zsh_autosuggest_capture_completion_widget
 
 _zsh_autosuggest_capture_setup() {
-	autoload -Uz is-at-least
-
 	# There is a bug in zpty module in older zsh versions by which a
 	# zpty that exits will kill all zpty processes that were forked
 	# before it. Here we set up a zsh exit hook to SIGKILL the zpty
@@ -96,6 +94,12 @@ _zsh_autosuggest_capture_completion_async() {
 }
 
 _zsh_autosuggest_strategy_completion() {
+	# Reset options to defaults and enable LOCAL_OPTIONS
+	emulate -L zsh
+
+	# Enable extended glob for completion ignore pattern
+	setopt EXTENDED_GLOB
+
 	typeset -g suggestion
 	local line REPLY
 
@@ -104,6 +108,9 @@ _zsh_autosuggest_strategy_completion() {
 
 	# Exit if we don't have zpty
 	zmodload zsh/zpty 2>/dev/null || return
+
+	# Exit if our search string matches the ignore pattern
+	[[ -n "$ZSH_AUTOSUGGEST_COMPLETION_IGNORE" ]] && [[ "$1" == $~ZSH_AUTOSUGGEST_COMPLETION_IGNORE ]] && return
 
 	# Zle will be inactive if we are in async mode
 	if zle; then
@@ -122,7 +129,7 @@ _zsh_autosuggest_strategy_completion() {
 		# versions of zsh (older than 5.3), we sometimes get extra bytes after
 		# the second null byte, so trim those off the end.
 		# See http://www.zsh.org/mla/workers/2015/msg03290.html
-		suggestion="${${line#*$'\0'}%$'\0'*}"
+		suggestion="${${(@0)line}[2]}"
 	} always {
 		# Destroy the pty
 		zpty -d $ZSH_AUTOSUGGEST_COMPLETIONS_PTY_NAME

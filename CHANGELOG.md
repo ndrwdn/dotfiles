@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.7.0
+- Enable asynchronous mode by default (#498)
+- No longer wrap user widgets starting with `autosuggest-` prefix (#496)
+- Fix a bug wrapping widgets that modify the buffer (#541)
+
+
+## v0.6.4
+- Fix `vi-forward-char` triggering a bell when using it to accept a suggestion (#488)
+- New configuration option to skip completion suggestions when buffer matches a pattern (#487)
+- New configuration option to ignore history entries matching a pattern (#456)
+
 ## v0.6.3
 - Fixed bug moving cursor to end of buffer after accepting suggestion (#453)
 
