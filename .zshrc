@@ -16,7 +16,7 @@ unsetopt notify
 autoload zmv
 
 bindkey -v
-bindkey '^R' history-incremental-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
