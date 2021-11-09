@@ -168,3 +168,6 @@ autocmd FileType yaml setlocal expandtab indentkeys-=0#
 let g:slime_target = "vimterminal"
 let g:slime_vimterminal_cmd = "/usr/bin/env zsh"
 let g:slime_vimterminal_config = {"vertical": 1, "term_finish": "close"}
+
+" Shortcut to toggle wrap
+nnoremap <silent> <localleader>w :set wrap!<cr>
