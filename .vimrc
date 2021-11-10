@@ -171,3 +171,6 @@ let g:slime_vimterminal_config = {"vertical": 1, "term_finish": "close"}
 
 " Shortcut to toggle wrap
 nnoremap <silent> <localleader>w :set wrap!<cr>
+
+" Shortcut to toggle paste
+nnoremap <silent> <localleader>p :set paste!<cr>
