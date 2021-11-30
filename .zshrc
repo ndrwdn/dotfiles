@@ -88,7 +88,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
 
   function show-brew-packages() {
     sed -E -n '/(Renamed|Deleted) (Formulae|Casks)/q;p' |
-      rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew' |
+      rg -v '^==>|Already up-to-date.|No changes to formulae.|Updated.*tap|Updated Homebrew|You have.*installed|brew upgrade|brew outdated' |
       tr '\n' ' ' |
       sed -e 's/✔//g' -e 's/ \{1,\}/ /g' |
       ifne xargs brew info --json=v2 |
