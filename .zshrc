@@ -101,7 +101,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   function update() {
     echo "Updating brew package list..."
     echo
-    brew update | tee /dev/tty | show-brew-packages
+    brew update 2>&1 | tee /dev/tty | show-brew-packages
     echo
     sleep 0.2s
     echo "Finding outdated packages..."
