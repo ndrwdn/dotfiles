@@ -142,6 +142,51 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     update && update-dotfiles && update-vim && update-emacs && osx-check-updates
   }
 
+  java-version-manager() {
+    [[ ! $# -eq 2 ]] && echo -e "Wrong number of arguments.\nUsage: ${0} <major_version> <true|false>" && return 1
+
+    typeset -r major_version="${1}"
+    typeset -r make_default="${2}"
+
+    mkdir -p ~/.cache/java
+    (
+    cd ~/.cache/java
+    typeset -ra release_fields=("${(f)$(curl \
+      -s \
+      "https://api.adoptium.net/v3/assets/feature_releases/${major_version}/ga?os=mac&architecture=x64&image_type=jdk&sort_method=DATE&sort_order=DESC&page_size=1" |
+        jq -r '.[] | .release_name + "\n" + (.binaries[].package | .name + "\n" + .link + "\n" + .checksum)'
+     )}")
+    typeset -r version="${release_fields[1]}"
+    typeset -r tarball="${release_fields[2]}"
+    typeset -r url="${release_fields[3]}"
+    typeset -r sha="${release_fields[4]}"
+
+    if [[ ! -d "${version}" ]]; then
+      read "do_install?Install JDK ${version} (y/n)? "
+      if [[ "${do_install}" == "y" ]]; then
+        curl -L "${url}" -o "${tarball}"
+
+        typeset -r actual_sha="$(sha256sum ${tarball} | awk '{print $1}')"
+        if [[ "${sha}" != "${actual_sha}" ]]; then
+          echo "Error: shasums don't match"
+          exit 1
+        fi
+
+        tar xf "${tarball}"
+        rm -rf "${tarball}"
+
+        if [[ "${make_default}" == "true" ]]; then
+          ln -s "${version}" default
+
+          if [[ ! -e "/Library/Java/JavaVirtualMachines/default" ]]; then
+            sudo ln -s ~/.cache/java/default /Library/Java/JavaVirtualMachines/default
+          fi
+        fi
+      fi
+    fi
+    )
+  }
+
   # Don't use homebrew GA
   export HOMEBREW_NO_ANALYTICS=1
 fi
