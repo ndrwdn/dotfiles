@@ -247,6 +247,21 @@ if command_exists emacs; then
   }
 fi
 
+# Make it easy to copy/paste a sequence of commands without extra prompt, etc. info
+cp-mode-start() {
+  export OLD_PROMPT="${PROMPT}"
+  export PROMPT="> "
+  add-zsh-hook -D precmd _finished_at_precmd
+}
+
+cp-mode-end() {
+  if [[ -v OLD_PROMPT ]]; then
+    export PROMPT="${OLD_PROMPT}"
+    unset OLD_PROMPT
+    add-zsh-hook precmd _finished_at_precmd
+  fi
+}
+
 TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
 _finished_at_precmd() {
   echo -e "\e[2mFinished at $(date -Is)\e[0m"
