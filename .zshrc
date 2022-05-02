@@ -176,6 +176,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
         rm -rf "${tarball}"
 
         if [[ "${make_default}" == "true" ]]; then
+          rm default
           ln -s "${version}" default
 
           if [[ ! -e "/Library/Java/JavaVirtualMachines/default" ]]; then
