@@ -35,7 +35,7 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-PROMPT='%F{green}%n@%m%F{blue}:%F{yellow}$(REPORTTIME=-1; pwd | sed -E "s,${HOME},~,;s,(/[^/])[^/]+,\1,g;s,/[^/]+$,,")$(REPORTTIME=-1; pwd | sed -E "s,${HOME},,;s,[^~]*(/.*),\1,;s,^/$,,")%F{blue}>%f '
+PROMPT='; '
 RPROMPT='${VI_MODE}'
 
 autoload -U colors; colors
@@ -62,6 +62,7 @@ alias gorb='git checkout $(git reflog | rg " checkout: moving from" | awk "{prin
 alias tsfmt="ts '%FT%.T%z'"
 
 alias make_backup="rsync -ah --info=progress2 --no-whole-file --inplace"
+alias last-duration="fc -liD -1"
 
 function update-dotfiles() {
   pushd ~/dotfiles
@@ -247,24 +248,3 @@ if command_exists emacs; then
     emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'
   }
 fi
-
-# Make it easy to copy/paste a sequence of commands without extra prompt, etc. info
-cp-mode-start() {
-  export OLD_PROMPT="${PROMPT}"
-  export PROMPT="> "
-  add-zsh-hook -D precmd _finished_at_precmd
-}
-
-cp-mode-end() {
-  if [[ -v OLD_PROMPT ]]; then
-    export PROMPT="${OLD_PROMPT}"
-    unset OLD_PROMPT
-    add-zsh-hook precmd _finished_at_precmd
-  fi
-}
-
-TIMEFMT=$'\n\e[2m%U user %S system %P cpu %*E total\e[0m'
-_finished_at_precmd() {
-  echo -e "\e[2mFinished at $(date -Is)\e[0m"
-}
-add-zsh-hook precmd _finished_at_precmd
