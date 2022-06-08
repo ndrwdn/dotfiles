@@ -137,8 +137,13 @@ call plug#end()
 " Plugin config that must be specified after Plugged has finished
 
 " Solarized colorscheme
-set background=dark
+" with auto dark/light config in tmux
+if exists("$TMUX")
+  let &t_RB="\ePtmux;\e\e]11;?\007\e\\"
+endif
 silent! colorscheme solarized
+autocmd VimResume * call echoraw(&t_RB)
+autocmd FocusGained * call echoraw(&t_RB)
 
 " Language server config
 let g:LanguageClient_serverCommands = {
