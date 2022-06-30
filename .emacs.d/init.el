@@ -45,12 +45,24 @@
 (show-paren-mode 1)
 (electric-pair-mode 1)
 
-;; Set theme
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "emacs-color-theme-solarized"))
-(add-to-list 'load-path (concat user-emacs-directory "emacs-color-theme-solarized"))
-(set-frame-parameter nil 'background-mode 'dark)
-(set-terminal-parameter nil 'background-mode 'dark)
-(load-theme 'solarized t)
+;; Auto-switch theme code
+(defvar last-dark-mode-state 'unknown)
+(defun check-and-set-dark-mode ()
+  (let ((is-dark-mode (string-equal
+                       "true"
+                       (string-trim
+                        (shell-command-to-string
+                         "osascript -e 'tell application \"System Events\" to tell appearance preferences to return dark mode'")))))
+    (if (not (eq is-dark-mode last-dark-mode-state))
+        (progn
+          (setq last-dark-mode-state is-dark-mode)
+          (if is-dark-mode
+              (progn
+                (load-theme 'solarized-dark t)
+                (disable-theme 'solarized-light))
+            (progn
+              (load-theme 'solarized-light t)
+              (disable-theme 'solarized-dark)))))))
 
 ;; Setup/install for use-package
 (eval-and-compile
@@ -65,6 +77,10 @@
   (setf use-package-always-ensure t))
 
 ;; Packages
+(use-package solarized-theme
+  :config
+  (run-with-timer 0 5 'check-and-set-dark-mode))
+
 (use-package xclip
   :config
   (xclip-mode 1))
