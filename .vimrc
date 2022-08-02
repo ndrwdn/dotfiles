@@ -84,6 +84,9 @@ let g:netrw_liststyle=0
 let g:netrw_browse_split=0
 let g:netrw_preview=1
 
+" UTF-8 everywhere
+set encoding=utf-8
+
 " Keybindings
 """""""""""""""""""""""""""""""""""""
 " Space is our leader, must be set ahead of keybindings using it

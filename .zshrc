@@ -1,3 +1,5 @@
+export LANG="en_US.UTF-8"
+
 zstyle ':completion:*' menu select
 zstyle '*' single-ignored show
 zstyle ':completion:*' list-colors ''

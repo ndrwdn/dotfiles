@@ -45,6 +45,11 @@
 (show-paren-mode 1)
 (electric-pair-mode 1)
 
+;; UTF-8 everywhere
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
 ;; Auto-switch theme code
 (defvar last-dark-mode-state 'unknown)
 (defun check-and-set-dark-mode ()
