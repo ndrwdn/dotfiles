@@ -13,7 +13,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory autocd extendedglob nomatch promptsubst histignoredups histignorespace
+setopt appendhistory autocd extendedglob interactivecomments nomatch promptsubst histignoredups histignorespace
 unsetopt notify
 autoload zmv
 
