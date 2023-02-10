@@ -127,7 +127,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     echo "Done"
   }
 
-  export SKIM_CTRL_R_OPTS="--with-nth=2.. --inline-info --preview='echo {} | sed -E -e \'s/^\s*[0-9]+\s\s//\'' --preview-window=down:5:wrap:hidden --regex --bind 'ctrl-v:toggle-preview'"
+  export SKIM_CTRL_R_OPTS="--with-nth=2.. --inline-info --preview='echo {} | sed -E -e \"s/^\s*[0-9]+\s\s//\"' --preview-window=down:5:wrap:hidden --regex --bind 'ctrl-v:toggle-preview' --no-sort"
   for f in /usr/local/Cellar/sk/*/share/zsh/site-functions/*.zsh; do
     source "${f}"
   done
