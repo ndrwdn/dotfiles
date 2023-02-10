@@ -120,7 +120,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'frazrepo/vim-rainbow'
 Plug 'jpalardy/vim-slime', { 'branch': 'main' }
 
 "For Clojure
@@ -162,9 +161,6 @@ augroup END
 
 " Tags config for rust
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-
-" Rainbow config
-let g:rainbow_active = 1
 
 " For OrgMode files
 autocmd FileType org setlocal foldlevel=99
