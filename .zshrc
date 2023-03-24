@@ -250,3 +250,33 @@ if command_exists emacs; then
     emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'
   }
 fi
+
+if command_exists gh; then
+  prs-review() {
+    prs-query 'is:open' 'user-review-requested:@me'
+  }
+
+  prs-mine() {
+    prs-query 'is:open' 'author:@me'
+  }
+
+  prs-query() {
+    [[ $# -lt 1 ]] && echo -e "Wrong number of arguments.\nUsage: ${0} <query-term-1> ... <query-term-n>" && return 1
+    typeset -r pr_query_terms=(${@})
+    typeset -ra pr_query_results=("${(@f)$(gh search prs \
+      ${pr_query_terms[@]} \
+      --json author,number,title,updatedAt,url |
+      jq -r '.[] | .updatedAt + "\u0001" + (.number | tostring) + "\u0001" + .title + "\u0001" + .author.login + "\u0001" + .url' |
+      column -ts$(printf '\x01') |
+      sort -r)}")
+
+    if [[ "${#pr_query_results[@]}" -gt 0  && "${pr_query_results[1]}" != '' ]]; then
+      typeset -r selected_pr_url="$(echo ${(F)pr_query_results[@]} | sk | awk '{print $NF}')"
+      if [[ "${selected_pr_url}" != '' ]]; then
+        open "${selected_pr_url}"
+      fi
+    else
+      echo "no results"
+    fi
+  }
+fi
