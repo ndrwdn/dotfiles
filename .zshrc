@@ -143,6 +143,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
 
   function update-all() {
     update && update-dotfiles && update-vim && update-emacs && osx-check-updates
+    date -Isec
   }
 
   java-version-manager() {
