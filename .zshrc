@@ -192,6 +192,10 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     )
   }
 
+  clipboard-to-title-case() {
+    pbpaste | tr '[:upper:]' '[:lower:]' | sed -E -e 's/\b(.)/\u\1/g' | pbcopy
+  }
+
   export HOMEBREW_NO_ANALYTICS=1
   export HOMEBREW_NO_AUTO_UPDATE=1
 fi
