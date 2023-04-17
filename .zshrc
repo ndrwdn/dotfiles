@@ -259,6 +259,7 @@ fi
 
 if command_exists emacs; then
   update-emacs() {
+    echo "Updating emacs packages..."
     emacs --batch --load ~/.emacs.d/init.el --eval '(auto-package-update-now)'
   }
 fi
