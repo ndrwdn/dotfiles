@@ -137,6 +137,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   done
 
   function osx-check-updates() {
+    echo "Checking for MacOS updates..."
     softwareupdate --all --list
   }
 
