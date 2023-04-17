@@ -144,8 +144,9 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   }
 
   function update-all() {
-    update && update-dotfiles && update-vim && update-emacs && osx-check-updates
-    date -Isec
+    echo -e "Starting at: $(date -Isec)\n"
+    update && echo; update-dotfiles; echo; update-vim && echo; update-emacs && echo; osx-check-updates
+    echo -e "\nEnding at: $(date -Isec)"
   }
 
   java-version-manager() {
