@@ -82,8 +82,10 @@ function command_exists() {
 export EDITOR=vim
 
 if [[ "$(uname -s)" == "Darwin" ]] then
-  typeset -r GREP_PATH=$(find /usr/local/Cellar/grep -maxdepth 1 -type d | sort -V -r | head -n1)
-  export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOME}/.cabal/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gawk/libexec/gnubin:/usr/local/opt/util-linux/bin:/usr/local/opt/util-linux/sbin:/usr/local/opt/gnu-tar/libexec/gnubin:${GREP_PATH}/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/gettext/bin:/usr/local/sbin:${PATH}"
+  if [[ ! -v GREP_PATH ]]; then
+    typeset -r GREP_PATH=$(find /usr/local/Cellar/grep -maxdepth 1 -type d | sort -V -r | head -n1)
+    export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOME}/.cabal/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gawk/libexec/gnubin:/usr/local/opt/util-linux/bin:/usr/local/opt/util-linux/sbin:/usr/local/opt/gnu-tar/libexec/gnubin:${GREP_PATH}/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/gettext/bin:/usr/local/sbin:${PATH}"
+  fi
 
   alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
   alias emacs="emacs -nw"
