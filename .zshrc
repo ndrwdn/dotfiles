@@ -66,9 +66,11 @@ alias make_backup="rsync -ah --info=progress2 --no-whole-file --inplace"
 alias last-duration="fc -liD -1"
 
 function update-dotfiles() {
-  pushd ~/dotfiles
+  (
+  echo "Updating dotfiles..."
+  cd ~/dotfiles
   git pull --rebase
-  popd
+  )
 }
 
 function grt() {
