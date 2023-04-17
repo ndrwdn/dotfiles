@@ -252,6 +252,7 @@ fi
 
 if command_exists vim; then
   update-vim() {
+    echo "Updating vim plugins..."
     vim +PlugUpdate +qall
   }
 fi
