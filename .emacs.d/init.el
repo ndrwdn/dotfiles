@@ -12,7 +12,7 @@
 (setq auto-save-timeout 5)
 
 ;; Show line numbers
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 (defun linum-format-func (line)
   (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
     (propertize (format (format "%%%dd " w) line) 'face 'linum)))
