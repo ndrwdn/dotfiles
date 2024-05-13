@@ -94,7 +94,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   alias ffp="/Applications/Firefox.app/Contents/MacOS/firefox --private-window"
 
   function show-brew-packages() {
-    (tee >(sed -E -n -e '/^==> New Formulae/,/(==>|^\s*$)/p') >(sed -E -n -e '/^==> New Casks/,/(==>|^\s*$)/p') >/dev/null) |
+    (tee >(sed -E -n -e '/^==> (New )?Formulae/,/(==>|^\s*$)/p') >(sed -E -n -e '/^==> (New )?Casks/,/(==>|^\s*$)/p') >/dev/null) |
       rg -v '^==> ' |
       tr '\n' ' ' |
       ifne xargs brew info --json=v2 |
