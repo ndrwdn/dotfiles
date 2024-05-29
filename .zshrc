@@ -85,8 +85,8 @@ export EDITOR=vim
 
 if [[ "$(uname -s)" == "Darwin" ]] then
   if [[ ! -v GREP_PATH ]]; then
-    typeset -r GREP_PATH=$(find /usr/local/Cellar/grep -maxdepth 1 -type d | sort -V -r | head -n1)
-    export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOME}/.cabal/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gawk/libexec/gnubin:/usr/local/opt/util-linux/bin:/usr/local/opt/util-linux/sbin:/usr/local/opt/gnu-tar/libexec/gnubin:${GREP_PATH}/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/gettext/bin:/usr/local/sbin:${PATH}"
+    typeset -r GREP_PATH=$(find "${HOMEBREW_PREFIX}/Cellar/grep" -maxdepth 1 -type d | sort -V -r | head -n1)
+    export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOME}/.cabal/bin:${HOMEHOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gawk/libexec/gnubin:${HOMEBREW_PREFIX}/opt/util-linux/bin:${HOMEBREW_PREFIX}/opt/util-linux/sbin:${HOMEBREW_PREFIX}/opt/gnu-tar/libexec/gnubin:${GREP_PATH}/libexec/gnubin:${HOMEBREW_PREFIX}/opt/curl/bin:${HOMEBREW_PREFIX}/opt/gettext/bin:${HOMEBREW_PREFIX}/sbin:${PATH}"
   fi
 
   alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
@@ -131,7 +131,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   }
 
   export SKIM_CTRL_R_OPTS="--height=100% --with-nth=2.. --inline-info --preview='echo {} | sed -E -e \"s/^\s*[0-9]+\s\s//\"' --preview-window=down:5:wrap:hidden --regex --bind 'ctrl-v:toggle-preview' --no-sort"
-  for f in /usr/local/Cellar/sk/*/share/zsh/site-functions/*.zsh; do
+  for f in ${HOMEBREW_PREFIX}/Cellar/sk/*/share/zsh/site-functions/*.zsh; do
     source "${f}"
   done
 
@@ -154,15 +154,21 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   java-version-manager() {
     [[ ! $# -eq 2 ]] && echo -e "Wrong number of arguments.\nUsage: ${0} <major_version> <true|false>" && return 1
 
+    typeset -rA arch_mappings=(
+      i386 x64
+      arm64 aarch64
+    )
+
     typeset -r major_version="${1}"
     typeset -r make_default="${2}"
 
     mkdir -p ~/.cache/java
     (
     cd ~/.cache/java
+    typeset -r download_arch="${arch_mappings[$(arch)]}"
     typeset -ra release_fields=("${(f)$(curl \
       -s \
-      "https://api.adoptium.net/v3/assets/feature_releases/${major_version}/ga?os=mac&architecture=x64&image_type=jdk&sort_method=DATE&sort_order=DESC&page_size=1" |
+      "https://api.adoptium.net/v3/assets/feature_releases/${major_version}/ga?os=mac&architecture=${download_arch}&image_type=jdk&sort_method=DATE&sort_order=DESC&page_size=1" |
         jq -r '.[] | .release_name + "\n" + (.binaries[].package | .name + "\n" + .link + "\n" + .checksum)'
      )}")
     typeset -r version="${release_fields[1]}"
