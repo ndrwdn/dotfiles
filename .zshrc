@@ -64,6 +64,7 @@ alias tsfmt="ts '%FT%.T%z'"
 
 alias make_backup="rsync -ah --info=progress2 --no-whole-file --inplace"
 alias last-duration="fc -liD -1"
+alias j='jobs -l'
 
 function update-dotfiles() {
   (
