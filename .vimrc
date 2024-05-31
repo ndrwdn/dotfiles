@@ -51,7 +51,7 @@ set showcmd
 " Command-line auto-completion
 set wildmenu
 set wildoptions=pum
-set wildmode=longest:full
+set wildmode=full:lastused
 
 " Mouse settings
 set nomousehide
