@@ -63,7 +63,8 @@ alias gorb='git checkout $(git reflog | rg " checkout: moving from" | awk "{prin
 alias tsfmt="ts '%FT%.T%z'"
 
 alias make_backup="rsync -ah --info=progress2 --no-whole-file --inplace"
-alias last-duration="fc -liD -1"
+alias dur='fc -lD -t %FT%T%z'
+alias ldur='dur -1'
 alias j='jobs -l'
 alias f='fg'
 
