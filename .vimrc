@@ -101,7 +101,7 @@ inoremap <S-Tab> <C-d>
 """""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
@@ -139,13 +139,29 @@ call plug#end()
 " Plugin config that must be specified after Plugged has finished
 
 " Solarized colorscheme
-" with auto dark/light config in tmux
-if exists("$TMUX")
-  let &t_RB="\ePtmux;\e\e]11;?\007\e\\"
+" Includes config to auto switch background with and without tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
-silent! colorscheme solarized
-autocmd VimResume * call echoraw(&t_RB)
-autocmd FocusGained * call echoraw(&t_RB)
+
+function! s:checkCurrentTermBackgroundColor()
+  if exists("$TMUX")
+    let &t_RB="\ePtmux;\e\e]11;?\007\e\\"
+    call echoraw(&t_RB)
+    let &t_RB="\e]11;?\007"
+  endif
+  call echoraw(&t_RB)
+endfunction
+
+function! s:handleBackgroundCheckTimer(timer)
+  call s:checkCurrentTermBackgroundColor()
+endfunction
+
+call timer_start(500, 's:handleBackgroundCheckTimer', {'repeat': -1})
+let g:solarized_italics=0
+silent! colorscheme solarized8
 
 " Language server config
 let g:LanguageClient_serverCommands = {
