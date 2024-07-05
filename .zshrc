@@ -97,20 +97,24 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   alias ffp="/Applications/Firefox.app/Contents/MacOS/firefox --private-window"
 
   function show-brew-packages() {
-    (tee >(sed -E -n -e '/^==> (New )?Formulae/,/(==>|^\s*$)/p') >(sed -E -n -e '/^==> (New )?Casks/,/(==>|^\s*$)/p') >/dev/null) |
-      rg -v '^==> ' |
-      tr '\n' ' ' |
       ifne xargs brew info --json=v2 |
       jq -r '[(.formulae[] | {name, desc, homepage}), (.casks[] | {name: .token, desc: (.desc // " "), homepage})] | .[] | .name + "\u0001" + .desc + "\u0001" + .homepage' |
       sort |
       column -ts$(printf '\x01') |
       sed -e '1i\\' -e '$a\\'
   }
+
+  function show-brew-packages-from-update() {
+    (tee >(sed -E -n -e '/^==> (New )?Formulae/,/(==>|^\s*$)/p') >(sed -E -n -e '/^==> (New )?Casks/,/(==>|^\s*$)/p') >/dev/null) |
+      rg -v '^==> ' |
+      tr '\n' ' ' |
+      show-brew-packages
+  }
   
   function update() {
     echo "Updating brew package list..."
     echo
-    brew update 2>&1 | tee /dev/tty | show-brew-packages
+    brew update 2>&1 | tee /dev/tty | show-brew-packages-from-update
     echo
     sleep 0.2s
     echo "Finding outdated packages..."
