@@ -89,7 +89,7 @@ export EDITOR=vim
 if [[ "$(uname -s)" == "Darwin" ]] then
   if [[ ! -v GREP_PATH ]]; then
     typeset -r GREP_PATH=$(find "${HOMEBREW_PREFIX}/Cellar/grep" -maxdepth 1 -type d | sort -V -r | head -n1)
-    export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOME}/.cabal/bin:${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gawk/libexec/gnubin:${HOMEBREW_PREFIX}/opt/util-linux/bin:${HOMEBREW_PREFIX}/opt/util-linux/sbin:${HOMEBREW_PREFIX}/opt/gnu-tar/libexec/gnubin:${GREP_PATH}/libexec/gnubin:${HOMEBREW_PREFIX}/opt/curl/bin:${HOMEBREW_PREFIX}/opt/gettext/bin:${HOMEBREW_PREFIX}/sbin:${PATH}"
+    export PATH="${HOME}/Applications:${HOME}/programs/bin:${HOMEBREW_PREFIX}/opt/rustup/bin:${HOME}/.cabal/bin:${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/gawk/libexec/gnubin:${HOMEBREW_PREFIX}/opt/util-linux/bin:${HOMEBREW_PREFIX}/opt/util-linux/sbin:${HOMEBREW_PREFIX}/opt/gnu-tar/libexec/gnubin:${GREP_PATH}/libexec/gnubin:${HOMEBREW_PREFIX}/opt/curl/bin:${HOMEBREW_PREFIX}/opt/gettext/bin:${HOMEBREW_PREFIX}/sbin:${PATH}"
   fi
 
   alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
