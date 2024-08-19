@@ -6,6 +6,7 @@ zstyle ':completion:*' list-colors ''
 zstyle :compinstall filename '/home/vagrant/.zshrc'
 
 fpath+=~/.zfunc
+fpath+=(/opt/homebrew/share/zsh/site-functions(N))
 
 autoload -Uz compinit
 compinit
