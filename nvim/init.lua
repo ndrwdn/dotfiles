@@ -123,7 +123,7 @@ require("lazy").setup({
     { 'tpope/vim-repeat' },
     { 'tpope/vim-surround' },
     { 'tpope/vim-vinegar' },
-    { 'tpope/vim-vinegar' },
+    { 'tpope/vim-unimpaired' },
   },
   install = { colorscheme = { "solarized" } },
   checker = { enabled = true },
