@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 dotfiles=${HOME}/dotfiles
-files=".tmux.conf .gitconfig .vimrc .vim .zsh .zshrc .zfunc .emacs.d"
+files=".tmux.conf .gitconfig .vimrc .vim .zsh .zprofile .zshenv .zshrc .zfunc .emacs.d"
 
 echo "Symlinking dotfiles from ${dotfiles} to ${HOME}..."
 mkdir -p ${dotfiles}
