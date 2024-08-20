@@ -19,4 +19,6 @@ fi
 
 ln -s ${dotfiles}/broot ${HOME}/.config/broot
 
+ln -s ${dotfiles}/nvim ${HOME}/.config/nvim
+
 echo "Done"
