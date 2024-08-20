@@ -98,18 +98,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     {
-      'maxmx03/solarized.nvim',
-      lazy = false,
-      priority = 1000,
-      config = function()
-        vim.o.background = 'light'
-        vim.cmd.colorscheme 'solarized'
-      end,
-    },
-    {
       'f-person/auto-dark-mode.nvim',
       lazy = false,
-      priority = 1000,
+      priority = 1010,
       opts = {
         update_interval = 1000,
         set_dark_mode = function()
@@ -119,6 +110,15 @@ require("lazy").setup({
           vim.api.nvim_set_option_value("background", "light", {})
         end,
       },
+    },
+    {
+      'maxmx03/solarized.nvim',
+      lazy = false,
+      priority = 1000,
+      config = function()
+        vim.o.background = 'light'
+        vim.cmd.colorscheme 'solarized'
+      end,
     },
     { 'tpope/vim-repeat' },
     { 'tpope/vim-surround' },
