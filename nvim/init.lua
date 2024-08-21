@@ -60,7 +60,7 @@ vim.g.netrw_preview = 1
 -- -----------
 -- Space is our leader, must be set ahead of keybindings using it
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Make Shift-Tab unindent in insert mode
 vim.keymap.set('i', '<S-Tab>', '<C-d>')
