@@ -17,7 +17,7 @@ function command_exists() {
 alias ls="ls --color=auto"
 alias l='ls -alh'
 alias clean='sed -E -e "s/$(printf "\x1b")\[[0-9;]*[a-zA-Z]//g"'
-alias vv='vim -R --not-a-term -'
+alias vv='nvim -R -'
 alias gpr="git pull --rebase"
 alias gst="st"
 alias gob="git checkout \$(git branch --format '%(refname:short)' --sort '-committerdate' | sk)"
