@@ -122,7 +122,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
 
   function update-all() {
     echo -e "Starting at: $(date -Isec)\n"
-    update && echo; update-dotfiles; echo; update-vim && echo; update-emacs && echo; osx-check-updates
+    update && echo; update-dotfiles; echo; update-nvim && echo; update-emacs && echo; osx-check-updates
     echo -e "\nEnding at: $(date -Isec)"
   }
 
@@ -223,10 +223,10 @@ if command_exists entr; then
   }
 fi
 
-if command_exists vim; then
-  update-vim() {
-    echo "Updating vim plugins..."
-    vim +PlugUpdate +qall
+if command_exists nvim; then
+  update-nvim() {
+    echo "Updating nvim plugins..."
+    nvim --headless "+Lazy! update" +qa
   }
 fi
 
