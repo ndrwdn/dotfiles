@@ -74,6 +74,9 @@ vim.keymap.set('n', '<localleader>w', ':set wrap!<cr>', { silent = true })
 -- Shortcut to toggle paste
 vim.keymap.set('n', '<localleader>p', ':set paste!<cr>', { silent = true })
 
+-- Shortuct to clear current search
+vim.keymap.set('n', '', ':nohlsearch<cr>', { silent = true })
+
 -- Fix indentation for yaml files when commenting out a section
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "yaml",
