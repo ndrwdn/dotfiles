@@ -664,24 +664,24 @@ require("lazy").setup({
         end
       },
       {
-        "kdheepak/lazygit.nvim",
-        cmd = {
-          "LazyGit",
-          "LazyGitConfig",
-          "LazyGitCurrentFile",
-          "LazyGitFilter",
-          "LazyGitFilterCurrentFile",
-        },
-        -- optional for floating window border decoration
+        "NeogitOrg/neogit",
         dependencies = {
           "nvim-lua/plenary.nvim",
+          "sindrets/diffview.nvim",
+          "nvim-telescope/telescope.nvim",
         },
-        -- setting the keybinding for LazyGit with 'keys' is recommended in
-        -- order to load the plugin when the command is run for the first time
+        config = true,
         keys = {
-          { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+          {
+            "<leader>g",
+            "<cmd>Neogit<cr>",
+            desc = "Neogit",
+            mode = "n",
+            noremap = true,
+            silent = true
+          },
         }
-      },
+      }
   },
   install = { colorscheme = { "solarized" } },
   checker = { enabled = true },
