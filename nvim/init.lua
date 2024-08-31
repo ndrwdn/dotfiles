@@ -534,7 +534,10 @@ require("lazy").setup({
     },
     {
       "nvim-telescope/telescope.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "debugloop/telescope-undo.nvim",
+      },
       config = function()
         --[[
             NOTE: Scroll the preview window using <C-d> and <C-u>.
@@ -593,6 +596,7 @@ require("lazy").setup({
           ts.load_extension("fzf")
           ts.load_extension("jsonfly")
           ts.load_extension("ui-select")
+          ts.load_extension("undo")
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>",
           { desc = "search buffers" })
@@ -637,6 +641,8 @@ require("lazy").setup({
           { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
           vim.keymap.set("n", "<leader>x", "<Cmd>Telescope live_grep<CR>",
           { desc = "search text" })
+          vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>",
+          { desc = "undo" })
 
           vim.api.nvim_create_autocmd("FileType", {
             pattern = "TelescopeResults",
