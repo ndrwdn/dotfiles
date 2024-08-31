@@ -657,6 +657,14 @@ require("lazy").setup({
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make"
       },
+      {
+        "noahbald/grit-telescope.nvim",
+        -- NOTE: Keys are not provided by default
+        keys = {
+          { "<leader>fq", "<cmd>Telescope grit query<cr>", desc = "Telescope Grit Query" },
+          { "<leader>fQ", "<cmd>Telescope grit list<cr>", desc = "Telescope Grit User Patterns"},
+        },
+      },
       { "Myzel394/jsonfly.nvim" },
       {
         "nvim-telescope/telescope-ui-select.nvim",

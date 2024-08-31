@@ -24,3 +24,6 @@ fi
 if [[ -f "${HOME}/.zprofile.local" ]]; then
   source "${HOME}/.zprofile.local"
 fi
+
+# GritQL - https://github.com/getgrit/gritql - curl -fsSL https://docs.grit.io/install | bash
+[[ ":$PATH:" != *":$HOME/.grit/bin:"* ]] && export PATH="$HOME/.grit/bin:$PATH"
