@@ -39,6 +39,10 @@ bindkey "^ " autosuggest-execute
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='standout'
 
+if command_exists fzf; then
+  source <(fzf --zsh)
+fi
+
 if [[ -f "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local"
 fi
