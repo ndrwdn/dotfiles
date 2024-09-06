@@ -386,6 +386,9 @@ require("lazy").setup({
       ft = { "python" },
       config = function()
         require("dap-python").setup("python")
+        for _, c in pairs(require("dap").configurations.python) do
+          c["justMyCode"] = false
+        end
       end
     },
     {
