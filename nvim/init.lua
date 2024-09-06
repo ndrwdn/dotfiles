@@ -698,5 +698,4 @@ require("lazy").setup({
       }
   },
   install = { colorscheme = { "solarized" } },
-  checker = { enabled = true },
 })
