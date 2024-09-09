@@ -265,6 +265,35 @@ if command_exists gh; then
       echo "no results"
     fi
   }
+
+  update-repos-from-orgs() {
+    [[ $# -lt 1 ]] && >&2 echo "Usage: $0 <org_1> [<org_2> ... <org_n>]" && return 1
+
+    typeset -ra orgs=(${@})
+    typeset -r max_repos=50
+
+    for org in ${orgs[@]}; do
+      echo "Doing org: ${org}"
+      if [[ ! -d "${org}" ]]; then
+        mkdir "${org}"
+      fi
+      (
+      cd "${org}"
+      gh repo list "${org}" -L${max_repos} --json name | jq -r '.[].name' | sort | while read repo; do
+        echo "  Doing repo: ${repo}"
+        if [[ ! -d "${repo}" ]]; then
+          gh repo clone "${org}/${repo}"
+        else
+          (
+            cd "${repo}"
+            git fetch origin --prune
+            git merge --ff-only
+          )
+        fi
+      done
+      )
+    done
+  }
 fi
 
 if [[ -f "${HOME}/.zshenv.local" ]]; then
