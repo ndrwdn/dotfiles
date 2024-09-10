@@ -633,7 +633,7 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>ls",
           "<Cmd>lua require('telescope.builtin').lsp_document_symbols({show_line = true})<CR>",
           { desc = "search lsp document tree" })
-          vim.keymap.set("n", "<leader>p", "<Cmd>Telescope grep_string<CR>",
+          vim.keymap.set({"n", "v"}, "<leader>p", "<Cmd>Telescope grep_string<CR>",
           { desc = "search for keyword under cursor" })
           vim.keymap.set("n", "<leader>q", "<Cmd>Telescope quickfix<CR>",
           { desc = "search quickfix list" })
