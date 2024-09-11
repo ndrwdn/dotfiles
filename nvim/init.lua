@@ -698,7 +698,10 @@ require("lazy").setup({
             silent = true
           },
         }
-      }
+      },
+      {
+        "towolf/vim-helm",
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
