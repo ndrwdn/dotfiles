@@ -122,7 +122,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
 
   function update-all() {
     echo -e "Starting at: $(date -Isec)\n"
-    update && echo; update-dotfiles; echo; update-nvim && echo; update-emacs && echo; osx-check-updates
+    update && echo; update-dotfiles; echo; update-nvim && echo; osx-check-updates
     echo -e "\nEnding at: $(date -Isec)"
   }
 
