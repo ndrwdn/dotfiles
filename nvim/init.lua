@@ -215,7 +215,6 @@ require("lazy").setup({
     { 'tpope/vim-repeat' },
     { 'tpope/vim-surround' },
     { 'tpope/vim-vinegar' },
-    { 'tpope/vim-unimpaired' },
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
@@ -532,7 +531,31 @@ require("lazy").setup({
     {
       "lewis6991/gitsigns.nvim",
       config = function()
-        require('gitsigns').setup()
+        require('gitsigns').setup({
+          on_attach = function(bufnr)
+            local gitsigns = require('gitsigns')
+            local function map(mode, l, r, opts)
+              opts = opts or {}
+              opts.buffer = bufnr
+              vim.keymap.set(mode, l, r, opts)
+            end
+            map('n', ']c', function()
+              if vim.wo.diff then
+                vim.cmd.normal({']c', bang = true})
+              else
+                gitsigns.nav_hunk('next')
+              end
+            end)
+
+            map('n', '[c', function()
+              if vim.wo.diff then
+                vim.cmd.normal({'[c', bang = true})
+              else
+                gitsigns.nav_hunk('prev')
+              end
+            end)
+          end,
+        })
       end
     },
     {
@@ -711,7 +734,7 @@ require("lazy").setup({
         config = function()
           require("typescript-tools").setup({});
         end
-      }
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
