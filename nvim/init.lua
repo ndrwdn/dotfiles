@@ -735,6 +735,12 @@ require("lazy").setup({
           require("typescript-tools").setup({});
         end
       },
+      {
+        "ggandor/leap.nvim",
+        config = function()
+          require("leap").add_default_mappings(true)
+        end,
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
