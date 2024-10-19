@@ -794,6 +794,22 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader><leader>fe", "<Cmd>FormatEnable<CR>", { desc = "Re-enable autoformat-on-save" })
         end,
       },
+      {
+        "junegunn/fzf",
+      },
+      {
+        "junegunn/fzf.vim",
+        dependencies = {
+          "junegunn/fzf",
+        },
+      },
+      {
+        "kevinhwang91/nvim-bqf",
+        dependencies = {
+          "junegunn/fzf.vim",
+        },
+        ft = "qf",
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
