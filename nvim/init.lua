@@ -819,6 +819,9 @@ require("lazy").setup({
           signs = false,
         },
       },
+      {
+        "tpope/vim-dadbod"
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
