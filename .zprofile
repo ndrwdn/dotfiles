@@ -21,9 +21,9 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   export SKIM_CTRL_R_OPTS="--height=100% --with-nth=2.. --inline-info --preview='echo {} | sed -E -e \"s/^\s*[0-9]+\s\s//\"' --preview-window=down:5:wrap:hidden --regex --bind 'ctrl-v:toggle-preview' --no-sort"
 fi
 
+# GritQL - https://github.com/getgrit/gritql - curl -fsSL https://docs.grit.io/install | bash
+[[ ":$PATH:" != *":$HOME/.grit/bin:"* ]] && export PATH="$HOME/.grit/bin:$PATH"
+
 if [[ -f "${HOME}/.zprofile.local" ]]; then
   source "${HOME}/.zprofile.local"
 fi
-
-# GritQL - https://github.com/getgrit/gritql - curl -fsSL https://docs.grit.io/install | bash
-[[ ":$PATH:" != *":$HOME/.grit/bin:"* ]] && export PATH="$HOME/.grit/bin:$PATH"
