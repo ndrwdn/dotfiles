@@ -266,7 +266,7 @@ if command_exists gh; then
     fi
   }
 
-  update-repos-from-orgs() {
+  update-repos-from-github-orgs() {
     [[ $# -lt 1 ]] && >&2 echo "Usage: $0 <org_1> [<org_2> ... <org_n>]" && return 1
 
     typeset -ra orgs=(${@})
@@ -283,6 +283,37 @@ if command_exists gh; then
         echo "  Doing repo: ${repo}"
         if [[ ! -d "${repo}" ]]; then
           gh repo clone "${org}/${repo}"
+        else
+          (
+            cd "${repo}"
+            git fetch origin --prune
+            git merge --ff-only
+          )
+        fi
+      done
+      )
+    done
+  }
+fi
+
+if command_exists glab; then
+  update-repos-from-gitlab-groups() {
+    [[ $# -lt 1 ]] && >&2 echo "Usage: $0 <group_1> [<group_2> ... <group_n>]" && return 1
+
+    typeset -ra groups=(${@})
+    typeset -r max_repos=50
+
+    for group in ${groups[@]}; do
+      echo "Doing group: ${group}"
+      if [[ ! -d "${group}" ]]; then
+        mkdir "${group}"
+      fi
+      (
+      cd "${group}"
+      glab api "groups/${group}/projects" | jq -r '.[].path' | sort | while read repo; do
+        echo "  Doing repo: ${repo}"
+        if [[ ! -d "${repo}" ]]; then
+          glab repo clone "${group}/${repo}"
         else
           (
             cd "${repo}"
