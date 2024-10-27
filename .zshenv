@@ -30,6 +30,7 @@ alias j='jobs -l'
 alias f='fg'
 alias p=pretty-pwd
 alias nv=nvim
+alias vim=nvim
 
 if [[ "$(uname -s)" == "Darwin" ]] then
   alias emacs="emacs -nw"
