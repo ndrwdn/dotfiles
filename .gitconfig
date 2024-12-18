@@ -32,7 +32,7 @@
   ap = "!f(){ git merge -m $1 $1 && git branch -d $1 && git reset head~;  };f"
   apf = "!f(){ git merge -X theirs -m $1 $1 && git branch -d $1 && git reset head~;  };f"
   find = log --source --all -p -S
-  br = branch --format '%(committerdate:iso8601-local)|%(refname:short)' --sort 'committerdate'
+  br = "!f() { branch_name=$(git branch --format '%(committerdate:iso8601-strict) %(refname:short)' --sort 'committerdate' | fzf --tac --scheme=history --height=~100% | awk '{print $NF}'); git checkout ${branch_name}; };f"
   sa = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git remote add -f $clean_name $1; git subtree add --prefix $2 $clean_name master --squash; };f"
   su = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git fetch $clean_name master; git subtree pull --prefix $2 $clean_name master --squash; };f"
 [push]
