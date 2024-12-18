@@ -311,7 +311,7 @@ if command_exists glab; then
       fi
       (
       cd "${group}"
-      glab api "groups/${group}/projects" | jq -r '.[].path' | sort | while read repo; do
+      glab api --paginate "groups/${group}/projects" | jq -r '.[].path' | sort | while read repo; do
         echo "  Doing repo: ${repo}"
         if [[ ! -d "${repo}" ]]; then
           glab repo clone "${group}/${repo}"
