@@ -227,7 +227,7 @@ fi
 if command_exists nvim; then
   update-nvim() {
     echo "Updating nvim plugins..."
-    nvim --headless "+Lazy! update" +qa
+    nvim --headless "+Lazy! update|TSUpdate" +qa
   }
 fi
 
