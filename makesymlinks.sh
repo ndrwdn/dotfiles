@@ -21,4 +21,6 @@ ln -s ${dotfiles}/broot ${HOME}/.config/broot
 
 ln -s ${dotfiles}/nvim ${HOME}/.config/nvim
 
+ln -s ${dotfiles}/ghostty ${HOME}/.config/ghostty
+
 echo "Done"
