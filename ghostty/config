@@ -1,3 +1,4 @@
+copy-on-select = true
 font-size = 12
 fullscreen = true
 macos-non-native-fullscreen = visible-menu
