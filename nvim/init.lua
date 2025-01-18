@@ -822,6 +822,13 @@ require("lazy").setup({
       {
         "tpope/vim-dadbod"
       },
+      {
+        "echasnovski/mini.ai",
+        version = false,
+        config = function()
+          require('mini.ai').setup()
+        end
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
