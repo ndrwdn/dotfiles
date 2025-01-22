@@ -565,6 +565,7 @@ require("lazy").setup({
       dependencies = {
         "nvim-lua/plenary.nvim",
         "debugloop/telescope-undo.nvim",
+        "nvim-telescope/telescope-live-grep-args.nvim",
       },
       config = function()
         --[[
@@ -595,6 +596,7 @@ require("lazy").setup({
           ]]
           local actions = require("telescope.actions")
           local ts = require("telescope")
+          local lga_actions = require("telescope-live-grep-args.actions")
 
           ts.setup({
             defaults = {
@@ -618,13 +620,28 @@ require("lazy").setup({
                 '--hidden'
               },
             },
-            extensions = { heading = { treesitter = true } }
+            extensions = {
+              heading = {
+                treesitter = true
+              },
+              live_grep_args = {
+                auto_quoting = true,
+                mappings = {
+                  i = {
+                    ["<C-y>"] = lga_actions.quote_prompt(),
+                    ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                    ["<C-space>"] = actions.to_fuzzy_refine,
+                  },
+                },
+              },
+            }
           })
 
           ts.load_extension("fzf")
           ts.load_extension("jsonfly")
           ts.load_extension("ui-select")
           ts.load_extension("undo")
+          ts.load_extension("live_grep_args")
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>",
           { desc = "search buffers" })
@@ -667,7 +684,7 @@ require("lazy").setup({
           { desc = "search current buffer text" })
           vim.keymap.set("n", "<leader>s", "<Cmd>Telescope treesitter<CR>",
           { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
-          vim.keymap.set("n", "<leader>x", "<Cmd>Telescope live_grep<CR>",
+          vim.keymap.set("n", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
           { desc = "search text" })
           vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>",
           { desc = "undo" })
