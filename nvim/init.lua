@@ -556,6 +556,8 @@ require("lazy").setup({
                 gitsigns.nav_hunk('prev')
               end
             end)
+
+            map('n', 'z', "<Cmd>Gitsigns<CR>")
           end,
         })
       end
