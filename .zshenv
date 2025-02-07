@@ -43,7 +43,7 @@ fi
 
 # Functions
 update-found-repos() {
-  for repo in ${$(fd --no-ignore --hidden --type d '\.git$')/\/\.git/}; do
+  for repo in ${$(fd --no-ignore --hidden --type d '\.git$' | sort)/\/\.git/}; do
     echo "Updating: ${repo}"
     (
     cd "${repo}"
