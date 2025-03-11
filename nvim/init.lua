@@ -403,7 +403,7 @@ require("lazy").setup({
     {
       "neovim/nvim-lspconfig",
       config = function ()
-        require'lspconfig'.pylsp.setup({
+        require'lspconfig'.basedpyright.setup({
           on_attach = function(client, bufnr)
             mappings(client, bufnr)
             require("illuminate").on_attach(client)
