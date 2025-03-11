@@ -568,6 +568,7 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
         "debugloop/telescope-undo.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
+        "jmacadie/telescope-hierarchy.nvim",
       },
       config = function()
         --[[
@@ -644,6 +645,7 @@ require("lazy").setup({
           ts.load_extension("ui-select")
           ts.load_extension("undo")
           ts.load_extension("live_grep_args")
+          ts.load_extension("hierarchy")
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>",
           { desc = "search buffers" })
