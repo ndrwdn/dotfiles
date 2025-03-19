@@ -569,6 +569,8 @@ require("lazy").setup({
         "debugloop/telescope-undo.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
         "jmacadie/telescope-hierarchy.nvim",
+        "kkharji/sqlite.lua",
+        "nvim-telescope/telescope-smart-history.nvim",
       },
       config = function()
         --[[
@@ -608,7 +610,9 @@ require("lazy").setup({
               mappings = {
                 i = {
                   ["<esc>"] = actions.close,
-                  ["<C-o>"] = actions.send_selected_to_qflist
+                  ["<C-o>"] = actions.send_selected_to_qflist,
+                  ["<C-Down>"] = actions.cycle_history_next,
+                  ["<C-Up>"] = actions.cycle_history_prev,
                 }
               },
               scroll_strategy = "limit",
@@ -621,6 +625,15 @@ require("lazy").setup({
                 '--column',
                 '--smart-case',
                 '--hidden'
+              },
+              history = {
+                path = '~/.local/share/nvim/telescope_history.sqlite3',
+                limit = 1000,
+              },
+              cache_picker = {
+                num_pickers = 5,
+                limit_entries = 500,
+                ignore_empty_prompt = true,
               },
             },
             extensions = {
@@ -646,6 +659,7 @@ require("lazy").setup({
           ts.load_extension("undo")
           ts.load_extension("live_grep_args")
           ts.load_extension("hierarchy")
+          ts.load_extension("smart_history")
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>",
           { desc = "search buffers" })
@@ -692,6 +706,8 @@ require("lazy").setup({
           { desc = "search text" })
           vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>",
           { desc = "undo" })
+          vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
+          vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
 
           vim.api.nvim_create_autocmd("FileType", {
             pattern = "TelescopeResults",
