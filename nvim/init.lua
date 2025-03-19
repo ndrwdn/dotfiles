@@ -571,6 +571,8 @@ require("lazy").setup({
         "jmacadie/telescope-hierarchy.nvim",
         "kkharji/sqlite.lua",
         "nvim-telescope/telescope-smart-history.nvim",
+        "jonarrien/telescope-cmdline.nvim",
+        "OliverChao/telescope-picker-list.nvim",
       },
       config = function()
         --[[
@@ -660,6 +662,8 @@ require("lazy").setup({
           ts.load_extension("live_grep_args")
           ts.load_extension("hierarchy")
           ts.load_extension("smart_history")
+          ts.load_extension("cmdline")
+          ts.load_extension("picker_list") -- must always be last
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>",
           { desc = "search buffers" })
@@ -708,6 +712,8 @@ require("lazy").setup({
           { desc = "undo" })
           vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
           vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
+          vim.keymap.set("n", "Q", "<Cmd>Telescope cmdline<CR>", { noremap = true, desc = "telescope command line" })
+          vim.keymap.set("n", "<leader>pl", "<Cmd>Telescope picker_list<CR>", { desc = "list telescope pickers" })
 
           vim.api.nvim_create_autocmd("FileType", {
             pattern = "TelescopeResults",
