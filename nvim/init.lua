@@ -885,12 +885,13 @@ require("lazy").setup({
               -- Jump forwards/backwards with '{' and '}'
               vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
               vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+              vim.cmd("highlight! default link AerialLine CursorLineNr")
             end,
           })
           -- You probably also want to set a keymap to toggle aerial
           vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
         end
-      }
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
