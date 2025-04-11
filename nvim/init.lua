@@ -83,6 +83,20 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal expandtab indentkeys-=0#"
 })
 
+function get_visual_selection()
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+  lines[1] = string.sub(lines[1], s_start[3], -1)
+  if n_lines == 1 then
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+  else
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+  end
+  return table.concat(lines, '\n')
+end
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -697,8 +711,6 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>ls",
           "<Cmd>lua require('telescope.builtin').lsp_document_symbols({show_line = true})<CR>",
           { desc = "search lsp document tree" })
-          vim.keymap.set({"n", "v"}, "<leader>p", "<Cmd>Telescope grep_string<CR>",
-          { desc = "search for keyword under cursor" })
           vim.keymap.set("n", "<leader>q", "<Cmd>Telescope quickfix<CR>",
           { desc = "search quickfix list" })
           vim.keymap.set("n", "<leader>r",
@@ -706,8 +718,8 @@ require("lazy").setup({
           { desc = "search current buffer text" })
           vim.keymap.set("n", "<leader>s", "<Cmd>Telescope treesitter<CR>",
           { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
-          vim.keymap.set("n", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-          { desc = "search text" })
+          vim.keymap.set("n", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "search text" })
+          vim.keymap.set("v", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args({default_text = get_visual_selection():gsub('\\n', ' ')})<CR>", { desc = "search selected text" })
           vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>",
           { desc = "undo" })
           vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
