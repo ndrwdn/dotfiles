@@ -40,6 +40,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='standout'
 
 if command_exists fzf; then
+  export FZF_CTRL_R_OPTS="--wrap"
   source <(fzf --zsh)
 fi
 
