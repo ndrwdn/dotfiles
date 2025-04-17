@@ -679,49 +679,24 @@ require("lazy").setup({
           ts.load_extension("cmdline")
           ts.load_extension("picker_list") -- must always be last
 
-          vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>",
-          { desc = "search buffers" })
-          vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>",
-          { desc = "search Ex commands" })
-          vim.keymap.set("n", "<leader>f",
-          "<Cmd>Telescope find_files hidden=true<CR>",
-          { desc = "search files" })
-          vim.keymap.set("n", "<leader>F",
-          "<Cmd>Telescope find_files hidden=true cwd=%:h<CR>",
-          { desc = "search files in current directory" })
-          vim.keymap.set("n", "<leader>h", "<Cmd>Telescope help_tags<CR>",
-          { desc = "search help" })
-          vim.keymap.set("n", "<leader>i", "<Cmd>Telescope builtin<CR>",
-          { desc = "search builtins" })
-          vim.keymap.set("n", "<leader>j", "<Cmd>Telescope jsonfly<CR>",
-          { desc = "search current JSON structure" })
-          vim.keymap.set("n", "<leader>k", "<Cmd>Telescope keymaps<CR>",
-          { desc = "search key mappings" })
-          vim.keymap.set("n", "<leader>ld", "<Cmd>Telescope diagnostics<CR>",
-          { desc = "search lsp diagnostics" })
-          vim.keymap.set("n", "<leader>li",
-          "<Cmd>Telescope lsp_incoming_calls<CR>",
-          { desc = "search lsp incoming calls" })
-          vim.keymap.set("n", "<leader>lo",
-          "<Cmd>Telescope lsp_outgoing_calls<CR>",
-          { desc = "search lsp outgoing calls" })
-          vim.keymap.set("n", "<leader>lr",
-          "<Cmd>Telescope lsp_references<CR>",
-          { desc = "search lsp code reference" })
-          vim.keymap.set("n", "<leader>ls",
-          "<Cmd>lua require('telescope.builtin').lsp_document_symbols({show_line = true})<CR>",
-          { desc = "search lsp document tree" })
-          vim.keymap.set("n", "<leader>q", "<Cmd>Telescope quickfix<CR>",
-          { desc = "search quickfix list" })
-          vim.keymap.set("n", "<leader>r",
-          "<Cmd>Telescope current_buffer_fuzzy_find<CR>",
-          { desc = "search current buffer text" })
-          vim.keymap.set("n", "<leader>s", "<Cmd>Telescope treesitter<CR>",
-          { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
+          vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>", { desc = "search buffers" }) vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>", { desc = "search Ex commands" })
+          vim.keymap.set("n", "<leader>f", "<Cmd>Telescope find_files hidden=true<CR>", { desc = "search files" })
+          vim.keymap.set("n", "<leader>F", "<Cmd>Telescope find_files hidden=true cwd=%:h<CR>", { desc = "search files in current directory" })
+          vim.keymap.set("n", "<leader>h", "<Cmd>Telescope help_tags<CR>", { desc = "search help" })
+          vim.keymap.set("n", "<leader>i", "<Cmd>Telescope builtin<CR>", { desc = "search builtins" })
+          vim.keymap.set("n", "<leader>j", "<Cmd>Telescope jsonfly<CR>", { desc = "search current JSON structure" })
+          vim.keymap.set("n", "<leader>k", "<Cmd>Telescope keymaps<CR>", { desc = "search key mappings" })
+          vim.keymap.set("n", "<leader>ld", "<Cmd>Telescope diagnostics<CR>", { desc = "search lsp diagnostics" })
+          vim.keymap.set("n", "<leader>li", "<Cmd>Telescope lsp_incoming_calls<CR>", { desc = "search lsp incoming calls" })
+          vim.keymap.set("n", "<leader>lo", "<Cmd>Telescope lsp_outgoing_calls<CR>", { desc = "search lsp outgoing calls" })
+          vim.keymap.set("n", "<leader>lr", "<Cmd>Telescope lsp_references<CR>", { desc = "search lsp code reference" })
+          vim.keymap.set("n", "<leader>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols({show_line = true})<CR>", { desc = "search lsp document tree" })
+          vim.keymap.set("n", "<leader>q", "<Cmd>Telescope quickfix<CR>", { desc = "search quickfix list" })
+          vim.keymap.set("n", "<leader>r", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "search current buffer text" })
+          vim.keymap.set("n", "<leader>s", "<Cmd>Telescope treesitter<CR>", { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
           vim.keymap.set("n", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "search text" })
           vim.keymap.set("v", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args({default_text = get_visual_selection():gsub('\\n', ' ')})<CR>", { desc = "search selected text" })
-          vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>",
-          { desc = "undo" })
+          vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>", { desc = "undo" })
           vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
           vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
           vim.keymap.set("n", "Q", "<Cmd>Telescope cmdline<CR>", { noremap = true, desc = "telescope command line" })
