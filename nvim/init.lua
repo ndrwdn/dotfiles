@@ -239,15 +239,16 @@ require("lazy").setup({
       },
       config = function()
         vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-        vim.keymap.set("n", "<leader><Tab>", "<Cmd>Neotree toggle reveal_force_cwd<CR>", { desc = "open file tree, force reveal" })
-        vim.keymap.set("n", "<leader><leader><Tab>", "<Cmd>Neotree reveal_force_cwd<CR>", { desc = "reveal current file in tree" })
+        vim.keymap.set("n", "<leader><Tab>", "<Cmd>Neotree toggle reveal<CR>", { desc = "toggle floating file tree" })
         require("neo-tree").setup({
           filesystem = {
             filtered_items = {
               hide_dotfiles = false,
-              hide_gitignored = true
+              hide_gitignored = true,
+              hide_by_name = {
+                ".git",
+              },
             },
-            hijack_netrw_behavior = "open_current"
           },
           reveal = true,
           follow_current_file = {
@@ -255,6 +256,7 @@ require("lazy").setup({
           },
           use_libuv_file_watcher = true,
           window = {
+            position = "float",
             mappings = {
               ["s"] = "split_with_window_picker",
               ["v"] = "vsplit_with_window_picker"
