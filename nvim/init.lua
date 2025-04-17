@@ -587,6 +587,7 @@ require("lazy").setup({
         "nvim-telescope/telescope-smart-history.nvim",
         "jonarrien/telescope-cmdline.nvim",
         "OliverChao/telescope-picker-list.nvim",
+        "nvim-telescope/telescope-frecency.nvim",
       },
       config = function()
         --[[
@@ -623,6 +624,9 @@ require("lazy").setup({
             defaults = {
               layout_strategy = "vertical",
               layout_config = { height = 0.75 },
+              file_ignore_patterns = {
+                ".git/",
+              },
               mappings = {
                 i = {
                   ["<esc>"] = actions.close,
@@ -666,6 +670,9 @@ require("lazy").setup({
                   },
                 },
               },
+              frecency = {
+                enabled_prompt_mappings = true,
+              },
             }
           })
 
@@ -677,11 +684,12 @@ require("lazy").setup({
           ts.load_extension("hierarchy")
           ts.load_extension("smart_history")
           ts.load_extension("cmdline")
+          ts.load_extension("frecency")
           ts.load_extension("picker_list") -- must always be last
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>", { desc = "search buffers" }) vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>", { desc = "search Ex commands" })
-          vim.keymap.set("n", "<leader>f", "<Cmd>Telescope find_files hidden=true<CR>", { desc = "search files" })
-          vim.keymap.set("n", "<leader>F", "<Cmd>Telescope find_files hidden=true cwd=%:h<CR>", { desc = "search files in current directory" })
+          vim.keymap.set("n", "<leader>f", "<Cmd>Telescope frecency workspace=CWD<CR>", { desc = "search files using frecency" })
+          vim.keymap.set("n", "<leader>F", "<Cmd>Telescope find_files hidden=true<CR>", { desc = "search files using find files" })
           vim.keymap.set("n", "<leader>h", "<Cmd>Telescope help_tags<CR>", { desc = "search help" })
           vim.keymap.set("n", "<leader>i", "<Cmd>Telescope builtin<CR>", { desc = "search builtins" })
           vim.keymap.set("n", "<leader>j", "<Cmd>Telescope jsonfly<CR>", { desc = "search current JSON structure" })
