@@ -38,6 +38,7 @@
   brdd = "!f() { branch_name=$(git br | fzf --tac --scheme=history --height=~100% | awk '{print $NF}'); git branch -D ${branch_name}; };f"
   sa = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git remote add -f $clean_name $1; git subtree add --prefix $2 $clean_name master --squash; };f"
   su = "!f() { clean_name=$(echo $1 | sed -e 's/[^A-Za-z0-9._-]/_/g'); git fetch $clean_name master; git subtree pull --prefix $2 $clean_name master --squash; };f"
+  pu = "!f() { cb=$(git rev-parse --abbrev-ref HEAD); git push -u origin $cb; };f"
 [push]
   default = simple
 [diff "blackbox"]
