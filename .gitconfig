@@ -18,7 +18,7 @@
   dc = diff --cached
   cln = clean -fxdi
   cb = fetch --prune
-  lg = log --pretty=format:'%C(auto)%h %>(13)%ar %>(13)%cr [%C(cyan)%<(15,trunc)%an%C(reset)|%C("#9fe3f2")%<(15,trunc)%ae%C(reset)] %<(76,trunc)%s%C(auto)%d'
+  lg = log --pretty=format:'%C(auto)%h %>(14,trunc)%ar %>(14,trunc)%cr [%C(cyan)%<(15,trunc)%an%C(reset)|%C("#9fe3f2")%<(15,trunc)%ae%C(reset)] %<(76,trunc)%s%C(auto)%d'
   lgo = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar (%cr) [%C(cyan)%an %C("#9fe3f2")<%ae>%C(reset)%C(auto)]% s'
   lgm = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%ar (%cr) [%C(cyan)%an %C("#9fe3f2")<%ae>%C(reset)%C(auto)]%n%s%n%+b%-%n'
   lgd = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %C(auto)%aI (%cI) [%C(cyan)%an %C("#9fe3f2")<%ae>%C(reset)%C(auto)]% s'
