@@ -752,12 +752,19 @@ require("lazy").setup({
           "sindrets/diffview.nvim",
           "nvim-telescope/telescope.nvim",
         },
-        config = true,
         keys = {
           {
-            "<leader>g",
+            "<leader>gg",
             "<cmd>Neogit<cr>",
             desc = "Neogit",
+            mode = "n",
+            noremap = true,
+            silent = true
+          },
+          {
+            "<leader>gl",
+            "<cmd>lua require('neogit').action('log', 'log_current')()<cr>",
+            desc = "Neogit log current branch",
             mode = "n",
             noremap = true,
             silent = true
