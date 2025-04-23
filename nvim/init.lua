@@ -689,7 +689,8 @@ require("lazy").setup({
           ts.load_extension("frecency")
           ts.load_extension("picker_list") -- must always be last
 
-          vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers<CR>", { desc = "search buffers" }) vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>", { desc = "search Ex commands" })
+          vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers sort_lastused=true sort_mru=true<CR>", { desc = "search buffers" })
+          vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>", { desc = "search Ex commands" })
           vim.keymap.set("n", "<leader>f", "<Cmd>Telescope frecency workspace=CWD<CR>", { desc = "search files using frecency" })
           vim.keymap.set("n", "<leader>F", "<Cmd>Telescope find_files hidden=true<CR>", { desc = "search files using find files" })
           vim.keymap.set("n", "<leader>h", "<Cmd>Telescope help_tags<CR>", { desc = "search help" })
