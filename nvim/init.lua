@@ -84,17 +84,58 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 function get_visual_selection()
-  local s_start = vim.fn.getpos("'<")
-  local s_end = vim.fn.getpos("'>")
-  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
-  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-  lines[1] = string.sub(lines[1], s_start[3], -1)
-  if n_lines == 1 then
-    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+  local modeInfo = vim.api.nvim_get_mode()
+  local mode = modeInfo.mode
+
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local cline, ccol = cursor[1], cursor[2]
+  local vline, vcol = vim.fn.line('v'), vim.fn.col('v')
+
+  local sline, scol
+  local eline, ecol
+  if cline == vline then
+    if ccol <= vcol then
+      sline, scol = cline, ccol
+      eline, ecol = vline, vcol
+      scol = scol + 1
+    else
+      sline, scol = vline, vcol
+      eline, ecol = cline, ccol
+      ecol = ecol + 1
+    end
+  elseif cline < vline then
+    sline, scol = cline, ccol
+    eline, ecol = vline, vcol
+    scol = scol + 1
   else
-    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+    sline, scol = vline, vcol
+    eline, ecol = cline, ccol
+    ecol = ecol + 1
   end
-  return table.concat(lines, '\n')
+
+  if mode == "V" or mode == "CTRL-V" or mode == "\22" then
+    scol = 1
+    ecol = nil
+  end
+
+  local lines = vim.api.nvim_buf_get_lines(0, sline - 1, eline, 0)
+  if #lines == 0 then return end
+
+  local startText, endText
+  if #lines == 1 then
+    startText = string.sub(lines[1], scol, ecol)
+  else
+    startText = string.sub(lines[1], scol)
+    endText = string.sub(lines[#lines], 1, ecol)
+  end
+
+  local selection = {startText}
+  if #lines > 2 then
+    vim.list_extend(selection, vim.list_slice(lines, 2, #lines - 1))
+  end
+  table.insert(selection, endText)
+
+  return selection
 end
 
 -- Bootstrap lazy.nvim
@@ -692,6 +733,7 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers sort_lastused=true sort_mru=true<CR>", { desc = "search buffers" })
           vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>", { desc = "search Ex commands" })
           vim.keymap.set("n", "<leader>f", "<Cmd>Telescope frecency workspace=CWD<CR>", { desc = "search files using frecency" })
+          vim.keymap.set("v", "<leader>f", function() require('telescope').extensions.frecency.frecency({ workspace= 'CWD', default_text = table.concat(get_visual_selection(), ' ') }) end, { desc = "search files using frecency (visual, pre-populate)" })
           vim.keymap.set("n", "<leader>F", "<Cmd>Telescope find_files hidden=true<CR>", { desc = "search files using find files" })
           vim.keymap.set("n", "<leader>h", "<Cmd>Telescope help_tags<CR>", { desc = "search help" })
           vim.keymap.set("n", "<leader>i", "<Cmd>Telescope builtin<CR>", { desc = "search builtins" })
@@ -706,7 +748,7 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>r", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "search current buffer text" })
           vim.keymap.set("n", "<leader>s", "<Cmd>Telescope treesitter<CR>", { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
           vim.keymap.set("n", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "search text" })
-          vim.keymap.set("v", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args({default_text = get_visual_selection():gsub('\\n', ' ')})<CR>", { desc = "search selected text" })
+          vim.keymap.set("v", "<leader>x", function() require('telescope').extensions.live_grep_args.live_grep_args({ default_text = table.concat(get_visual_selection(), ' ') }) end, { desc = "search selected text" })
           vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>", { desc = "undo" })
           vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
           vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
