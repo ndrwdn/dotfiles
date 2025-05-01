@@ -812,6 +812,17 @@ require("lazy").setup({
             noremap = true,
             silent = true
           },
+          {
+            "<leader>gf",
+            function()
+              local file = vim.fn.expand('%')
+              require('neogit').action('log', 'log_current', { '--', file })()
+            end,
+            desc = "Neogit log current file",
+            mode = "n",
+            noremap = true,
+            silent = true
+          },
         }
       },
       {
