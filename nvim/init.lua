@@ -364,73 +364,73 @@ require("lazy").setup({
       "mfussenegger/nvim-dap",
       keys = {
         {
-          "<leader><leader>bc",
+          "<leader>dc",
           function() require('dap').continue() end,
-          desc = "start debugging",
+          desc = "dap - start/continue debugging",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bx",
+          "<leader>dx",
           function() require('dap').close() end,
-          desc = "stop debugging",
+          desc = "dap - stop debugging",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bo",
+          "<leader>do",
           function() require('dap').step_over() end,
-          desc = "step over",
+          desc = "dap - step over",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bi",
+          "<leader>di",
           function() require('dap').step_into() end,
-          desc = "step into",
+          desc = "dap - step into",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bt",
+          "<leader>dt",
           function() require('dap').step_out() end,
-          desc = "step out",
+          desc = "dap - step out",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bb",
+          "<leader>db",
           function() require('dap').toggle_breakpoint() end,
-          desc = "toggle breakpoint",
+          desc = "dap - toggle breakpoint",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bv",
+          "<leader>dv",
           function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-          desc = "set breakpoint condition",
+          desc = "dap - set breakpoint condition",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>br",
+          "<leader>dr",
           function() require('dap').repl.open() end,
-          desc = "open repl",
+          desc = "dap - open repl",
           mode = "n",
           noremap = true,
           silent = true
         },
         {
-          "<leader><leader>bu",
+          "<leader>du",
           function() require('dapui').toggle() end,
-          desc = "toggle dap ui",
+          desc = "dap - toggle dap ui",
           mode = "n",
           noremap = true,
           silent = true
