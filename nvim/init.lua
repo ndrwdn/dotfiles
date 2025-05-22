@@ -470,7 +470,7 @@ require("lazy").setup({
     },
     {
       "mrcjkb/rustaceanvim",
-      version = "^4",
+      version = "^6",
       ft = { "rust" },
       config = function()
         vim.g.rustaceanvim = {
