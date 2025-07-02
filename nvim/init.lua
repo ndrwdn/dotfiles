@@ -512,14 +512,15 @@ require("lazy").setup({
               ['rust-analyzer'] = {
                 assist = {
                   importEnforceGranularity = true,
-                  importPrefix = "create"
+                  importPrefix = "crate"
                 },
                 cargo = { allFeatures = true },
-                checkOnSave = {
+                check = {
                   -- default: `cargo check`
                   command = "clippy",
-                  allFeatures = true
+                  features = "all",
                 },
+                checkOnSave = true,
                 inlayHints = {
                   lifetimeElisionHints = {
                     enable = true,
