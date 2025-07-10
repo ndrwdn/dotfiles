@@ -81,6 +81,7 @@ if [[ "$(uname -s)" == "Darwin" ]] then
   function show-brew-packages-from-update() {
     (tee >(sed -E -n -e '/^==> (New )?Formulae/,/(==>|^\s*$)/p') >(sed -E -n -e '/^==> (New )?Casks/,/(==>|^\s*$)/p') >/dev/null) |
       rg -v '^==> ' |
+      sed -E -e 's/: .*$//' |
       tr '\n' ' ' |
       show-brew-packages
   }
