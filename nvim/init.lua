@@ -28,8 +28,8 @@ vim.o.splitright = true
 vim.opt.shortmess:append("I")
 
 -- Statusline and window title
-vim.o.statusline = [[%t %3(%m%)%4(%r%)%y [%{&ff}]%=Line: %-10(%l/%L%) Col: %-4(%c%) Buf: %-2(%n%) %11([%3b][0x%02B]%)]]
-vim.o.titlestring = [[%t %m%( (%{expand("%:p:~:h")})%)]]
+vim.o.statusline = [[%{expand('%:~:.')!=#''?expand('%:~:.'):'[No Name]'} %3(%m%)%4(%r%)%y [%{&ff}]%=Line: %-10(%l/%L%) Col: %-4(%c%) Buf: %-2(%n%) %11([%3b][0x%02B]%)]]
+vim.o.titlestring = [[%{expand('%:~:.')!=#''?expand('%:~:.'):'[No Name]'} %m%( (%{expand("%:p:~:h")})%)]]
 
 -- Command-line auto-completion
 vim.o.wildmode = 'full:lastused'
