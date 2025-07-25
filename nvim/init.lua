@@ -953,6 +953,9 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
         end
       },
+      {
+        "tpope/vim-abolish",
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
