@@ -956,6 +956,11 @@ require("lazy").setup({
       {
         "tpope/vim-abolish",
       },
+      {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = "Trouble",
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
