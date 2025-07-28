@@ -961,6 +961,12 @@ require("lazy").setup({
         opts = {},
         cmd = "Trouble",
       },
+      {
+        "yorickpeterse/nvim-pqf",
+        config = function ()
+          require('pqf').setup()
+        end,
+      },
   },
   install = { colorscheme = { "solarized" } },
 })
