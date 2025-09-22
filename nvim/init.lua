@@ -460,7 +460,8 @@ require("lazy").setup({
     {
       "neovim/nvim-lspconfig",
       config = function ()
-        require'lspconfig'.basedpyright.setup({
+        vim.lsp.enable('basedpyright')
+        vim.lsp.config('basedpyright', {
           on_attach = function(client, bufnr)
             mappings(client, bufnr)
             require("illuminate").on_attach(client)
