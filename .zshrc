@@ -15,6 +15,7 @@ bindkey -v
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
+bindkey '^[^M' self-insert-unmeta
 
 autoload -U edit-command-line
 zle -N edit-command-line
