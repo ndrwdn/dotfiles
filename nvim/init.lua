@@ -845,7 +845,11 @@ require("lazy").setup({
       {
         "ggandor/leap.nvim",
         config = function()
-          require("leap").add_default_mappings(true)
+          vim.keymap.set({"n", "x", "o"}, "s" , "<Plug>(leap-forward)"      , { desc = "leap forward" }      )
+          vim.keymap.set({"n", "x", "o"}, "S" , "<Plug>(leap-backward)"     , { desc = "leap backward" }     )
+          vim.keymap.set({"n",         }, "gs", "<Plug>(leap-from-window)"  , { desc = "leap from window" }  )
+          vim.keymap.set({"x", "o"     }, "x" , "<Plug>(leap-forward-till)" , { desc = "leap forward till" } )
+          vim.keymap.set({"x", "o"     }, "X" , "<Plug>(leap-backward-till)", { desc = "leap backward till" })
         end,
       },
       {
