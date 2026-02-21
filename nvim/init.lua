@@ -212,7 +212,7 @@ local function mappings(client, bufnr)
   vim.keymap.set('n', ']s', diag_show, diag_show_opts)
   vim.keymap.set('n', ']x', diag_next, diag_next_opts)
   vim.keymap.set('n', 'K', buf_hover, opts)
-  vim.keymap.set('n', 'ga', buf_code_action, buf_code_action_opts)
+  vim.keymap.set({"n", "x"}, 'ga', buf_code_action, buf_code_action_opts)
   vim.keymap.set('n', 'gi', buf_incoming_calls, buf_incoming_calls_opts)
   vim.keymap.set('n', 'gd', buf_doc_sym, buf_doc_sym_opts)
   vim.keymap.set('n', 'gh', buf_sig_help, buf_sig_help_opts)
@@ -471,7 +471,7 @@ require("lazy").setup({
     },
     {
       "mrcjkb/rustaceanvim",
-      version = "^6",
+      version = "^8",
       ft = { "rust" },
       config = function()
         vim.g.rustaceanvim = {
