@@ -459,20 +459,28 @@ require("lazy").setup({
     },
     {
       "neovim/nvim-lspconfig",
+      dependencies = {
+        "hrsh7th/nvim-cmp"
+      },
       config = function ()
-        vim.lsp.enable('basedpyright')
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
         vim.lsp.config('basedpyright', {
+          capabilities = capabilities,
           on_attach = function(client, bufnr)
             mappings(client, bufnr)
             require("illuminate").on_attach(client)
           end
         })
+        vim.lsp.enable('basedpyright')
       end
     },
     {
       "mrcjkb/rustaceanvim",
       version = "^8",
       ft = { "rust" },
+      dependencies = {
+        "hrsh7th/nvim-cmp"
+      },
       config = function()
         vim.g.rustaceanvim = {
           tools = {
@@ -536,13 +544,20 @@ require("lazy").setup({
     },
     {
       "hrsh7th/nvim-cmp",
+      dependencies = {
+        "onsails/lspkind.nvim",
+      },
       config = function()
         local cmp = require("cmp")
+        local lspkind = require("lspkind")
         cmp.setup({
           experimental = { ghost_text = true },
           window = {
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered()
+          },
+          formatting = {
+            format = lspkind.cmp_format(),
           },
           mapping = {
             ["<Up>"] = cmp.mapping.select_prev_item(),
