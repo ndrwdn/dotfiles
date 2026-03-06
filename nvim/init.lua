@@ -491,7 +491,6 @@ require("lazy").setup({
           capabilities = capabilities,
           on_attach = function(client, bufnr)
             mappings(client, bufnr)
-            require("illuminate").on_attach(client)
           end
         })
         vim.lsp.enable('basedpyright')
@@ -527,7 +526,6 @@ require("lazy").setup({
           server = {
             on_attach = function(client, bufnr)
               mappings(client, bufnr)
-              require("illuminate").on_attach(client)
 
               local bufopts = {
                 noremap = true,
@@ -653,7 +651,24 @@ require("lazy").setup({
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-cmdline" },
     { "hrsh7th/cmp-path" },
-    { "RRethy/vim-illuminate" },
+    {
+      "RRethy/vim-illuminate",
+      config = function()
+        require('illuminate').configure({})
+        -- change the highlight style
+        vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+        vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+          pattern = { "*" },
+          callback = function(ev)
+            vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+            vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+            vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+          end
+        })
+      end,
+    },
     {
       "lewis6991/gitsigns.nvim",
       config = function()
