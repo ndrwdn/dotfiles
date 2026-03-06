@@ -536,29 +536,58 @@ require("lazy").setup({
               }
               vim.keymap.set('n', '<leader><leader>rr',
               "<Cmd>RustLsp runnables<CR>", bufopts)
-              vim.keymap.set('n', 'K',
+              vim.keymap.set({'n', 'x'}, 'K',
               "<Cmd>RustLsp hover actions<CR>", bufopts)
             end,
             settings = {
               -- rust-analyzer language server configuration
               ['rust-analyzer'] = {
                 assist = {
-                  importEnforceGranularity = true,
-                  importPrefix = "crate"
+                  preferSelf = true,
                 },
-                cargo = { allFeatures = true },
+                cargo = {
+                  features = "all",
+                },
                 check = {
                   -- default: `cargo check`
                   command = "clippy",
                   features = "all",
                 },
-                checkOnSave = true,
+                completion = {
+                  privateEditable = {
+                    enable = true,
+                  },
+                },
                 inlayHints = {
+                  discriminantHints = {
+                    enable = true,
+                  },
                   lifetimeElisionHints = {
                     enable = true,
                     useParameterNames = true
-                  }
-                }
+                  },
+                  parameterHints = {
+                    missingArguments = {
+                      enable = true,
+                    }
+                  },
+                },
+                lens = {
+                  references = {
+                    adt = {
+                      enable = true,
+                    },
+                    enumVariant = {
+                      enable = true,
+                    },
+                    method = {
+                      enable = true,
+                    },
+                    trait = {
+                      enable = true,
+                    },
+                  },
+                },
               }
             }
           }
