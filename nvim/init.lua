@@ -331,7 +331,7 @@ require("lazy").setup({
     },
     {
       "s1n7ax/nvim-window-picker",
-      version = "v1.*",
+      version = "v2.*",
       config = function()
         local picker = require("window-picker")
         picker.setup({ fg_color = "#000000" })
