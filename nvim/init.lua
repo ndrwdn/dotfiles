@@ -1058,6 +1058,19 @@ require("lazy").setup({
           require('pqf').setup()
         end,
       },
+    {
+      'TrevorS/uuid-nvim',
+      config = function()
+        local uuid = require('uuid-nvim')
+        uuid.setup({
+          case = 'lower',
+          insert = 'before',
+          quotes = 'none',
+        })
+
+        vim.keymap.set('i', '<M-u>', uuid.insert_v4)
+      end
+    },
   },
   install = { colorscheme = { "solarized" } },
 })
