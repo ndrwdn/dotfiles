@@ -749,6 +749,7 @@ require("lazy").setup({
         "jonarrien/telescope-cmdline.nvim",
         "OliverChao/telescope-picker-list.nvim",
         "nvim-telescope/telescope-frecency.nvim",
+        "gbprod/yanky.nvim",
       },
       config = function()
         --[[
@@ -846,6 +847,7 @@ require("lazy").setup({
           ts.load_extension("smart_history")
           ts.load_extension("cmdline")
           ts.load_extension("frecency")
+          ts.load_extension("yank_history")
           ts.load_extension("picker_list") -- must always be last
 
           vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers sort_lastused=true sort_mru=true<CR>", { desc = "search buffers" })
@@ -873,7 +875,8 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
           vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
           vim.keymap.set("n", "Q", "<Cmd>Telescope cmdline<CR>", { noremap = true, desc = "telescope command line" })
-          vim.keymap.set("n", "<leader>pl", "<Cmd>Telescope picker_list<CR>", { desc = "list telescope pickers" })
+          vim.keymap.set("n", "<leader>P", "<Cmd>Telescope picker_list<CR>", { desc = "list telescope pickers" })
+          vim.keymap.set("n", "<leader>p", "<Cmd>Telescope yank_history<CR>", { desc = "Yanky history" })
 
           vim.api.nvim_create_autocmd("FileType", {
             pattern = "TelescopeResults",
@@ -1104,6 +1107,19 @@ require("lazy").setup({
 
         vim.keymap.set('i', '<M-u>', uuid.insert_v4)
       end
+    },
+    {
+      "gbprod/yanky.nvim",
+      opts = {
+        ring = {
+          storage = "memory",
+        },
+        highlight = {
+          on_put = true,
+          on_yank = true,
+          timer = 100,
+        },
+      },
     },
   },
   install = { colorscheme = { "solarized" } },
