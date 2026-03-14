@@ -593,6 +593,30 @@ require("lazy").setup({
       end
     },
     {
+      "saecki/crates.nvim",
+      event = { "BufRead Cargo.toml" },
+      config = function()
+        require("crates").setup({
+          lsp = {
+            enabled = true,
+            on_attach = function(client, bufnr)
+              mappings(client, bufnr)
+            end,
+            actions = true,
+            completion = true,
+            hover = true
+          },
+          completion = {
+            crates = {
+              enabled = true,
+              max_results = 8,
+              min_chars = 3,
+            },
+          },
+        })
+      end,
+    },
+    {
       "hrsh7th/nvim-cmp",
       dependencies = {
         "onsails/lspkind.nvim",
