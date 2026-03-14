@@ -245,6 +245,12 @@ local function mappings(client, bufnr)
   vim.keymap.set('n', 'gr', buf_ref, buf_ref_opts)
   vim.keymap.set('n', 'gy', buf_type, buf_type_opts)
 
+  if client.supports_method("textDocument/selectionRange") then
+    require('lsp-selection-range').setup()
+    vim.keymap.set({"n", "x"}, "<leader>[", function() require('lsp-selection-range').selection_range(false) end, merge({ desc = "Expand selection" }, opts))
+    vim.keymap.set({"n", "x"}, "<leader>]", function() require('lsp-selection-range').selection_range(true) end, merge({ desc = "Shrink selection" }, opts))
+  end
+
   -- DISABLED: LSP formatting
   --
   -- Looks to be handled by ./lint-and-format.lua stevearc/conform.nvim
