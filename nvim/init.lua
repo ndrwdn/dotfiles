@@ -1121,6 +1121,10 @@ require("lazy").setup({
         },
       },
     },
+    {
+      "stevearc/quicker.nvim",
+      ft = "qf",
+    },
   },
   install = { colorscheme = { "solarized" } },
 })
