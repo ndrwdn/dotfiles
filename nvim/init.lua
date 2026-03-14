@@ -596,6 +596,7 @@ require("lazy").setup({
       "hrsh7th/nvim-cmp",
       dependencies = {
         "onsails/lspkind.nvim",
+        "PhilRunninger/cmp-rpncalc",
       },
       config = function()
         local cmp = require("cmp")
@@ -631,6 +632,9 @@ require("lazy").setup({
             },
             {
               { name = 'buffer' },
+            },
+            {
+              { name = 'rpncalc' },
             }
           )
         })
