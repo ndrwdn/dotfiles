@@ -368,6 +368,7 @@ require("lazy").setup({
           "lua",
           "make",
           "markdown",
+          "markdown_line",
           "python",
           "regex",
           "ron",
@@ -379,15 +380,9 @@ require("lazy").setup({
       end
     },
     {
-      "tadmccorkle/markdown.nvim",
+      "yousefhadder/markdown-plus.nvim",
       ft = "markdown",
-      config = function ()
-        require("markdown").setup({
-          mappings = {
-            link_follow = "gx"
-          }
-        })
-      end
+      opts = {},
     },
     {
       "mfussenegger/nvim-dap",
@@ -492,7 +487,39 @@ require("lazy").setup({
         "hrsh7th/nvim-cmp"
       },
       config = function ()
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+        local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local capabilities = vim.tbl_deep_extend('force', client_capabilities, cmp_capabilities)
+
+        -- Markdown
+        vim.lsp.config('markdown_oxide', {
+          capabilities = vim.tbl_deep_extend(
+            'force',
+            capabilities,
+            {
+              workspace = {
+                didChangeWatchedFiles = {
+                  dynamicRegistration = true,
+                },
+              },
+            }
+          ),
+          on_attach = function(client, bufnr)
+            mappings(client, bufnr)
+          end
+        })
+        vim.lsp.enable('markdown_oxide')
+
+        vim.lsp.config('marksman', {
+          capabilities = capabilities,
+          on_attach = function(client, bufnr)
+            mappings(client, bufnr)
+          end
+        })
+        vim.lsp.enable('marksman')
+
+
+        -- Python
         vim.lsp.config('basedpyright', {
           capabilities = capabilities,
           on_attach = function(client, bufnr)
