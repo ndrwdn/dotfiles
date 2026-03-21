@@ -768,6 +768,9 @@ require("lazy").setup({
       "nvim-telescope/telescope.nvim",
       dependencies = {
         "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-fzf-native.nvim",
+        "Myzel394/jsonfly.nvim",
+        "nvim-telescope/telescope-ui-select.nvim",
         "debugloop/telescope-undo.nvim",
         "nvim-telescope/telescope-live-grep-args.nvim",
         "jmacadie/telescope-hierarchy.nvim",
@@ -925,11 +928,6 @@ require("lazy").setup({
           { "<leader>fq", "<cmd>Telescope grit query<cr>", desc = "Telescope Grit Query" },
           { "<leader>fQ", "<cmd>Telescope grit list<cr>", desc = "Telescope Grit User Patterns"},
         },
-      },
-      { "Myzel394/jsonfly.nvim" },
-      {
-        "nvim-telescope/telescope-ui-select.nvim",
-        config = function() require("telescope").setup({}) end
       },
       {
         'MagicDuck/grug-far.nvim',
