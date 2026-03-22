@@ -368,7 +368,7 @@ require("lazy").setup({
           "lua",
           "make",
           "markdown",
-          "markdown_line",
+          "markdown_inline",
           "python",
           "regex",
           "ron",
