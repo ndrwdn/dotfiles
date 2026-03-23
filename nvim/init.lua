@@ -491,6 +491,15 @@ require("lazy").setup({
         local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
         local capabilities = vim.tbl_deep_extend('force', client_capabilities, cmp_capabilities)
 
+        -- Bash
+        vim.lsp.config('bashls', {
+          capabilities = capabilities,
+          on_attach = function(client, bufnr)
+            mappings(client, bufnr)
+          end
+        })
+        vim.lsp.enable('bashls')
+
         -- Markdown
         vim.lsp.config('markdown_oxide', {
           capabilities = vim.tbl_deep_extend(
