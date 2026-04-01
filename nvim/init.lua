@@ -41,6 +41,9 @@ vim.o.mouse = 'a'
 -- Faster display
 vim.o.timeoutlen = 500
 
+-- Keep some lines visible when scrolling
+vim.o.scrolloff = 5
+
 -- Indentation settings
 vim.o.expandtab = true
 vim.o.shiftround = true
