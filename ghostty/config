@@ -5,3 +5,4 @@ fullscreen = true
 macos-non-native-fullscreen = visible-menu
 macos-titlebar-style = hidden
 theme = light:solarized-light,dark:solarized-dark
+keybind = alt+backspace=text:\x1b\x7f
