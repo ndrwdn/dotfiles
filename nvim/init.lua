@@ -296,6 +296,31 @@ require("lazy").setup({
       priority = 1000,
       config = function()
         vim.o.background = 'light'
+
+        require('solarized').setup({
+          on_highlights = function(colors, color)
+            diff_bg_base = vim.o.background == 'light' and colors.base3 or colors.base03
+            return {
+              DiffAdd = {
+                fg = color.blend(colors.git_add, colors.green, 0.2),
+                bg = color.blend(colors.green, diff_bg_base, 0.1),
+              },
+              DiffDelete = {
+                fg = color.blend(colors.red, diff_bg_base, 0.5),
+                bg = color.darken(colors.red, 2),
+              },
+              DiffText = {
+                fg = color.blend(colors.yellow, diff_bg_base, 0.3),
+                bg = color.blend(colors.yellow, colors.green, 0.7),
+              },
+              DiffviewDiffAddAsDelete = {
+                fg = color.blend(colors.red, diff_bg_base, 0.5),
+                bg = color.darken(colors.red, 2),
+              },
+            }
+          end,
+        })
+
         vim.cmd.colorscheme 'solarized'
       end,
     },
@@ -1161,6 +1186,12 @@ require("lazy").setup({
     {
       "stevearc/quicker.nvim",
       ft = "qf",
+    },
+    {
+      "sindrets/diffview.nvim",
+      opts = {
+        enhanced_diff_hl = true
+      },
     },
   },
   install = { colorscheme = { "solarized" } },
