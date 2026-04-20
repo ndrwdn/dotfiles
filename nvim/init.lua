@@ -306,16 +306,12 @@ require("lazy").setup({
                 bg = color.blend(colors.green, diff_bg_base, 0.1),
               },
               DiffDelete = {
-                fg = color.blend(colors.red, diff_bg_base, 0.5),
-                bg = color.darken(colors.red, 2),
+                bg = color.blend(colors.red, diff_bg_base, 0.5),
+                fg = color.darken(colors.red, 2),
               },
               DiffText = {
                 fg = color.blend(colors.yellow, diff_bg_base, 0.3),
                 bg = color.blend(colors.yellow, colors.green, 0.7),
-              },
-              DiffviewDiffAddAsDelete = {
-                fg = color.blend(colors.red, diff_bg_base, 0.5),
-                bg = color.darken(colors.red, 2),
               },
             }
           end,
@@ -977,7 +973,7 @@ require("lazy").setup({
         "NeogitOrg/neogit",
         dependencies = {
           "nvim-lua/plenary.nvim",
-          "sindrets/diffview.nvim",
+          "esmuellert/codediff.nvim",
           "nvim-telescope/telescope.nvim",
         },
         keys = {
@@ -1188,10 +1184,8 @@ require("lazy").setup({
       ft = "qf",
     },
     {
-      "sindrets/diffview.nvim",
-      opts = {
-        enhanced_diff_hl = true
-      },
+      "esmuellert/codediff.nvim",
+      cmd = "CodeDiff",
     },
   },
   install = { colorscheme = { "solarized" } },
