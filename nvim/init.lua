@@ -299,19 +299,56 @@ require("lazy").setup({
 
         require('solarized').setup({
           on_highlights = function(colors, color)
+            diff_fg_base = vim.o.background == 'light' and colors.base00 or colors.base0
             diff_bg_base = vim.o.background == 'light' and colors.base3 or colors.base03
+            add_fg = color.blend(colors.git_add, colors.green, 0.2)
+            add_bg = color.blend(colors.green, diff_bg_base, 0.1)
+            del_inline_fg = color.darken(colors.red, 2)
+            del_inline_bg = color.blend(colors.red, diff_bg_base, 0.5)
+            del_fg = color.blend(del_inline_fg, diff_fg_base, 0.1)
+            del_bg = color.blend(del_inline_bg, diff_bg_base, 0.5)
             return {
               DiffAdd = {
-                fg = color.blend(colors.git_add, colors.green, 0.2),
-                bg = color.blend(colors.green, diff_bg_base, 0.1),
+                fg = add_fg,
+                bg = add_bg,
               },
               DiffDelete = {
-                bg = color.blend(colors.red, diff_bg_base, 0.5),
-                fg = color.darken(colors.red, 2),
+                fg = del_fg,
+                bg = del_bg,
               },
               DiffText = {
                 fg = color.blend(colors.yellow, diff_bg_base, 0.3),
                 bg = color.blend(colors.yellow, colors.green, 0.7),
+              },
+              NeogitDiffAdd = {
+                link = 'DiffAdd',
+              },
+              NeogitDiffAddCursor = {
+                link = 'DiffAdd',
+              },
+              NeogitDiffAddHighlight = {
+                fg = add_fg,
+                bg = color.lighten(add_bg, 2),
+              },
+              NeogitDiffAddInline = {
+                fg = color.blend(colors.git_add, diff_fg_base, 0.1),
+                bg = color.blend(colors.green, diff_bg_base, 0.5),
+              },
+              NeogitDiffDelete = {
+                fg = del_fg,
+                bg = del_bg,
+              },
+              NeogitDiffDeleteCursor = {
+                fg = del_fg,
+                bg = del_bg,
+              },
+              NeogitDiffDeleteHighlight = {
+                fg = del_fg,
+                bg = color.lighten(del_bg, 2),
+              },
+              NeogitDiffDeleteInline = {
+                fg = del_inline_fg,
+                bg = del_inline_bg,
               },
             }
           end,
@@ -1186,6 +1223,12 @@ require("lazy").setup({
     {
       "esmuellert/codediff.nvim",
       cmd = "CodeDiff",
+      opts = {
+        highlights = {
+          char_insert = 'NeogitDiffAddInline',
+          char_delete = 'NeogitDiffDeleteInline',
+        },
+      },
     },
   },
   install = { colorscheme = { "solarized" } },
