@@ -34,6 +34,9 @@ vim.o.titlestring = [[%{expand('%:~:.')!=#''?expand('%:~:.'):'[No Name]'} %m%( (
 -- Command-line auto-completion
 vim.o.wildmode = 'full:lastused'
 
+-- Sync vim yanks to the "+" register
+vim.o.clipboard = 'unnamedplus'
+
 -- Mouse settings
 vim.o.mousehide = false
 vim.o.mouse = 'a'
