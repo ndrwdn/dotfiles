@@ -65,6 +65,19 @@ vim.g.netrw_liststyle = 0
 vim.g.netrw_browse_split = 0
 vim.g.netrw_preview = 1
 
+-- Quickfix helpers
+vim.api.nvim_create_user_command('QFClear', 'cexpr []', {bang = true})
+vim.api.nvim_create_user_command(
+  'QFSearch',
+  function(opts)
+    vim.cmd("g/" .. opts.fargs[1] .. "/caddexpr expand(\"%\") . \":\" . line(\".\") . \":\" . getline(\".\")")
+    vim.cmd("copen")
+  end,
+  {
+    bang = true,
+    nargs = 1
+  })
+
 -- Keybindings
 -- -----------
 -- Space is our leader, must be set ahead of keybindings using it
