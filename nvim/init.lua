@@ -34,9 +34,6 @@ vim.o.titlestring = [[%{expand('%:~:.')!=#''?expand('%:~:.'):'[No Name]'} %m%( (
 -- Command-line auto-completion
 vim.o.wildmode = 'full:lastused'
 
--- Sync vim yanks to the "+" register
-vim.o.clipboard = 'unnamedplus'
-
 -- Mouse settings
 vim.o.mousehide = false
 vim.o.mouse = 'a'
@@ -95,6 +92,9 @@ vim.keymap.set('n', '<localleader>p', ':set paste!<cr>', { silent = true })
 
 -- Shortuct to clear current search
 vim.keymap.set('n', '', ':nohlsearch<cr>', { silent = true })
+
+-- Make it easier to yank to system clipboard
+vim.keymap.set({'n', 'x'}, '<C-y>', '"+y', { silent = true })
 
 -- Fix indentation for yaml files when commenting out a section
 vim.api.nvim_create_autocmd("FileType", {
