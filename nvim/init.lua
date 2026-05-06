@@ -96,6 +96,10 @@ vim.keymap.set('n', '', ':nohlsearch<cr>', { silent = true })
 -- Make it easier to yank to system clipboard
 vim.keymap.set({'n', 'x'}, '<C-y>', '"+y', { silent = true })
 
+-- Make it easy to copy filename to clipboard
+vim.api.nvim_create_user_command('CopyFileName', 'let @*=expand("%:.")', {bang = true})
+vim.keymap.set({'n', 'x'}, "<leader>c", "<Cmd>CopyFileName<CR>", { desc = "copy filename to system clipboard" })
+
 -- Fix indentation for yaml files when commenting out a section
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "yaml",
