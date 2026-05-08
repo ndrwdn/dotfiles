@@ -998,7 +998,7 @@ require("lazy").setup({
           vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
           vim.keymap.set("n", "Q", "<Cmd>Telescope cmdline<CR>", { noremap = true, desc = "telescope command line" })
           vim.keymap.set("n", "<leader>P", "<Cmd>Telescope picker_list<CR>", { desc = "list telescope pickers" })
-          vim.keymap.set("n", "<leader>p", "<Cmd>Telescope yank_history<CR>", { desc = "Yanky history" })
+          vim.keymap.set("n", "<leader>y", "<Cmd>Telescope yank_history<CR>", { desc = "Yanky history" })
 
           vim.api.nvim_create_autocmd("FileType", {
             pattern = "TelescopeResults",
@@ -1251,6 +1251,12 @@ require("lazy").setup({
           char_delete = 'NeogitDiffDeleteInline',
         },
       },
+    },
+    {
+      "carderne/pi-nvim",
+      config = function()
+        require("pi-nvim").setup()
+      end,
     },
   },
   install = { colorscheme = { "solarized" } },
