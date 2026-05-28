@@ -1105,6 +1105,13 @@ require("lazy").setup({
             end,
           })
 
+          require("conform").formatters.rustfmt = {
+            options = {
+              default_edition = "2024",
+              nightly = true,
+            },
+          }
+
           vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
           vim.api.nvim_create_user_command(
