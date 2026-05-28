@@ -241,22 +241,13 @@ local function mappings(client, bufnr)
   local buf_sig_help_opts = merge({ desc = "Sig help (cursor over arg)" }, opts)
   local buf_type = "<Cmd>lua vim.lsp.buf.type_definition()<CR>"
   local buf_type_opts = merge({ desc = "Go to 'type' definition" }, opts)
-  local diag_next = "<Cmd>lua vim.diagnostic.jump({count = 1})<CR>"
-  local diag_next_opts = merge({ desc = "Go to next diagnostic" }, opts)
-  local diag_open_float = "<Cmd>lua vim.diagnostic.open_float()<CR>"
-  local diag_open_float_opts = merge({ desc = "Float current diag" }, opts)
-  local diag_prev = "<Cmd>lua vim.diagnostic.jump({count = -1})<CR>"
-  local diag_prev_opts = merge({ desc = "Go to prev diagnostic" }, opts)
   local diag_show = "<Cmd>lua vim.diagnostic.show()<CR>"
   local diag_show_opts = merge({ desc = "Show project diagnostics" }, opts)
 
   vim.keymap.set('n', '<c-s>', buf_def_split, opts)
   vim.keymap.set('n', '<c-\\>', buf_def_vsplit, opts)
   vim.keymap.set('n', '<c-]>', buf_def, opts)
-  vim.keymap.set('n', '[x', diag_prev, diag_prev_opts)
-  vim.keymap.set('n', ']r', diag_open_float, diag_open_float_opts)
   vim.keymap.set('n', ']s', diag_show, diag_show_opts)
-  vim.keymap.set('n', ']x', diag_next, diag_next_opts)
   vim.keymap.set('n', 'K', buf_hover, opts)
   vim.keymap.set({"n", "x"}, 'ga', buf_code_action, buf_code_action_opts)
   vim.keymap.set('n', 'gi', buf_incoming_calls, buf_incoming_calls_opts)
