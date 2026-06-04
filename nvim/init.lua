@@ -201,17 +201,7 @@ local function mappings(client, bufnr)
   local buf_def = "<Cmd>lua vim.lsp.buf.definition()<CR>"
   local buf_def_split = "<Cmd>sp | lua vim.lsp.buf.definition()<CR>"
   local buf_def_vsplit = "<Cmd>vsp | lua vim.lsp.buf.definition()<CR>"
-  local buf_doc_sym = "<Cmd>lua vim.lsp.buf.document_symbol()<CR>"
-  local buf_doc_sym_opts = merge({ desc = "List doc symbols in qf win" }, opts)
   local buf_hover = "<Cmd>lua vim.lsp.buf.hover()<CR>"
-  local buf_impl = "<Cmd>lua vim.lsp.buf.implementation()<CR>"
-  local buf_impl_opts = merge({ desc = "List all implementations" }, opts)
-  local buf_incoming_calls = "<Cmd>lua vim.lsp.buf.incoming_calls()<CR>"
-  local buf_incoming_calls_opts = merge({ desc = "List all callers" }, opts)
-  local buf_project = "<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>"
-  local buf_project_opts = merge({ desc = "Search project-wide symbols" }, opts)
-  local buf_ref = "<Cmd>lua vim.lsp.buf.references()<CR>"
-  local buf_ref_opts = merge({ desc = "List all references" }, opts)
   local buf_rename = function()
     -- when rename opens the prompt, this autocommand will trigger
     -- it will "press" CTRL-F to enter the command-line window `:h cmdwin`
@@ -249,15 +239,9 @@ local function mappings(client, bufnr)
   vim.keymap.set('n', '<c-]>', buf_def, opts)
   vim.keymap.set('n', ']s', diag_show, diag_show_opts)
   vim.keymap.set('n', 'K', buf_hover, opts)
-  vim.keymap.set({"n", "x"}, 'ga', buf_code_action, buf_code_action_opts)
-  vim.keymap.set('n', 'gi', buf_incoming_calls, buf_incoming_calls_opts)
-  vim.keymap.set('n', 'gd', buf_doc_sym, buf_doc_sym_opts)
+  vim.keymap.set({"n", "x"}, 'gA', buf_code_action, buf_code_action_opts)
   vim.keymap.set('n', 'gh', buf_sig_help, buf_sig_help_opts)
-  vim.keymap.set('n', 'gm', buf_impl, buf_impl_opts)
   vim.keymap.set('n', 'gn', buf_rename, buf_rename_opts)
-  vim.keymap.set('n', 'gp', buf_project, buf_project_opts)
-  vim.keymap.set('n', 'gr', buf_ref, buf_ref_opts)
-  vim.keymap.set('n', 'gy', buf_type, buf_type_opts)
 
   if client:supports_method("textDocument/selectionRange") then
     require('lsp-selection-range').setup()
@@ -848,170 +832,106 @@ require("lazy").setup({
       end
     },
     {
-      "nvim-telescope/telescope.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-fzf-native.nvim",
-        "Myzel394/jsonfly.nvim",
-        "nvim-telescope/telescope-ui-select.nvim",
-        "debugloop/telescope-undo.nvim",
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        "jmacadie/telescope-hierarchy.nvim",
-        "kkharji/sqlite.lua",
-        "nvim-telescope/telescope-smart-history.nvim",
-        "jonarrien/telescope-cmdline.nvim",
-        "OliverChao/telescope-picker-list.nvim",
-        "nvim-telescope/telescope-frecency.nvim",
-        "gbprod/yanky.nvim",
-      },
-      config = function()
-        --[[
-            NOTE: Scroll the preview window using <C-d> and <C-u>.
-
-            Opening multiple files isn't a built-in feature of Telescope.
-            We can't get that behaviour without a lot of extra config.
-            The best we can do is send results to the quickfix window.
-
-            There are two different ways of approaching this:
-
-            1. Filtering files using a search pattern.
-            2. Manually selecting files.
-
-            For first scenario just type a search pattern (which will filter the
-            list), then press `<C-q>` to send filtered list to quickfix window.
-
-            For the second scenario you would need to:
-
-            - Select multiple files using <Tab>
-            - Send the selected files to the quickfix window using <C-o>
-            - Search the quickfix window (using either :copen or <leader>q)
-
-            The first approach is fine for simple cases. For example, you want to
-            open all Markdown files. You just type `.md` and then `<C-q>`. But if
-            you wanted to open specific Markdown files like README.md and HELP.md
-            then you'd need the second approach which gives finer-grain control.
-          ]]
-          local actions = require("telescope.actions")
-          local ts = require("telescope")
-          local lga_actions = require("telescope-live-grep-args.actions")
-
-          ts.setup({
-            defaults = {
-              layout_strategy = "vertical",
-              layout_config = { height = 0.75 },
-              file_ignore_patterns = {
-                ".git/",
-              },
-              mappings = {
-                i = {
-                  ["<esc>"] = actions.close,
-                  ["<C-o>"] = actions.send_selected_to_qflist,
-                  ["<C-Down>"] = actions.cycle_history_next,
-                  ["<C-Up>"] = actions.cycle_history_prev,
-                }
-              },
-              scroll_strategy = "limit",
-              vimgrep_arguments = {
-                'rg',
-                '--color=never',
-                '--no-heading',
-                '--with-filename',
-                '--line-number',
-                '--column',
-                '--smart-case',
-                '--hidden'
-              },
-              history = {
-                path = '~/.local/share/nvim/telescope_history.sqlite3',
-                limit = 1000,
-              },
-              cache_picker = {
-                num_pickers = 5,
-                limit_entries = 500,
-                ignore_empty_prompt = true,
-              },
+      "folke/snacks.nvim",
+      priority = 1000,
+      lazy = false,
+      ---@type snacks.Config
+      opts = {
+        picker = {
+          matcher = {
+            frecency = true,
+          },
+          sources = {
+            buffers = {
+              layout = "select",
             },
-            extensions = {
-              heading = {
-                treesitter = true
-              },
-              live_grep_args = {
-                auto_quoting = true,
-                mappings = {
-                  i = {
-                    ["<C-y>"] = lga_actions.quote_prompt(),
-                    ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                    ["<C-space>"] = actions.to_fuzzy_refine,
-                  },
+            explorer = {
+              auto_close = true,
+              layout = {
+                hidden = { "preview" },
+                layout = {
+                  backdrop = false,
+                  width = 0.8,
+                  min_width = 80,
+                  max_width = 100,
+                  height = 0.8,
+                  min_height = 2,
+                  box = "vertical",
+                  border = true,
+                  title = "{title}",
+                  title_pos = "center",
+                  { win = "input", height = 1, border = "bottom" },
+                  { win = "list", border = "none" },
                 },
               },
-              frecency = {
-                enabled_prompt_mappings = true,
-              },
-            }
-          })
-
-          ts.load_extension("fzf")
-          ts.load_extension("jsonfly")
-          ts.load_extension("ui-select")
-          ts.load_extension("undo")
-          ts.load_extension("live_grep_args")
-          ts.load_extension("hierarchy")
-          ts.load_extension("smart_history")
-          ts.load_extension("cmdline")
-          ts.load_extension("frecency")
-          ts.load_extension("yank_history")
-          ts.load_extension("picker_list") -- must always be last
-
-          vim.keymap.set("n", "<leader>b", "<Cmd>Telescope buffers sort_lastused=true sort_mru=true theme=dropdown previewer=false<CR>", { desc = "search buffers" })
-          vim.keymap.set("n", "<leader>e", "<Cmd>Telescope commands<CR>", { desc = "search Ex commands" })
-          vim.keymap.set("n", "<leader>f", "<Cmd>Telescope frecency workspace=CWD theme=dropdown previewer=false prompt_title=Find\\ Files<CR>", { desc = "search files using frecency" })
-          vim.keymap.set("v", "<leader>f", function() require('telescope').extensions.frecency.frecency({ workspace= 'CWD', default_text = table.concat(get_visual_selection(), ' '), theme = "dropdown", previewer = false }) end, { desc = "search files using frecency (visual, pre-populate)" })
-          vim.keymap.set("n", "<leader>F", "<Cmd>Telescope find_files hidden=true theme=dropdown previewer=false<CR>", { desc = "search files using find files" })
-          vim.keymap.set("n", "<leader>hi", "<Cmd>Telescope hierarchy incoming_calls<CR>", { desc = "hierarchy of incoming calls" })
-          vim.keymap.set("n", "<leader>ho", "<Cmd>Telescope hierarchy outgoing_calls<CR>", { desc = "hierarchy of outgoing calls" })
-          vim.keymap.set("n", "<leader>?", "<Cmd>Telescope help_tags<CR>", { desc = "search help" })
-          vim.keymap.set("n", "<leader>i", "<Cmd>Telescope builtin<CR>", { desc = "search builtins" })
-          vim.keymap.set("n", "<leader>j", "<Cmd>Telescope jsonfly<CR>", { desc = "search current JSON structure" })
-          vim.keymap.set("n", "<leader>k", "<Cmd>Telescope keymaps<CR>", { desc = "search key mappings" })
-          vim.keymap.set("n", "<leader>ld", "<Cmd>Telescope diagnostics<CR>", { desc = "search lsp diagnostics" })
-          vim.keymap.set("n", "<leader>li", "<Cmd>Telescope lsp_incoming_calls<CR>", { desc = "search lsp incoming calls" })
-          vim.keymap.set("n", "<leader>lo", "<Cmd>Telescope lsp_outgoing_calls<CR>", { desc = "search lsp outgoing calls" })
-          vim.keymap.set("n", "<leader>lr", "<Cmd>Telescope lsp_references<CR>", { desc = "search lsp code reference" })
-          vim.keymap.set("n", "<leader>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols({show_line = true})<CR>", { desc = "search lsp document tree" })
-          vim.keymap.set("n", "<leader>q", "<Cmd>Telescope quickfix<CR>", { desc = "search quickfix list" })
-          vim.keymap.set("n", "<leader>r", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "search current buffer text" })
-          vim.keymap.set("n", "<leader>s", "<Cmd>Telescope treesitter<CR>", { desc = "search treesitter symbols" }) -- similar to lsp_document_symbols but treesitter doesn't know what a 'struct' is, just that it's a 'type'.
-          vim.keymap.set("n", "<leader>x", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "search text" })
-          vim.keymap.set("v", "<leader>x", function() require('telescope').extensions.live_grep_args.live_grep_args({ default_text = table.concat(get_visual_selection(), ' ') }) end, { desc = "search selected text" })
-          vim.keymap.set("n", "<leader>u", "<Cmd>Telescope undo<CR>", { desc = "undo" })
-          vim.keymap.set("n", "<leader>t", "<Cmd>Telescope resume<CR>", { desc = "resume last telescope" })
-          vim.keymap.set("n", "<leader>T", "<Cmd>Telescope pickers<CR>", { desc = "select from previous telescopes pickers" })
-          vim.keymap.set("n", "Q", "<Cmd>Telescope cmdline<CR>", { noremap = true, desc = "telescope command line" })
-          vim.keymap.set("n", "<leader>P", "<Cmd>Telescope picker_list<CR>", { desc = "list telescope pickers" })
-          vim.keymap.set("n", "<leader>y", "<Cmd>Telescope yank_history<CR>", { desc = "Yanky history" })
-
-          vim.api.nvim_create_autocmd("FileType", {
-            pattern = "TelescopeResults",
-            callback = function()
-              vim.cmd([[setlocal nofoldenable]])
-              vim.api.nvim_set_hl(0, "TelescopePromptCounter", { link = "TelescopePromptPrefix" })
-            end
-          })
-        end
-      },
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make"
-      },
-      {
-        "noahbald/grit-telescope.nvim",
-        -- NOTE: Keys are not provided by default
-        keys = {
-          { "<leader>fq", "<cmd>Telescope grit query<cr>", desc = "Telescope Grit Query" },
-          { "<leader>fQ", "<cmd>Telescope grit list<cr>", desc = "Telescope Grit User Patterns"},
+            },
+            files = {
+              layout = "select",
+            },
+            keymaps = {
+              layout = "vertical"
+            },
+            lsp_definitions = {
+              layout = "dropdown",
+            },
+            lsp_declarations = {
+              layout = "dropdown",
+            },
+            lsp_implementations = {
+              layout = "dropdown",
+            },
+            lsp_incoming_calls = {
+              layout = "dropdown",
+            },
+            lsp_outgoing_calls = {
+              layout = "dropdown",
+            },
+            lsp_references = {
+              layout = "dropdown",
+            },
+            lsp_symbols = {
+              layout = "dropdown",
+            },
+            lsp_workspace_symbols = {
+              layout = "dropdown",
+            },
+            lsp_type_definitions = {
+              layout = "dropdown",
+            },
+          },
+        },
+        scroll = {
         },
       },
+      keys = {
+        { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Select buffer" },
+        { "<leader>fe", function() Snacks.picker.explorer() end, desc = "Explore files" },
+        { "<leader>ff", function() Snacks.picker.files() end, desc = "Find file" },
+        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "LSP Goto Definition" },
+        { "gD", function() Snacks.picker.lsp_declarations() end, desc = "LSP Goto Declaration" },
+        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "LSP References" },
+        { "gI", function() Snacks.picker.lsp_implementations() end, desc = "LSP Goto Implementation" },
+        { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "LSP Goto T[y]pe Definition" },
+        { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "LSP C[a]lls [I]ncoming" },
+        { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "LSP C[a]lls [O]utgoing" },
+        { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
+        { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+        { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+        { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+        { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+        { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+        { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+        { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+        { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+        { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
+        { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+        { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
+        { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+        { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+        { "<leader>st", function() Snacks.picker.treesitter() end, desc = "Treesitter" },
+        { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" }},
+      },
+    },
       {
         'MagicDuck/grug-far.nvim',
         config = function()
@@ -1024,7 +944,6 @@ require("lazy").setup({
         dependencies = {
           "nvim-lua/plenary.nvim",
           "esmuellert/codediff.nvim",
-          "nvim-telescope/telescope.nvim",
         },
         keys = {
           {
