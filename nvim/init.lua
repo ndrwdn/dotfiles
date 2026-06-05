@@ -900,8 +900,6 @@ require("lazy").setup({
             },
           },
         },
-        scroll = {
-        },
       },
       keys = {
         { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Select buffer" },
