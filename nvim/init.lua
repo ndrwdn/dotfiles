@@ -802,7 +802,7 @@ require("lazy").setup({
           signcolumn = false,
           numhl = true,
           on_attach = function(bufnr)
-            if vim.g.loaded_codediff == nil then
+            if vim.b.loaded_codediff == nil then
               local gitsigns = require('gitsigns')
               local function map(mode, l, r, opts)
                 opts = opts or {}
@@ -1166,6 +1166,14 @@ require("lazy").setup({
           char_delete = 'NeogitDiffDeleteInline',
         },
       },
+      config = function()
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "CodeDiffOpen",
+          callback = function()
+            vim.b.loaded_codediff = true
+          end,
+        })
+      end,
     },
     {
       "carderne/pi-nvim",
