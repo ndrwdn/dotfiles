@@ -1181,6 +1181,62 @@ require("lazy").setup({
         require("pi-nvim").setup()
       end,
     },
+    {
+      "retran/meow.yarn.nvim",
+      dependencies = { "MunifTanjim/nui.nvim" },
+      config = function()
+        require("meow.yarn").setup({
+          mappings = {
+            quit = "<esc>",
+          },
+          render_node = function(node)
+            local function one_line(s)
+              local text = tostring(s or ""):gsub("[\r\n]+", " ↩ ")
+              return text
+            end
+
+            local out = {
+              string.rep("  ", math.max(0, node.depth - 1)),
+              node.icon or "",
+              " ",
+              one_line(node.name),
+            }
+
+            if node.file then
+              table.insert(out, ("  (%s:%s)"):format(one_line(node.file), node.line or "?"))
+            end
+
+            return table.concat(out)
+          end,
+        })
+
+        -- TODO: remove when meow.yarn.nvim switches from deprecated
+        -- `client.request(...)` to `client:request(...)` for Nvim 0.13.
+        local util = require("meow.yarn.util")
+        util.lsp.request_async = function(client, method, params, bufnr, callback)
+          client:request(method, params or {}, function(err, res)
+            if err then
+              if err.code == -32800 then
+                return callback(nil)
+              end
+              vim.schedule(function()
+                vim.notify(
+                  string.format("LSP %s: %s", method, err.message or "error"),
+                  vim.log.levels.WARN
+                )
+              end)
+              return callback(nil)
+            end
+            callback(res or {})
+          end, bufnr or 0)
+        end
+
+        vim.keymap.set("n", "<leader>yt", function() require("meow.yarn").open_tree("type_hierarchy", "supertypes") end, { desc = "Yarn: Type Hierarchy (Super)" })
+        vim.keymap.set("n", "<leader>yT", function() require("meow.yarn").open_tree("type_hierarchy", "subtypes") end, { desc = "Yarn: Type Hierarchy (Sub)" })
+        vim.keymap.set("n", "<leader>yc", function() require("meow.yarn").open_tree("call_hierarchy", "callers") end, { desc = "Yarn: Call Hierarchy (Callers)" })
+        vim.keymap.set("n", "<leader>yC", function() require("meow.yarn").open_tree("call_hierarchy", "callees") end, { desc = "Yarn: Call Hierarchy (Callees)" })
+      end,
+    },
   },
   install = { colorscheme = { "solarized" } },
 })
