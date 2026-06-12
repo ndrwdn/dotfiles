@@ -838,6 +838,9 @@ require("lazy").setup({
       ---@type snacks.Config
       opts = {
         picker = {
+          jump = {
+            jumplist = false,
+          },
           matcher = {
             frecency = true,
           },
