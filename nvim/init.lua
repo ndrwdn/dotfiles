@@ -239,7 +239,7 @@ local function mappings(client, bufnr)
   vim.keymap.set('n', '<c-]>', buf_def, opts)
   vim.keymap.set('n', ']s', diag_show, diag_show_opts)
   vim.keymap.set('n', 'K', buf_hover, opts)
-  vim.keymap.set({"n", "x"}, 'gA', buf_code_action, buf_code_action_opts)
+  vim.keymap.set({"n", "x"}, 'gaa', buf_code_action, buf_code_action_opts)
   vim.keymap.set('n', 'gh', buf_sig_help, buf_sig_help_opts)
   vim.keymap.set('n', 'gn', buf_rename, buf_rename_opts)
 
