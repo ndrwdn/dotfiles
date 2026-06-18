@@ -848,26 +848,6 @@ require("lazy").setup({
             buffers = {
               layout = "select",
             },
-            explorer = {
-              auto_close = true,
-              layout = {
-                hidden = { "preview" },
-                layout = {
-                  backdrop = false,
-                  width = 0.8,
-                  min_width = 80,
-                  max_width = 100,
-                  height = 0.8,
-                  min_height = 2,
-                  box = "vertical",
-                  border = true,
-                  title = "{title}",
-                  title_pos = "center",
-                  { win = "input", height = 1, border = "bottom" },
-                  { win = "list", border = "none" },
-                },
-              },
-            },
             files = {
               layout = "select",
             },
@@ -906,7 +886,50 @@ require("lazy").setup({
       },
       keys = {
         { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Select buffer" },
-        { "<leader>fe", function() Snacks.picker.explorer() end, desc = "Explore files" },
+        {
+          "<leader>fe",
+          function()
+            Snacks.picker.explorer({
+              auto_close = true,
+              layout = {
+                hidden = { "preview" },
+                layout = {
+                  backdrop = false,
+                  width = 0.8,
+                  min_width = 80,
+                  max_width = 100,
+                  height = 0.8,
+                  min_height = 2,
+                  box = "vertical",
+                  border = true,
+                  title = "{title}",
+                  title_pos = "center",
+                  { win = "input", height = 1, border = "bottom" },
+                  { win = "list", border = "none" },
+                },
+              },
+            })
+          end,
+          desc = "Explore files"
+        },
+        {
+          "<leader>fE",
+          function()
+            local explorer = Snacks.picker.get({ source = "explorer" })[1]
+            if explorer then
+              explorer:focus("list")
+              return
+            end
+
+            Snacks.picker.explorer({
+              layout = {
+                preset = "sidebar",
+                preview = false
+              },
+            })
+          end,
+          desc = "Explore files - sidebar"
+        },
         { "<leader>ff", function() Snacks.picker.files() end, desc = "Find file" },
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "LSP Goto Definition" },
         { "gD", function() Snacks.picker.lsp_declarations() end, desc = "LSP Goto Declaration" },
