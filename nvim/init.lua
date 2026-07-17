@@ -851,6 +851,9 @@ require("lazy").setup({
             files = {
               layout = "select",
             },
+            git_status = {
+              layout = "select",
+            },
             keymaps = {
               layout = "vertical"
             },
@@ -944,6 +947,7 @@ require("lazy").setup({
         { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
         { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
         { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+        { "<leader>sG", function() Snacks.picker.git_status() end, desc = "Git Status" },
         { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
         { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
         { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
