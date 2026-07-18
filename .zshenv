@@ -96,16 +96,11 @@ if [[ "$(uname -s)" == "Darwin" ]] then
     outdated=$(brew outdated)
     if [[ $(echo ${outdated} | sed '/^$/d' | wc -l) -gt 0 ]]; then
       echo -e "\n${outdated}"
-      read 'do_update?Update packages (y/n)? '
-      if [[ "${do_update}" == "y" ]]; then
-        echo "Updating packages..."
-        brew upgrade
-        sleep 0.2s
-        echo "Cleaning up..."
-        brew cleanup
-      else
-        echo "Not updating packages"
-      fi
+      echo "Updating packages..."
+      brew upgrade
+      sleep 0.2s
+      echo "Cleaning up..."
+      brew cleanup
     else
       echo "No outdated packages found"
     fi
