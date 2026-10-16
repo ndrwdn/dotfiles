@@ -647,6 +647,10 @@ require("lazy").setup({
             settings = {
               -- rust-analyzer language server configuration
               ['rust-analyzer'] = {
+                files = {
+                  -- Avoid slow server-side FSEvents watcher setup on macOS.
+                  watcher = "client",
+                },
                 assist = {
                   preferSelf = true,
                 },
@@ -654,8 +658,8 @@ require("lazy").setup({
                   features = "all",
                 },
                 check = {
-                  -- default: `cargo check`
-                  command = "clippy",
+                  -- Keep on-save checks lighter; run Clippy manually.
+                  command = "check",
                   features = "all",
                 },
                 completion = {
