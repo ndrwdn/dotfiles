@@ -851,6 +851,28 @@ require("lazy").setup({
       ---@type snacks.Config
       opts = {
         picker = {
+          actions = {
+            list_page_down = function(picker)
+              picker.list:scroll(picker.list:height())
+            end,
+            list_page_up = function(picker)
+              picker.list:scroll(-picker.list:height())
+            end,
+          },
+          win = {
+            input = {
+              keys = {
+                ["<PageDown>"] = { "list_page_down", mode = { "i", "n" } },
+                ["<PageUp>"] = { "list_page_up", mode = { "i", "n" } },
+              },
+            },
+            list = {
+              keys = {
+                ["<PageDown>"] = "list_page_down",
+                ["<PageUp>"] = "list_page_up",
+              },
+            },
+          },
           jump = {
             jumplist = false,
           },
