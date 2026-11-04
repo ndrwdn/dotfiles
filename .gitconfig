@@ -50,5 +50,7 @@
 	conflictstyle = diff3
 [diff]
 	algorithm = patience
+[status]
+  showUntrackedFiles = all
 [include]
   path = ~/.gitconfig.local
