@@ -1,7 +1,7 @@
 copy-on-select = clipboard
 cursor-style-blink = false
 font-size = 12
-fullscreen = true
+fullscreen = non-native-visible-menu
 macos-non-native-fullscreen = visible-menu
 macos-titlebar-style = hidden
 theme = light:solarized-light,dark:solarized-dark
