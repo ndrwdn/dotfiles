@@ -4,7 +4,6 @@
   "defaultModel": "openai:gpt-6.1-sol",
   "packages": [
     "npm:pi-tmux-cursor-focus",
-    "npm:pi-nvim",
     "npm:@benvargas/pi-firecrawl",
     "npm:@mjakl/pi-kagi-search",
     "git:github.com/obra/superpowers",

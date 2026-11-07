@@ -1241,9 +1241,38 @@ require("lazy").setup({
       end,
     },
     {
-      "carderne/pi-nvim",
+      "omaclaren/pi-nvim-context",
+      opts = {
+        -- Draft-only context shortcuts, separate from workspace diagnostics.
+        accept_with_tab = false,
+        keymaps = {
+          prefix = "<leader>p",
+          pick = "<leader>pp",
+          file = "<leader>pf",
+          location = "<leader>pl",
+          selection = "<leader>ps",
+          selection_comment = "<leader>pS",
+          diagnostics = "<leader>pd",
+          buffer = "<leader>pb",
+          status = "<leader>pi",
+          annotation_header = "<leader>ph",
+          -- Keep this integration focused on draft context, not model calls.
+          suggest = false,
+          guided = false,
+          rewrite = false,
+          accept = false,
+          again = false,
+          dismiss = false,
+          preview = false,
+        },
+      },
+    },
+    {
+      dir = vim.fn.stdpath("config") .. "/local/pi-context",
+      name = "pi-context",
+      dependencies = { "omaclaren/pi-nvim-context" },
       config = function()
-        require("pi-nvim").setup()
+        require("pi-context").setup()
       end,
     },
     {
