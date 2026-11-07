@@ -24,7 +24,7 @@ ln -s ${dotfiles}/nvim ${HOME}/.config/nvim
 ln -s ${dotfiles}/ghostty ${HOME}/.config/ghostty
 
 # Pi mixes configuration with credentials and runtime data. Link only public config.
-pi_files="AGENTS.md settings.json keybindings.json pi-vimmode.config.js themes extensions/subagent/config.json extensions/firecrawl.json"
+pi_files="AGENTS.md settings.json keybindings.json pi-vimmode.config.js themes extensions/subagent/config.json extensions/firecrawl.json extensions/primary-model.js"
 for file in $pi_files; do
     source="${dotfiles}/pi/agent/${file}"
     target="${HOME}/.pi/agent/${file}"
