@@ -1,0 +1,12 @@
+{
+  "url": "https://api.firecrawl.dev",
+  "headers": null,
+  "tools": [
+    "firecrawl_scrape",
+    "firecrawl_map",
+    "firecrawl_search"
+  ],
+  "timeoutMs": 30000,
+  "maxBytes": 51200,
+  "maxLines": 2000
+}

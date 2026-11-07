@@ -1,0 +1,26 @@
+{
+  "lastChangelogVersion": "1.5.0",
+  "defaultProvider": "qd",
+  "defaultModel": "openai:gpt-6.1-sol",
+  "packages": [
+    "npm:pi-tmux-cursor-focus",
+    "npm:pi-nvim",
+    "npm:@benvargas/pi-firecrawl",
+    "npm:@mjakl/pi-kagi-search",
+    "git:github.com/obra/superpowers",
+    "npm:pi-vimmode",
+    "npm:pi-quote",
+    "npm:pi-subagents",
+    "npm:pi-nvim-context"
+  ],
+  "theme": "solarized-dark",
+  "defaultThinkingLevel": "low",
+  "extensions": [
+    "+builtin:mcp"
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@mjakl/pi-kagi-search\",\"scope\":\"user\"}": "2.0.0",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.86.0",
+    "{\"source\":\"npm:pi-nvim-context\",\"scope\":\"user\"}": "0.4.0"
+  }
+}
