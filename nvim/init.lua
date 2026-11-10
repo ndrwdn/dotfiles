@@ -302,7 +302,20 @@ require("lazy").setup({
             del_inline_bg = color.blend(colors.red, diff_bg_base, 0.5)
             del_fg = color.blend(del_inline_fg, diff_fg_base, 0.1)
             del_bg = color.blend(del_inline_bg, diff_bg_base, 0.5)
+            -- Illuminate: darken Solarized blue, then soften it against the background.
+            local illuminate_bg_base = vim.o.background == 'light' and colors.base3 or colors.base03
+            local illuminate_bg_darken = vim.o.background == 'light' and color.darken(colors.base2, 30) or color.lighten(colors.base02, 30)
+            local illuminate_bg = color.blend(illuminate_bg_darken, illuminate_bg_base, 0.25)
             return {
+              IlluminatedWordText = {
+                bg = illuminate_bg,
+              },
+              IlluminatedWordRead = {
+                bg = illuminate_bg,
+              },
+              IlluminatedWordWrite = {
+                bg = illuminate_bg,
+              },
               DiffAdd = {
                 fg = add_fg,
                 bg = add_bg,
@@ -794,18 +807,6 @@ require("lazy").setup({
       "RRethy/vim-illuminate",
       config = function()
         require('illuminate').configure({})
-        -- change the highlight style
-        vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
-        vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-          pattern = { "*" },
-          callback = function(ev)
-            vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-            vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-            vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
-          end
-        })
       end,
     },
     {
