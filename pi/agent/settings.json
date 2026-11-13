@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.5.0",
+  "lastChangelogVersion": "1.5.2",
   "defaultProvider": "primary",
   "defaultModel": "default",
   "packages": [
@@ -19,7 +19,7 @@
   ],
   "extensionChangelogVersions": {
     "{\"source\":\"npm:@mjakl/pi-kagi-search\",\"scope\":\"user\"}": "2.0.0",
-    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.87.0",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.88.1",
     "{\"source\":\"npm:pi-nvim-context\",\"scope\":\"user\"}": "0.4.0"
   }
 }
