@@ -19,7 +19,7 @@
   ],
   "extensionChangelogVersions": {
     "{\"source\":\"npm:@mjakl/pi-kagi-search\",\"scope\":\"user\"}": "2.0.0",
-    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.88.1",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.89.0",
     "{\"source\":\"npm:pi-nvim-context\",\"scope\":\"user\"}": "0.4.0"
   }
 }
